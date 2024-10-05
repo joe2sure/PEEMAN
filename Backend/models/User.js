@@ -16,14 +16,11 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    resetPasswordToken: String,
+    resetPasswordExpire: Date,
     avatar: {
         type: String,
     },
-    tokens: [
-        {
-            type: Object,
-        }
-    ],
     role: {
         type: String,
         enum: [ 'user', 'admin'],
@@ -55,9 +52,31 @@ UserSchema.methods.comparePassword = async function (password) {
     }catch (error) {
         console.log("Error while comparing password", error.message);
     }
+}
 
     // To prevent duplicate email
     UserSchema.statics.isThisEmailInUse = async function (email) {
-        if(!email) throw new Error("Invalid Email");        
-    }
-}
+        if (!email) throw new Error("Invalid Email");
+        try {
+          const user = await this.findOne({ email });
+          if (user) return false;
+      
+          return true;
+        } catch (error) {
+          console.log("Error inside isThisEmailInUse method", error.message);
+          return false;
+        }
+      };
+
+UserSchema.virtual("id").get(function () {
+    return this._id.toHexString();
+  });
+  
+  UserSchema.set("toJSON", {
+    virtuals: true,
+  });
+
+const User = mongoose.models.users || mongoose.model('user', UserSchema)
+
+
+export default User;
