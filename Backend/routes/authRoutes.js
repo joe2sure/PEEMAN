@@ -1,5 +1,5 @@
 import express from "express";
-import { RegisterUser, LoginUser, GoogleLogin } from '../controllers/authController.js';
+import { RegisterUser, LoginUser, GoogleLogin, RequestPasswordReset, ResetPassword } from '../controllers/authController.js';
 
 
 const router = express.Router();
@@ -83,5 +83,11 @@ router.post('/login', LoginUser);
  *         description: Google login failed
  */
 router.post('/google-login', GoogleLogin); 
+
+// Step 1: Request password reset
+router.post('/forgot-password', RequestPasswordReset);
+
+// Step 2: Reset password
+router.put('/reset-password/:token', ResetPassword);
 
 export default router;

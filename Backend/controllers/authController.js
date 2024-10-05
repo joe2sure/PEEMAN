@@ -1,21 +1,27 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import { validationResult } from "express-validator";
-import { OAuth2Client } from "google-auth-library";  // Correct import
+import { OAuth2Client } from "google-auth-library"; // Correct import
+import crypto from "crypto";
 
 import User from "../models/User.js";
+import sendEmail from "../utility/sendEmail.js";
 
 // @desc Register a new user
 // @route POST /api/auth
 // @access Public
 export const RegisterUser = async (req, res) => {
   const errors = validationResult(req);
-  if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
+  if (!errors.isEmpty())
+    return res.status(400).json({ errors: errors.array() });
 
   const { username, email, password } = req.body;
   try {
     let user = await User.findOne({ email });
-    if (user) return res.status(400).json({ success: false, message: "User already exists" });
+    if (user)
+      return res
+        .status(400)
+        .json({ success: false, message: "User already exists" });
 
     user = new User({ username, email, password });
     await user.save();
@@ -48,17 +54,37 @@ export const LoginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email });
-    if (!user) return res.status(400).json({ success: false, message: "Invalid email credential" });
+    if (!user)
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid email credential" });
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ success: false, message: "Invalid password credentials" });
+    if (!isMatch)
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid password credentials" });
 
-    const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1d' });
-    res.json({ token, user: { id: user._id, email: user.email, username: user.username, role: user.role } });
+    const token = jwt.sign(
+      { id: user._id, role: user.role },
+      process.env.JWT_SECRET,
+      { expiresIn: "1d" }
+    );
+    res.json({
+      token,
+      user: {
+        id: user._id,
+        email: user.email,
+        username: user.username,
+        role: user.role,
+      },
+    });
   } catch (error) {
-    res.status(400).json({ success: false, message: 'Login failed', error: error.message });
+    res
+      .status(400)
+      .json({ success: false, message: "Login failed", error: error.message });
   }
-}
+};
 
 // Initialize Google OAuth2 Client
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
@@ -94,7 +120,7 @@ export const GoogleLogin = async (req, res) => {
 
     // Generate JWT token for app's session
     const jwtToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: '1d',
+      expiresIn: "1d",
     });
 
     // Send back the token and user data
@@ -111,8 +137,106 @@ export const GoogleLogin = async (req, res) => {
   } catch (error) {
     res.status(400).json({
       success: false,
-      message: 'Google login failed',
+      message: "Google login failed",
       error: error.message,
     });
   }
 };
+
+/**
+ * Reset password functionality
+ */
+
+// Request password reset (Step 1)
+export const RequestPasswordReset = async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
+    }
+
+    // Generate a reset token
+    const resetToken = crypto.randomBytes(32).toString("hex");
+    const resetPasswordToken = crypto
+      .createHash("sha256")
+      .update(resetToken)
+      .digest("hex");
+    const resetPasswordExpire = Date.now() + 10 * 60 * 1000; // Token valid for 10 minutes
+
+    user.resetPasswordToken = resetPasswordToken;
+    user.resetPasswordExpire = resetPasswordExpire;
+    await user.save();
+
+    // Send the email
+    const resetUrl = `${req.protocol}://${req.get(
+      "host"
+    )}/reset-password/${resetToken}`;
+    const message = `You are receiving this email because you requested a password reset. Please click the link: ${resetUrl}`;
+
+    await sendEmail({
+      email: user.email,
+      subject: "Password Reset",
+      message,
+    });
+
+    res.status(200).json({ success: true, message: "Email sent" });
+  } catch (error) {
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: "Error sending reset email",
+        error: error.message,
+      });
+  }
+};
+
+// Reset password (Step 2)
+export const ResetPassword = async (req, res) => {
+  const { token } = req.params;
+  const { password } = req.body;
+
+  try {
+    // Hash the token from the URL and find user
+    const resetPasswordToken = crypto
+      .createHash("sha256")
+      .update(token)
+      .digest("hex");
+    const user = await User.findOne({
+      resetPasswordToken,
+      resetPasswordExpire: { $gt: Date.now() },
+    });
+
+    if (!user) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid or expired token" });
+    }
+
+    // Update password
+    user.password = password;
+    user.resetPasswordToken = undefined;
+    user.resetPasswordExpire = undefined;
+    await user.save();
+
+    res
+      .status(200)
+      .json({ success: true, message: "Password updated successfully" });
+  } catch (error) {
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: "Error resetting password",
+        error: error.message,
+      });
+  }
+};
+
+/**
+ * End of reset password functionality
+ */
