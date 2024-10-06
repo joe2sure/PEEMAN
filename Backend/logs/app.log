@@ -83,3 +83,4 @@
 [32minfo[39m: ::1 - - [06/Oct/2024:12:11:14 +0000] "GET /api/v1/profile/upload-avatar HTTP/1.1" 404 167 "-" "PostmanRuntime/7.37.3"
 [32minfo[39m: ::1 - - [06/Oct/2024:12:12:22 +0000] "PUT /api/v1/profile/upload-avatar HTTP/1.1" 500 64 "-" "PostmanRuntime/7.37.3"
 [32minfo[39m: ::1 - - [06/Oct/2024:12:26:12 +0000] "PUT /api/v1/profile/upload-avatar HTTP/1.1" 500 64 "-" "PostmanRuntime/7.37.3"
+[32minfo[39m: ::1 - - [06/Oct/2024:12:30:35 +0000] "PUT /api/v1/profile/upload-avatar HTTP/1.1" 200 162 "-" "PostmanRuntime/7.37.3"

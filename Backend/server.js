@@ -90,7 +90,8 @@ app.use((err, req, res, next) => {
 // Start the server
 app.listen(PORT, (error) => {
     if(error) throw new Error("Error while connecting to server");
-    console.log(`Sever is live and running at the http://localhost:${PORT}`)
+    console.log(`Sever is live and running at the http://localhost:${PORT}`);
+    console.log(`Swagger docs available at http://localhost:${PORT}/api-docs`);
 })
 
 
