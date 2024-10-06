@@ -1,20 +1,19 @@
 import jwt from 'jsonwebtoken';
 import dotenv from "dotenv";
-
-// import User from '../models/User';
+import User from '../models/User.js';
 
 
 dotenv.config();
 
 const isAuthorizeMiddleware = async (req, res, next) => {
-    const jwt_secret = process.env.SECRET;
+    const jwt_secret = process.env.JWT_SECRET;
   
     if (req.headers && req.headers.authorization) {
       const token = req.headers.authorization.split(" ")[1]; // Extracts the token from the header
   
       try {
         const decode = jwt.verify(token, jwt_secret); // Decodes and verifies the token
-        const user = await userModel.findById(decode.userId); // Finds the user by the decoded userId
+        const user = await User.findById(decode.id); // Finds the user by the decoded userId
         
         if (!user) {
           return res.status(400).json({

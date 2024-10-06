@@ -4,13 +4,16 @@ import { validationResult } from "express-validator";
 import { OAuth2Client } from "google-auth-library"; // Correct import
 import crypto from "crypto";
 
-import User from "../models/User.js";
-import sendEmail from "../utility/sendEmail.js";
+import User from "../../models/User.js";
+import sendEmail from "../../utility/sendEmail.js";
+
+
+
 
 // @desc Register a new user
 // @route POST /api/auth
 // @access Public
-export const RegisterUser = async (req, res) => {
+export const registerUser = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty())
     return res.status(400).json({ errors: errors.array() });
@@ -23,11 +26,16 @@ export const RegisterUser = async (req, res) => {
         .status(400)
         .json({ success: false, message: "User already exists" });
 
-    user = new User({ username, email, password });
+    // Hash the password before saving the user
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    user = new User({ username, email, password: hashedPassword });
     await user.save();
+
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1d",
     });
+
     res.status(201).json({
       success: true,
       token,
@@ -47,10 +55,11 @@ export const RegisterUser = async (req, res) => {
   }
 };
 
+
 // @desc Login a user
 // @route POST /api/auth
 // @access Public
-export const LoginUser = async (req, res) => {
+export const loginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email });
@@ -70,7 +79,7 @@ export const LoginUser = async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: "1d" }
     );
-    res.json({
+    res.status(200).json({
       token,
       user: {
         id: user._id,
@@ -92,7 +101,7 @@ const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 // @desc Google Login
 // @route POST /api/auth/google
 // @access Public
-export const GoogleLogin = async (req, res) => {
+export const googleLogin = async (req, res) => {
   const { tokenId } = req.body; // Token sent from frontend after Google login
 
   try {
@@ -148,7 +157,7 @@ export const GoogleLogin = async (req, res) => {
  */
 
 // Request password reset (Step 1)
-export const RequestPasswordReset = async (req, res) => {
+export const requestPasswordReset = async (req, res) => {
   const { email } = req.body;
 
   try {
@@ -195,8 +204,9 @@ export const RequestPasswordReset = async (req, res) => {
   }
 };
 
+
 // Reset password (Step 2)
-export const ResetPassword = async (req, res) => {
+export const resetPassword = async (req, res) => {
   const { token } = req.params;
   const { password } = req.body;
 
@@ -217,8 +227,8 @@ export const ResetPassword = async (req, res) => {
         .json({ success: false, message: "Invalid or expired token" });
     }
 
-    // Update password
-    user.password = password;
+    // Hash the new password before saving
+    user.password = await bcrypt.hash(password, 10);
     user.resetPasswordToken = undefined;
     user.resetPasswordExpire = undefined;
     await user.save();
@@ -236,6 +246,7 @@ export const ResetPassword = async (req, res) => {
       });
   }
 };
+
 
 /**
  * End of reset password functionality

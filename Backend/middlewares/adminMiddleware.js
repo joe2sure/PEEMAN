@@ -3,7 +3,7 @@ import User from "../models/User.js";
 export const isAdmin = async (req, res, next) => {
     try {
       // Find the user by ID, assuming req.user.userId is available from the authentication token
-      const user = await User.findById(req.user.userId);
+      const user = await User.findById(req.user.id);
   
       // Check if the user's role is not 'admin'
       if (user.role !== 'admin') {

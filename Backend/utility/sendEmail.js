@@ -6,11 +6,15 @@ const sendEmail = async (options) => {
   const transporter = nodemailer.createTransport({
     host: process.env.EMAIL_SERVICE,
     port: process.env.EMAIL_PORT,
-    secure: process.env.EMAIL_PORT == 465, // true for 465 (SSL), false for 587 (TLS)
+    secure: false,
+    // secure: process.env.EMAIL_PORT == 465, // true for 465 (SSL), false for 587 (TLS)
     auth: {
       user: process.env.EMAIL_USER, // Your email
       pass: process.env.EMAIL_PASS, // Your password or app-specific password
     },
+    tls: {
+        rejectUnauthorized: false, // Allow self-signed certificates (Use this only in development)
+      },
   });
 
   // Email options

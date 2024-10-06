@@ -10,7 +10,9 @@ import sanitizeInput from './middlewares/sanitizeInput.js';  // Sanitization mid
 import rateLimiter from './middlewares/rateLimiter.js';  // Rate limiter middleware
 import logger from './logs/logger.js'
 
-import authRoutes from './routes/authRoutes.js';
+import authRoutes from './routes/users/authRoutes.js';
+import profileRoutes from './routes/users/profileRoutes.js';
+import userRoutes from './routes/users/userRoutes.js';
 
 
 // Load environment variables
@@ -50,6 +52,9 @@ sanitizeInput(app);
 // app.use(morgan("tiny"));
 app.use(morgan('combined', { stream: { write: (message) => logger.info(message.trim()) } }));
 
+// Apply rate limiting to all API routes
+app.use(rateLimiter);
+
 /** End of middlewares **/
 
 
@@ -57,13 +62,15 @@ app.use(morgan('combined', { stream: { write: (message) => logger.info(message.t
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 
-// Apply rate limiting to all API routes
-app.use('/api/', rateLimiter); // example on how to apply ratelimiting to routes
 
-// Routes
+
+
+/**=====  Routes  =====**/ 
 const api = process.env.API
 
 app.use(`${api}/auth`, authRoutes);
+app.use(`${api}/profile`, profileRoutes);
+app.use(`${api}/user`, userRoutes);
 // app.use('/api/properties', require('./routes/propertyRoutes'));
 // app.use('/api/admin', require('./routes/adminRoutes'));
 

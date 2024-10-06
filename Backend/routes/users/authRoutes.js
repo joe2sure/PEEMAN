@@ -1,5 +1,5 @@
 import express from "express";
-import { RegisterUser, LoginUser, GoogleLogin, RequestPasswordReset, ResetPassword } from '../controllers/authController.js';
+import { registerUser, loginUser, googleLogin, requestPasswordReset, resetPassword } from '../../controllers/users/authController.js';
 
 
 const router = express.Router();
@@ -33,7 +33,7 @@ const router = express.Router();
  *       400:
  *         description: Bad request or user already exists
  */
-router.post('/register', RegisterUser); 
+router.post('/register', registerUser); 
 
 /**
  * @swagger
@@ -58,7 +58,7 @@ router.post('/register', RegisterUser);
  *       400:
  *         description: Invalid email or password
  */
-router.post('/login', LoginUser);
+router.post('/login', loginUser);
 
 /**
  * @swagger
@@ -82,12 +82,12 @@ router.post('/login', LoginUser);
  *       400:
  *         description: Google login failed
  */
-router.post('/google-login', GoogleLogin); 
+router.post('/google-login', googleLogin); 
 
 // Step 1: Request password reset
-router.post('/forgot-password', RequestPasswordReset);
+router.post('/forgot-password', requestPasswordReset);
 
 // Step 2: Reset password
-router.put('/reset-password/:token', ResetPassword);
+router.put('/reset-password/:token', resetPassword);
 
 export default router;
