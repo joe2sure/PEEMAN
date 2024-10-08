@@ -14,6 +14,7 @@ import authRoutes from './routes/users/authRoutes.js';
 import profileRoutes from './routes/users/profileRoutes.js';
 import userRoutes from './routes/users/userRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
+import posterRoutes from './routes/posterRoutes.js';
 
 
 // Load environment variables
@@ -73,6 +74,7 @@ app.use(`${api}/auth`, authRoutes);
 app.use(`${api}/profile`, profileRoutes);
 app.use(`${api}/user`, userRoutes);
 app.use(`${api}/admin`, adminRoutes);
+app.use(`${api}/poster`, posterRoutes);
 // app.use('/api/properties', require('./routes/propertyRoutes'));
 
 

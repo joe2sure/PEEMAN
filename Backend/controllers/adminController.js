@@ -36,8 +36,8 @@ export const makeAdmin = async (req, res) => {
 // GET /api/properties
 export const getAllProperties = async (req, res) => {
   try {
-    const properties = await Property.find();
-    res.json({ success: true, data: properties });
+    const properties = await Property.find({});
+    res.json({ success: true, message: "Properties retrieved successfully", data: properties });
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, message: 'Server Error', error: error.message });
