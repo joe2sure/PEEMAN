@@ -24,7 +24,7 @@ export const makeAdmin = async (req, res) => {
       res.json({ success: true, message: 'User role updated to admin', user });
     } catch (error) {
       // If any error occurs, return a 500 error and the error message
-      res.status(500).json({ success: false, message: 'Error updating user role', error: error.message });
+      res.status(500).json({ success: false, message: 'Server Error updating user role', error: error.message });
     }
   };
 
@@ -32,6 +32,32 @@ export const makeAdmin = async (req, res) => {
 /**
  * Manage properties (Admin CRUD) 
  * */ 
+
+// GET /api/properties
+export const getAllProperties = async (req, res) => {
+  try {
+    const properties = await Property.find();
+    res.json({ success: true, data: properties });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: 'Server Error', error: error.message });
+  }
+};
+
+// GET /api/properties/:id
+export const getPropertyById = async (req, res) => {
+  try {
+    const property = await Property.findById(req.params.id);
+    if (!property) {
+      return res.status(404).json({ success: false, message: 'Property not found' });
+    }
+    res.json({ success: true, data: property });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: 'Server Error', error: error.message });
+  }
+};
+
 
 // Create property with images and videos
 export const createProperty = async (req, res) => {
@@ -112,7 +138,6 @@ export const updateProperty = async (req, res) => {
     let property = await Property.findById(req.params.id);
     if (!property) return res.status(404).json({ success: false, message: 'Property not found' });
 
-    // Handle the new fields and logic
     const { price, isOffer, discount, coupon } = req.body;
     let discountPrice = price || property.price;
 
@@ -128,17 +153,70 @@ export const updateProperty = async (req, res) => {
       }
     }
 
-    property = await Property.findByIdAndUpdate(req.params.id, { ...req.body, discountPrice }, { new: true });
+    // Handle image updates
+    const images = req.files
+      ? req.files
+          .filter((file) => file.mimetype.startsWith('image/'))
+          .map((file) => ({ url: file.path }))
+      : property.images; // If no new images, retain old ones
+
+    property = await Property.findByIdAndUpdate(
+      req.params.id,
+      { ...req.body, discountPrice, images }, // Include new or existing images
+      { new: true }
+    );
+
     res.status(200).json({
       success: true,
       data: property
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ success: false, message: 'Error updating property', error: error.message });
+    res.status(500).json({ success: false, message: 'Server Error updating property', error: error.message });
   }
 };
 
+
+// GET /api/properties/search
+export const searchProperties = async (req, res) => {
+  try {
+    const { name, location, priceMin, priceMax } = req.query;
+
+    // Build query based on provided parameters
+    const query = {};
+    if (name) {
+      query.name = { $regex: name, $options: 'i' }; // Case insensitive
+    }
+    if (location) {
+      query.location = { $regex: location, $options: 'i' };
+    }
+    if (priceMin || priceMax) {
+      query.price = {};
+      if (priceMin) query.price.$gte = priceMin;
+      if (priceMax) query.price.$lte = priceMax;
+    }
+
+    const properties = await Property.find(query);
+    res.json({ success: true, data: properties });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: 'Server Error', error: error.message });
+  }
+};
+
+// GET /api/properties/count
+export const countProperties = async (req, res) => {
+  try {
+    const count = await Property.countDocuments();
+    res.json({ success: true, data: count });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: 'Server Error', error: error.message });
+  }
+};
+
+
+// DELETE /api/properties/:id
 export const deleteProperty = async (req, res) => {
   try {
     const property = await Property.findByIdAndDelete(req.params.id);
@@ -152,9 +230,11 @@ export const deleteProperty = async (req, res) => {
     });
   } catch (error) {
     // console.error(error.message);
-    res.status(500).json({ success: false, message: 'Error deleting property', error: error.message });
+    res.status(500).json({ success: false, message: 'Server Error deleting property', error: error.message });
   }
 };
+
+
 
 // // Manage blog posts (Admin CRUD)
 // export const createBlogPost = async (req, res) => {
