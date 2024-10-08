@@ -1,4 +1,7 @@
-import User from "../models/User";
+import Property from '../models/Property.js';
+import User from '../models/User.js';
+// import Blog  from '../models/Blog';
+// import  Notification from '../models/Notification';
 
 
 // @desc make user an admin
@@ -24,3 +27,170 @@ export const makeAdmin = async (req, res) => {
       res.status(500).json({ success: false, message: 'Error updating user role', error: error.message });
     }
   };
+
+
+/**
+ * Manage properties (Admin CRUD) 
+ * */ 
+
+// Create property with images and videos
+export const createProperty = async (req, res) => {
+  try {
+    const { 
+      name, 
+      description, 
+      location, 
+      price, 
+      beds, 
+      baths,  
+      isOffer, 
+      discount, 
+      furnished, 
+      coupon 
+    } = req.body;
+
+    // Calculate the discount price if an offer is available
+    let discountPrice = price;
+    if (isOffer && discount) {
+      discountPrice = price - discount; // Apply the discount
+    }
+
+    // If there's a coupon, apply its discount logic
+    if (coupon) {
+      if (coupon.discountType === 'percentage') {
+        // Apply percentage discount
+        discountPrice = price - (price * (coupon.discountValue / 100));
+      } else if (coupon.discountType === 'fixed') {
+        // Apply fixed discount
+        discountPrice = price - coupon.discountValue;
+      }
+    }
+
+    // Collect image URLs from the upload
+    const images = req.files
+      .filter((file) => file.mimetype.startsWith('image/'))
+      .map((file) => ({ url: file.path })); 
+
+    // Collect video URLs from the upload
+    const videos = req.files
+      .filter((file) => file.mimetype.startsWith('video/'))
+      .map((file) => ({ url: file.path }));
+    
+      // Ensure at least one image and no more than 6 files
+    if (images.length === 0) {
+      return res.status(400).json({ success: false, message: 'At least one image is required' });
+    }
+
+    const newProperty = new Property({
+      name,
+      description,
+      location,
+      price,
+      discountPrice,
+      beds,
+      baths,
+      images,
+      videos,
+      isOffer,
+      discount,
+      furnished,
+      coupon,
+    });
+
+    await newProperty.save();
+    res.json({ success: true, message: 'Property created successfully', property: newProperty });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: 'Server Error', error: error.message });
+  }
+};
+
+
+
+export const updateProperty = async (req, res) => {
+  try {
+    let property = await Property.findById(req.params.id);
+    if (!property) return res.status(404).json({ success: false, message: 'Property not found' });
+
+    // Handle the new fields and logic
+    const { price, isOffer, discount, coupon } = req.body;
+    let discountPrice = price || property.price;
+
+    if (isOffer && discount) {
+      discountPrice = price - discount;
+    }
+
+    if (coupon) {
+      if (coupon.discountType === 'percentage') {
+        discountPrice = price - (price * (coupon.discountValue / 100));
+      } else if (coupon.discountType === 'fixed') {
+        discountPrice = price - coupon.discountValue;
+      }
+    }
+
+    property = await Property.findByIdAndUpdate(req.params.id, { ...req.body, discountPrice }, { new: true });
+    res.status(200).json({
+      success: true,
+      data: property
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: 'Error updating property', error: error.message });
+  }
+};
+
+export const deleteProperty = async (req, res) => {
+  try {
+    const property = await Property.findByIdAndDelete(req.params.id);
+    if (!property) {
+      return res.status(404).json({ success: false, message: 'Property not found' });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: 'Property deleted successfully'
+    });
+  } catch (error) {
+    // console.error(error.message);
+    res.status(500).json({ success: false, message: 'Error deleting property', error: error.message });
+  }
+};
+
+// // Manage blog posts (Admin CRUD)
+// export const createBlogPost = async (req, res) => {
+//   try {
+//     const { title, content } = req.body;
+//     const newPost = new Blog({ title, content });
+//     await newPost.save();
+//     res.json(newPost);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).send('Server Error');
+//   }
+// };
+
+// export const deleteBlogPost = async (req, res) => {
+//   try {
+//     const blog = await Blog.findById(req.params.id);
+//     if (!blog) return res.status(404).json({ msg: 'Blog post not found' });
+
+//     await blog.remove();
+//     res.json({ msg: 'Blog post removed' });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).send('Server Error');
+//   }
+// };
+
+// // Send notifications
+// export const sendNotification = async (req, res) => {
+//   try {
+//     const { title, message } = req.body;
+//     const newNotification = new Notification({ title, message });
+//     await newNotification.save();
+//     res.json(newNotification);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).send('Server Error');
+//   }
+// };

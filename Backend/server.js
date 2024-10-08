@@ -13,6 +13,7 @@ import logger from './logs/logger.js'
 import authRoutes from './routes/users/authRoutes.js';
 import profileRoutes from './routes/users/profileRoutes.js';
 import userRoutes from './routes/users/userRoutes.js';
+import adminRoutes from './routes/adminRoutes.js';
 
 
 // Load environment variables
@@ -71,8 +72,8 @@ const api = process.env.API
 app.use(`${api}/auth`, authRoutes);
 app.use(`${api}/profile`, profileRoutes);
 app.use(`${api}/user`, userRoutes);
+app.use(`${api}/admin`, adminRoutes);
 // app.use('/api/properties', require('./routes/propertyRoutes'));
-// app.use('/api/admin', require('./routes/adminRoutes'));
 
 
 
