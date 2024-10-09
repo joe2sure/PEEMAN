@@ -21,20 +21,12 @@ const PropertySchema = new mongoose.Schema(
     discountPrice: {
       type: Number,
     },
-    coupon: {
-      type: {
-        code: String,
-        discountType: {
-          type: String,
-          enum: ['percentage', 'fixed'], // Either percentage or fixed amount discount
-          required: true,
+    coupons: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Coupon", // Reference to the Coupon model
         },
-        discountValue: {
-          type: Number,
-          required: true, // value in percentage or fixed amount
-        }
-      }
-    },
+      ],
     isOffer: {
       type: Boolean,
       default: false,
@@ -44,6 +36,11 @@ const PropertySchema = new mongoose.Schema(
       default: false, // Indicating if the property is furnished
     },
     discount: Number, // The discount amount when isOffer is true
+    propertyType: {
+        type: String,
+        enum: ['for lease', 'for sale', 'vacation home', 'investment', 'commercial use', 'short-term lease'],
+        required: true
+      },
     beds: {
       type: Number,
       required: true,
@@ -91,10 +88,14 @@ const PropertySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+PropertySchema.virtual("id").get(function () {
+    return this._id.toHexString();
+  });
+
 PropertySchema.set("toJSON", {
   virtuals: true,
 });
 
-const Property = mongoose.models.property || mongoose.model("Property", PropertySchema);
+const Property = mongoose.models.Property || mongoose.model("Property", PropertySchema);
 
 export default Property;

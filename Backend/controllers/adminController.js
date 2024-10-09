@@ -72,24 +72,13 @@ export const createProperty = async (req, res) => {
       isOffer, 
       discount, 
       furnished, 
-      coupon 
+      propertyType // New field
     } = req.body;
 
     // Calculate the discount price if an offer is available
     let discountPrice = price;
     if (isOffer && discount) {
-      discountPrice = price - discount; // Apply the discount
-    }
-
-    // If there's a coupon, apply its discount logic
-    if (coupon) {
-      if (coupon.discountType === 'percentage') {
-        // Apply percentage discount
-        discountPrice = price - (price * (coupon.discountValue / 100));
-      } else if (coupon.discountType === 'fixed') {
-        // Apply fixed discount
-        discountPrice = price - coupon.discountValue;
-      }
+      discountPrice = price - discount;
     }
 
     // Collect image URLs from the upload
@@ -102,7 +91,7 @@ export const createProperty = async (req, res) => {
       .filter((file) => file.mimetype.startsWith('video/'))
       .map((file) => ({ url: file.path }));
     
-      // Ensure at least one image and no more than 6 files
+    // Ensure at least one image and no more than 6 files
     if (images.length === 0) {
       return res.status(400).json({ success: false, message: 'At least one image is required' });
     }
@@ -120,7 +109,7 @@ export const createProperty = async (req, res) => {
       isOffer,
       discount,
       furnished,
-      coupon,
+      propertyType // New field
     });
 
     await newProperty.save();
@@ -132,25 +121,16 @@ export const createProperty = async (req, res) => {
 };
 
 
-
 export const updateProperty = async (req, res) => {
   try {
     let property = await Property.findById(req.params.id);
     if (!property) return res.status(404).json({ success: false, message: 'Property not found' });
 
-    const { price, isOffer, discount, coupon } = req.body;
+    const { price, isOffer, discount, propertyType } = req.body; // Include propertyType
     let discountPrice = price || property.price;
 
     if (isOffer && discount) {
       discountPrice = price - discount;
-    }
-
-    if (coupon) {
-      if (coupon.discountType === 'percentage') {
-        discountPrice = price - (price * (coupon.discountValue / 100));
-      } else if (coupon.discountType === 'fixed') {
-        discountPrice = price - coupon.discountValue;
-      }
     }
 
     // Handle image updates
@@ -158,17 +138,18 @@ export const updateProperty = async (req, res) => {
       ? req.files
           .filter((file) => file.mimetype.startsWith('image/'))
           .map((file) => ({ url: file.path }))
-      : property.images; // If no new images, retain old ones
+      : property.images;
 
     property = await Property.findByIdAndUpdate(
       req.params.id,
-      { ...req.body, discountPrice, images }, // Include new or existing images
+      { ...req.body, discountPrice, images, propertyType }, // Include propertyType
       { new: true }
     );
 
     res.status(200).json({
       success: true,
-      data: property
+      data: property,
+      message: 'Property updated successfully'
     });
   } catch (error) {
     console.error(error);

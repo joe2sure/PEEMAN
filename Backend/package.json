@@ -12,6 +12,9 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@knocklabs/node": "^0.6.13",
+    "@onesignal/node-onesignal": "^5.0.0-alpha-01",
+    "axios": "^1.7.7",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^2.5.0",
     "cors": "^2.8.5",
