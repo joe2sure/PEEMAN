@@ -195,3 +195,5 @@
 [32minfo[39m: ::1 - - [09/Oct/2024:23:25:57 +0000] "POST /api/v1/admin/properties HTTP/1.1" 200 1408 "-" "PostmanRuntime/7.42.0"
 [32minfo[39m: ::1 - - [09/Oct/2024:23:26:56 +0000] "POST /api/v1/coupon/ HTTP/1.1" 500 143 "-" "PostmanRuntime/7.42.0"
 [32minfo[39m: ::1 - - [09/Oct/2024:23:27:20 +0000] "POST /api/v1/coupon/ HTTP/1.1" 500 143 "-" "PostmanRuntime/7.42.0"
+[32minfo[39m: ::1 - - [09/Oct/2024:23:29:12 +0000] "POST /api/v1/coupon/ HTTP/1.1" 201 426 "-" "PostmanRuntime/7.42.0"
+[32minfo[39m: ::1 - - [09/Oct/2024:23:29:56 +0000] "GET /api/v1/coupon/ HTTP/1.1" 200 1048 "-" "PostmanRuntime/7.42.0"
