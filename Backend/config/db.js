@@ -9,7 +9,7 @@ dotenv.config();
 //     dbName: "peeman"
 // }
 
-const mongoUrl = process.env.MONGO_URI;
+const mongoUrl = process.env.MONGODB_URI;
 
 
 const connectDB = async () => {

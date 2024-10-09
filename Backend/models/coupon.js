@@ -33,6 +33,12 @@ const CouponSchema = new mongoose.Schema({
     enum: ['for lease', 'for sale', 'vacation home', 'investment', 'commercial use', 'short-term lease'],
     required: true
   },
+  applicableProperties: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Property' // Reference to the Property model
+    }
+  ],
 }, { timestamps: true });
 
 CouponSchema.virtual("id").get(function () {

@@ -3,15 +3,12 @@ import Property from "../models/Property.js";
 
 
 // Create a new coupon
+// Create a new coupon
 export const createCoupon = async (req, res) => {
-    const { code, discountType, discountAmount, minimumPurchaseAmount, endDate, applicablePropertyType, status } = req.body;
+    const { code, discountType, discountAmount, minimumPurchaseAmount, endDate, status, applicablePropertyType, applicableProperties } = req.body;
   
-    // Validate that all required fields are present
-    if (!code || !discountType || !discountAmount || !endDate || !status || !minimumPurchaseAmount || !applicablePropertyType) {
-      return res.status(400).json({
-        success: false,
-        message: "code, discountType, discountAmount, endDate, status, minimumPurchaseAmount, and applicablePropertyType are required."
-      });
+    if (!code || !discountType || !discountAmount || !endDate || !status) {
+      return res.status(400).json({ success: false, message: "code, discountType, discountAmount, endDate, and status are required." });
     }
   
     try {
@@ -22,39 +19,45 @@ export const createCoupon = async (req, res) => {
         minimumPurchaseAmount,
         endDate,
         status,
-        applicablePropertyType
+        applicablePropertyType,
+        applicableProperties // Use array of property IDs
       });
   
       await newCoupon.save();
   
-      res.status(201).json({
-        success: true,
-        message: "Coupon created successfully",
-        coupon: newCoupon
-      });
+      // Optionally update the properties to associate them with the new coupon
+      if (applicableProperties && applicableProperties.length > 0) {
+        await Property.updateMany(
+          { _id: { $in: applicableProperties } },
+          { $push: { coupons: newCoupon._id } }
+        );
+      }
+  
+      res.status(201).json({ success: true, message: "Coupon created successfully", coupon: newCoupon });
     } catch (error) {
       console.error(error);
-      res.status(500).json({
-        success: false,
-        message: "Server Error",
-        error: error.message
-      });
+      res.status(500).json({ success: false, message: "Server Error", error: error.message });
     }
-  };
-  
+  };  
 
   
 
 // Get all coupons
 export const getAllCoupons = async (req, res) => {
-  try {
-    const coupons = await Coupon.find().populate('property', 'id name');
-    res.json({ success: true, message: 'Coupons retrieved successfully', data: coupons });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: 'Server Error', error: error.message });
-  }
-};
+    try {
+      const coupons = await Coupon.find()
+        .populate({
+          path: 'applicableProperties',
+          select: 'name images', // Populate the name and images of the properties
+        });
+      
+      res.json({ success: true, message: 'Coupons retrieved successfully', data: coupons });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ success: false, message: 'Server Error', error: error.message });
+    }
+  };
+  
 
 // Get a coupon by ID
 export const getCoupon = async (req, res) => {
