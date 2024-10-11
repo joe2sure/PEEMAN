@@ -76,7 +76,7 @@ UserSchema.virtual("id").get(function () {
     virtuals: true,
   });
 
-const User = mongoose.models.users || mongoose.model('user', UserSchema)
+const User = mongoose.models.users || mongoose.model('User', UserSchema)
 
 
 export default User;

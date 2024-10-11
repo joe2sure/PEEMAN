@@ -64,7 +64,8 @@ export const getCoupon = async (req, res) => {
     try {
         const couponID = req.params.id;
         const coupon = await Coupon.findById(couponID)
-            .populate('applicableProperty', 'id name');
+            .populate('applicableProperties', 'id name'); 
+
         if (!coupon) {
             return res.status(404).json({ success: false, message: "Coupon not found." });
         }
@@ -78,14 +79,14 @@ export const getCoupon = async (req, res) => {
 export const updateCoupon = async (req, res) => {
     try {
       const couponID = req.params.id;
-      const { code, discountType, discountValue, minimumPurchaseAmount, endDate, status, applicablePropertyType } = req.body;
+      const { code, discountType, discountAmount, minimumPurchaseAmount, endDate, status, applicablePropertyType } = req.body;
       if (!code || !discountType || !discountValue || !endDate || !status || !applicablePropertyType) {
           return res.status(400).json({ success: false, message: "code, discountType, discountValue, endDate, status, and applicablePropertyType are required." });
       }
   
       const updatedCoupon = await Coupon.findByIdAndUpdate(
           couponID,
-          { code, discountType, discountValue, minimumPurchaseAmount, endDate, status, applicablePropertyType },
+          { code, discountType, discountAmount, minimumPurchaseAmount, endDate, status, applicablePropertyType },
           { new: true }
       );
   

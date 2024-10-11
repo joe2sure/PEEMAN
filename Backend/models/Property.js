@@ -61,18 +61,22 @@ const PropertySchema = new mongoose.Schema(
         },
       },
     ],
-    videos: [
-        {
-          url: {
-            type: String,
-            required: true,
-          },
-        },
-      ],
-    createdAt: {
-      type: Date,
-      default: Date.now,
-    },
+    videoCallRequests: [{
+      user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+      status: {
+        type: String,
+        enum: ['pending', 'accepted', 'rejected'],
+        default: 'pending'
+      },
+      requestedAt: {
+        type: Date,
+        default: Date.now
+      }
+    }],
+    likes: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
+    }],
     reviews: [
       {
         user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
@@ -84,6 +88,10 @@ const PropertySchema = new mongoose.Schema(
         },
       },
     ],
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    },
   },
   { timestamps: true }
 );

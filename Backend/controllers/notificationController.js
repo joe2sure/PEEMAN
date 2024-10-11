@@ -1,54 +1,3 @@
-// import axios from 'axios';
-// import dotenv from 'dotenv';
-// import Notification from '../models/Notification.js';
-  
-
-// dotenv.config();
-
-// const knockApiKey = process.env.KNOCK_API_KEY;
-// const workflowKey = process.env.KNOCK_WORKFLOW_KEY; // Updated variable name
-// const knockApiUrl = `https://api.knock.app/v1/workflows/${workflowKey}/trigger`;
-
-// export const sendNotification = async (req, res) => {
-//     try {
-//         const { title, description, recipientsEmail } = req.body;
-
-//         // Ensure recipientsEmail is an array
-//         if (!Array.isArray(recipientsEmail) || recipientsEmail.length === 0) {
-//             return res.status(400).json({ success: false, message: 'Recipients must be provided as an array.', error: error.message});
-//         }
-
-//         // Prepare the notification payload
-//         const payload = {
-//             recipients: recipientsEmail, // Use the email array here
-//             data: {
-//                 title,
-//                 description,
-//             },
-//         };
-
-//         console.log('Payload being sent:', payload);
-
-
-//         // Send the request to Knock API
-//         const response = await axios.post(knockApiUrl, payload, {
-//             headers: {
-//                 Authorization: `Bearer ${knockApiKey}`,
-//                 'Content-Type': 'application/json',
-//             },
-//         });
-
-//         // Handle response from Knock
-//         console.log('Notification sent:', response.data);
-//         res.json({ success: true, message: 'Notification sent successfully', data: response.data });
-
-//     } catch (error) {
-//         console.error('Error sending notification:', error.response ? error.response.data : error.message);
-//         res.status(500).json({ success: false, message: 'Failed to send notification', error: error.message });
-//     }
-// };
-
-
 import { Knock } from "@knocklabs/node";
 import dotenv from 'dotenv';
 import Notification from '../models/Notification.js';
@@ -138,3 +87,55 @@ export const deleteNotification = async (req, res) => {
         res.status(500).json({ success: false, message: error.message });
     }
 };
+
+
+
+// import axios from 'axios';
+// import dotenv from 'dotenv';
+// import Notification from '../models/Notification.js';
+  
+
+// dotenv.config();
+
+// const knockApiKey = process.env.KNOCK_API_KEY;
+// const workflowKey = process.env.KNOCK_WORKFLOW_KEY; // Updated variable name
+// const knockApiUrl = `https://api.knock.app/v1/workflows/${workflowKey}/trigger`;
+
+// export const sendNotification = async (req, res) => {
+//     try {
+//         const { title, description, recipientsEmail } = req.body;
+
+//         // Ensure recipientsEmail is an array
+//         if (!Array.isArray(recipientsEmail) || recipientsEmail.length === 0) {
+//             return res.status(400).json({ success: false, message: 'Recipients must be provided as an array.', error: error.message});
+//         }
+
+//         // Prepare the notification payload
+//         const payload = {
+//             recipients: recipientsEmail, // Use the email array here
+//             data: {
+//                 title,
+//                 description,
+//             },
+//         };
+
+//         console.log('Payload being sent:', payload);
+
+
+//         // Send the request to Knock API
+//         const response = await axios.post(knockApiUrl, payload, {
+//             headers: {
+//                 Authorization: `Bearer ${knockApiKey}`,
+//                 'Content-Type': 'application/json',
+//             },
+//         });
+
+//         // Handle response from Knock
+//         console.log('Notification sent:', response.data);
+//         res.json({ success: true, message: 'Notification sent successfully', data: response.data });
+
+//     } catch (error) {
+//         console.error('Error sending notification:', error.response ? error.response.data : error.message);
+//         res.status(500).json({ success: false, message: 'Failed to send notification', error: error.message });
+//     }
+// };
