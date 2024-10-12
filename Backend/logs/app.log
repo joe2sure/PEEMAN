@@ -260,3 +260,5 @@
 [32minfo[39m: ::1 - - [12/Oct/2024:16:20:43 +0000] "PUT /api/v1/blog/post/670a9a0475ff9a28c77e98f7 HTTP/1.1" 200 437 "-" "PostmanRuntime/7.42.0"
 [32minfo[39m: ::1 - - [12/Oct/2024:16:23:22 +0000] "POST /api/v1/blog/670a9a0475ff9a28c77e98f7/comments HTTP/1.1" 400 107 "-" "PostmanRuntime/7.42.0"
 [32minfo[39m: ::1 - - [12/Oct/2024:16:24:37 +0000] "POST /api/v1/blog/670a9a0475ff9a28c77e98f7/comments HTTP/1.1" 201 320 "-" "PostmanRuntime/7.42.0"
+[32minfo[39m: ::1 - - [12/Oct/2024:16:25:58 +0000] "POST /api/v1/blog/670a9a0475ff9a28c77e98f7/like HTTP/1.1" 401 57 "-" "PostmanRuntime/7.42.0"
+[32minfo[39m: ::1 - - [12/Oct/2024:16:26:09 +0000] "POST /api/v1/blog/670a9a0475ff9a28c77e98f7/like HTTP/1.1" 200 48 "-" "PostmanRuntime/7.42.0"
