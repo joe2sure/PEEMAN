@@ -1,7 +1,6 @@
 import Property from '../models/Property.js';
 import User from '../models/User.js';
-// import Blog  from '../models/Blog';
-// import  Notification from '../models/Notification';
+
 
 
 // @desc make user an admin
@@ -214,44 +213,3 @@ export const deleteProperty = async (req, res) => {
     res.status(500).json({ success: false, message: 'Server Error deleting property', error: error.message });
   }
 };
-
-
-
-// // Manage blog posts (Admin CRUD)
-// export const createBlogPost = async (req, res) => {
-//   try {
-//     const { title, content } = req.body;
-//     const newPost = new Blog({ title, content });
-//     await newPost.save();
-//     res.json(newPost);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('Server Error');
-//   }
-// };
-
-// export const deleteBlogPost = async (req, res) => {
-//   try {
-//     const blog = await Blog.findById(req.params.id);
-//     if (!blog) return res.status(404).json({ msg: 'Blog post not found' });
-
-//     await blog.remove();
-//     res.json({ msg: 'Blog post removed' });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('Server Error');
-//   }
-// };
-
-// // Send notifications
-// export const sendNotification = async (req, res) => {
-//   try {
-//     const { title, message } = req.body;
-//     const newNotification = new Notification({ title, message });
-//     await newNotification.save();
-//     res.json(newNotification);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('Server Error');
-//   }
-// };

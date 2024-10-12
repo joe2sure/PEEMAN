@@ -16,8 +16,9 @@ import userRoutes from './routes/users/userRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
 import posterRoutes from './routes/posterRoutes.js';
 import notificationRoutes from './routes/notificationRoutes.js';
-import couponRoutes from './routes/couponRoutes.js'
-import propertyUserInteractionRoutes from './routes/propertyUserInteractionRoutes.js'
+import couponRoutes from './routes/couponRoutes.js';
+import propertyUserInteractionRoutes from './routes/propertyUserInteractionRoutes.js';
+import blogRoutes from './routes/blogRoutes.js'
 
 // Load environment variables
 dotenv.config();
@@ -80,6 +81,7 @@ app.use(`${api}/poster`, posterRoutes);
 app.use(`${api}/notification`, notificationRoutes);
 app.use(`${api}/coupon`, couponRoutes);
 app.use(`${api}/properties`, propertyUserInteractionRoutes);
+app.use(`${api}/blog`, blogRoutes);
 // app.use('/api/properties', require('./routes/propertyRoutes'));
 
 

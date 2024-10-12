@@ -54,25 +54,31 @@ const isAuthorizeMiddleware = async (req, res, next) => {
   
 
 
-const authMiddleware = (req, res, next) => {
-    // Get token from request header
-    const token = req.header('x-auth-token');
+  const authMiddleware = async (req, res, next) => {
+    const token = req.header('Authorization')?.split(' ')[1] || req.header('x-auth-token');
   
-    // If token is not provided, deny access
-    if (!token) return res.status(401).json({ msg: 'No token, authorization denied' });
+    if (!token) {
+      return res.status(401).json({ success: false, message: 'No token, authorization denied' });
+    }
   
     try {
-      // Verify the token using the secret key
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const user = await User.findById(decoded.id);
   
-      // Attach decoded user data (e.g., user ID) to the request object
-      req.user = decoded;
+      if (!user) {
+        return res.status(401).json({ success: false, message: 'User not found, unauthorized access!' });
+      }
   
-      // Continue to the next middleware or route handler
+      req.user = user;
       next();
-    } catch (err) {
-      // If token verification fails, return an error response
-      res.status(401).json({ msg: 'Token is not valid' });
+    } catch (error) {
+      if (error.name === 'TokenExpiredError') {
+        return res.status(401).json({ success: false, message: 'Session expired, please sign in again!' });
+      }
+      if (error.name === 'JsonWebTokenError') {
+        return res.status(401).json({ success: false, message: 'Unauthorized access, invalid token!' });
+      }
+      res.status(500).json({ success: false, message: 'Internal server error' });
     }
   };
 

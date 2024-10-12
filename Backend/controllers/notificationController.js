@@ -1,68 +1,85 @@
-import { Knock } from "@knocklabs/node";
-import dotenv from 'dotenv';
+import OneSignal from 'onesignal-node';
+import cloudinary from '../utility/cloudinary.js';
 import Notification from '../models/Notification.js';
+import mongoose from 'mongoose';
 
-dotenv.config();
-
-// Initialize the Knock client with the API key from your environment variables
-const knockClient = new Knock(process.env.KNOCK_API_KEY);
+const client = new OneSignal.Client(process.env.ONE_SIGNAL_APP_ID, process.env.ONE_SIGNAL_REST_API_KEY);
 
 export const sendNotification = async (req, res) => {
     try {
-        const { title, description, recipientsEmail } = req.body;
+        const { title, description, recipientEmails } = req.body;
+        let imageUrl = null;
 
-        // Ensure recipientsEmail is an array
-        if (!Array.isArray(recipientsEmail) || recipientsEmail.length === 0) {
-            return res.status(400).json({ success: false, message: 'Recipients must be provided as an array.' });
+        // Check if image files were uploaded
+        if (req.files && req.files.length > 0) {
+            // Get the path of the first uploaded image (Cloudinary URL)
+            imageUrl = req.files[0].path;  // Assuming you want to use the first image
         }
 
-        // Prepare the notification payload
-        const payload = {
-            // Specify the workflow key here
-            workflowKey: process.env.KNOCK_WORKFLOW_KEY,
-            // user ID of the actor (could be any identifier, like admin or service name)
-            actor: "admin_user_id", // Replace with your actual actor ID
-            // Recipients for the notification
-            recipients: recipientsEmail, 
-            // Data payload
-            data: {
-                title,
-                description,
-            },
-            // Optional: tenant identifier if needed
-            tenant: "your_tenant_id" // Optional
+        let notificationBody = {
+            contents: { 'en': description },
+            headings: { 'en': title },
+            ...(imageUrl && { big_picture: imageUrl })  // Add the image URL if it exists
         };
 
-        // Send the notification using the Knock API
-        await knockClient.workflows.trigger(payload.workflowKey, payload);
+        // Determine the recipient segment
+        if (recipientEmails === 'all') {
+            notificationBody.included_segments = ['All'];
+        } else if (Array.isArray(recipientEmails)) {
+            notificationBody.include_external_user_ids = recipientEmails;
+        } else if (typeof recipientEmails === 'string') {
+            notificationBody.include_external_user_ids = [recipientEmails];
+        } else {
+            throw new Error('Invalid recipientEmails format');
+        }
 
-        // If successful, send a success response
-        res.json({ success: true, message: 'Notification sent successfully' });
-
+        const response = await client.createNotification(notificationBody);
+        console.log(response.body);  // Log OneSignal response
+        if (response.body && response.body.id) {
+            let notificationId = response.body.id;  // Use OneSignal's ID
+        
+            // Save the notification in the database
+            const notification = new Notification({
+                notificationId, 
+                title, 
+                description, 
+                imageUrl, 
+                recipientEmails 
+            });
+            await notification.save();
+        
+            res.json({ success: true, message: 'Notification sent successfully', data: notification });
+        } else {
+            throw new Error('Failed to create notification in OneSignal');
+        }
     } catch (error) {
-        console.error('Error sending notification:', error.response ? error.response.data : error.message);
-        res.status(500).json({ success: false, message: 'Failed to send notification', error: error.message });
+        // If there was an error and an image was uploaded, delete it from Cloudinary
+        if (req.files && req.files.length > 0) {
+            await cloudinary.uploader.destroy(req.files[0].filename);
+        }
+        res.status(500).json({ success: false, message: error.message });
     }
 };
 
 
 export const trackNotification = async (req, res) => {
-    const notificationId = req.params.id;
     try {
-        const response = await knock.getMessage(notificationId);
-        const stats = response.delivery_stats;
-        
+        const { id } = req.params;
+        const response = await client.viewNotification(id);
+        console.log(response);
+        const androidStats = response.body.platform_delivery_stats;
+
         const result = {
-            delivered: stats.delivered || 0,
-            ignored: stats.ignored || 0,
-            pushed: stats.pushed || 0,
-            clicked: stats.clicked || 0
+            platform: 'Android',
+            success_delivery: androidStats.android.successful,
+            failed_delivery: androidStats.android.failed,
+            errored_delivery: androidStats.android.errored,
+            opened_notification: androidStats.android.converted
         };
 
-        res.json({ success: true, message: 'Notification details retrieved', data: result });
+        res.json({ success: true, message: 'success', data: result });
     } catch (error) {
-        console.error('Error retrieving notification details:', error);
-        res.status(500).json({ success: false, message: 'Failed to retrieve notification details' });
+        res.status(500).json({ success: false, message: error.message });
     }
 };
 
@@ -76,9 +93,9 @@ export const getAllNotifications = async (req, res) => {
 };
 
 export const deleteNotification = async (req, res) => {
-    const notificationID = req.params.id;
     try {
-        const notification = await Notification.findByIdAndDelete(notificationID);
+        const { id } = req.params;
+        const notification = await Notification.findByIdAndDelete(id);
         if (!notification) {
             return res.status(404).json({ success: false, message: "Notification not found." });
         }
@@ -87,55 +104,3 @@ export const deleteNotification = async (req, res) => {
         res.status(500).json({ success: false, message: error.message });
     }
 };
-
-
-
-// import axios from 'axios';
-// import dotenv from 'dotenv';
-// import Notification from '../models/Notification.js';
-  
-
-// dotenv.config();
-
-// const knockApiKey = process.env.KNOCK_API_KEY;
-// const workflowKey = process.env.KNOCK_WORKFLOW_KEY; // Updated variable name
-// const knockApiUrl = `https://api.knock.app/v1/workflows/${workflowKey}/trigger`;
-
-// export const sendNotification = async (req, res) => {
-//     try {
-//         const { title, description, recipientsEmail } = req.body;
-
-//         // Ensure recipientsEmail is an array
-//         if (!Array.isArray(recipientsEmail) || recipientsEmail.length === 0) {
-//             return res.status(400).json({ success: false, message: 'Recipients must be provided as an array.', error: error.message});
-//         }
-
-//         // Prepare the notification payload
-//         const payload = {
-//             recipients: recipientsEmail, // Use the email array here
-//             data: {
-//                 title,
-//                 description,
-//             },
-//         };
-
-//         console.log('Payload being sent:', payload);
-
-
-//         // Send the request to Knock API
-//         const response = await axios.post(knockApiUrl, payload, {
-//             headers: {
-//                 Authorization: `Bearer ${knockApiKey}`,
-//                 'Content-Type': 'application/json',
-//             },
-//         });
-
-//         // Handle response from Knock
-//         console.log('Notification sent:', response.data);
-//         res.json({ success: true, message: 'Notification sent successfully', data: response.data });
-
-//     } catch (error) {
-//         console.error('Error sending notification:', error.response ? error.response.data : error.message);
-//         res.status(500).json({ success: false, message: 'Failed to send notification', error: error.message });
-//     }
-// };
