@@ -8,8 +8,12 @@ import Toaster from '../../utility/Toaster.js';
 
 export default function AdminDashboard() {
   const dispatch = useDispatch();
-  const { properties, loading, error } = useSelector((state) => state.property);
-  
+  // const { properties, loading, error } = useSelector((state) => state.property);
+  const { properties, loading, error } = useSelector((state) => {
+    console.log('Current state:', state);
+    return state.property;
+  });
+
   const [newProperty, setNewProperty] = useState({
     name: '',
     description: '',
@@ -25,9 +29,16 @@ export default function AdminDashboard() {
   const [editingProperty, setEditingProperty] = useState(null);
   const [toaster, setToaster] = useState(null);
 
+  // useEffect(() => {
+  //   dispatch(fetchProperties());
+  //   // setToaster(null); 
+  // }, [dispatch]);
+
   useEffect(() => {
-    dispatch(fetchProperties());
-    // setToaster(null); 
+    dispatch(fetchProperties()).catch(error => {
+      console.error('Error fetching properties:', error);
+      setToaster({ message: 'Failed to fetch properties. Please try again.', type: 'error' });
+    });
   }, [dispatch]);
 
   const handleInputChange = (e, property = newProperty) => {
@@ -40,6 +51,12 @@ export default function AdminDashboard() {
       setEditingProperty({ ...property, [name]: updatedValue });
     }
   };
+
+  useEffect(() => {
+    console.log('Properties:', properties);
+    console.log('Loading:', loading);
+    console.log('Error:', error);
+  }, [properties, loading, error]);
 
   const handleFileChange = (e, property = newProperty) => {
     const { name, files } = e.target;
@@ -116,13 +133,16 @@ export default function AdminDashboard() {
     }
   };
 
-  if (loading) return <Spinner />;
-  if (error) return <div className="error">{error}</div>;
+  // if (loading) return <Spinner />;
+  // if (error) return <div className="error">{error}</div>;
 
   return (
     <div className="admin-dashboard">
       <h1>Admin Dashboard</h1>
-      
+      {loading && <Spinner />}
+      {error && <div className="error">{error}</div>}
+      {!loading && !error && (
+        <>
       <div className="property-form">
         <h2>Add New Property</h2>
         <form onSubmit={handleAddProperty}>
@@ -351,6 +371,8 @@ export default function AdminDashboard() {
           </div>
         ))}
       </div>
+        </>
+      )}  
       {toaster && (
         <Toaster
           message={toaster.message}

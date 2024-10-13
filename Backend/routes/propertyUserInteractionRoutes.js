@@ -1,5 +1,5 @@
 import express from 'express';
-import { likeProperty, unlikeProperty, addReview, requestVideoCall, getPropertyDetails } from '../controllers/propertyUserInteractionController.js';
+import { likeProperty, unlikeProperty, addReview, requestVideoCall, getPropertyDetails, getAllProperties, getPropertyById } from '../controllers/propertyUserInteractionController.js';
 import { isAuthorizeMiddleware } from '../middlewares/authMiddleware.js';
 
 
@@ -11,5 +11,7 @@ router.post('/:id/unlike', isAuthorizeMiddleware, unlikeProperty);
 router.post('/:id/review', isAuthorizeMiddleware, addReview);
 router.post('/:id/video-call-request', isAuthorizeMiddleware, requestVideoCall);
 router.get('/:id/details', getPropertyDetails);
+router.get('/', getAllProperties);
+router.get('/:id', getPropertyById);
 
 export default router;

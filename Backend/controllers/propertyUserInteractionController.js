@@ -1,6 +1,31 @@
 import Property from '../models/Property.js';
 import User from '../models/User.js';
 
+// GET /api/properties
+export const getAllProperties = async (req, res) => {
+  try {
+    const properties = await Property.find({});
+    res.json({ success: true, message: "Properties retrieved successfully", data: properties });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: 'Server Error', error: error.message });
+  }
+};
+
+// GET /api/properties/:id
+export const getPropertyById = async (req, res) => {
+  try {
+    const property = await Property.findById(req.params.id);
+    if (!property) {
+      return res.status(404).json({ success: false, message: 'Property not found' });
+    }
+    res.json({ success: true, data: property });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: 'Server Error', error: error.message });
+  }
+};
+
 // Like a property
 export const likeProperty = async (req, res) => {
   try {
