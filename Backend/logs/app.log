@@ -262,3 +262,5 @@
 [32minfo[39m: ::1 - - [12/Oct/2024:16:24:37 +0000] "POST /api/v1/blog/670a9a0475ff9a28c77e98f7/comments HTTP/1.1" 201 320 "-" "PostmanRuntime/7.42.0"
 [32minfo[39m: ::1 - - [12/Oct/2024:16:25:58 +0000] "POST /api/v1/blog/670a9a0475ff9a28c77e98f7/like HTTP/1.1" 401 57 "-" "PostmanRuntime/7.42.0"
 [32minfo[39m: ::1 - - [12/Oct/2024:16:26:09 +0000] "POST /api/v1/blog/670a9a0475ff9a28c77e98f7/like HTTP/1.1" 200 48 "-" "PostmanRuntime/7.42.0"
+[32minfo[39m: ::ffff:172.20.10.2 - - [12/Oct/2024:19:17:30 +0000] "GET / HTTP/1.1" 404 139 "-" "Avast Antivirus"
+[32minfo[39m: ::ffff:172.20.10.2 - - [12/Oct/2024:19:17:41 +0000] "GET / HTTP/1.1" 404 139 "-" "-"

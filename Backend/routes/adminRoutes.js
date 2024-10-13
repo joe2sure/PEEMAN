@@ -50,13 +50,4 @@ router.delete(
 );
 
 
-
 export default router;
-
-// import { makeAdmin, createProperty, updateProperty, deleteProperty, createBlogPost, deleteBlogPost, sendNotification } from '../controllers/adminController';
-// // Blog management routes
-// router.post('/blog', auth, adminAuth, createBlogPost);
-// router.delete('/blog/:id', auth, adminAuth, deleteBlogPost);
-
-// // Notifications
-// router.post('/notifications', auth, adminAuth, sendNotification);
