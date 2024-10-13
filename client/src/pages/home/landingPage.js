@@ -13,8 +13,11 @@ const LandingPage = () => {
   const { properties, loading, error } = useSelector(state => state.property);
   const [toaster, setToaster] = useState(null);
 
+
+
   useEffect(() => {
     dispatch(fetchProperties());
+    // setToaster(null); 
   }, [dispatch]);
 
   useEffect(() => {

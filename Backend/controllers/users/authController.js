@@ -18,7 +18,16 @@ export const registerUser = async (req, res) => {
   if (!errors.isEmpty())
     return res.status(400).json({ errors: errors.array() });
 
-  const { username, email, password } = req.body;
+  const { username, email, password, confirmPassword } = req.body;
+
+  // Step 1: Check if passwords match
+  if (password !== confirmPassword) {
+    return res.status(400).json({
+      success: false,
+      message: "Passwords do not match",
+    });
+  }
+
   try {
     let user = await User.findOne({ email });
     if (user)
@@ -26,16 +35,19 @@ export const registerUser = async (req, res) => {
         .status(400)
         .json({ success: false, message: "User already exists" });
 
-    // Hash the password before saving the user
+    // Step 2: Hash the password before saving the user
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    // Step 3: Create and save the user
     user = new User({ username, email, password: hashedPassword });
     await user.save();
 
+    // Step 4: Generate a token
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1d",
     });
 
+    // Step 5: Return the token and user details
     res.status(201).json({
       success: true,
       token,
@@ -54,6 +66,7 @@ export const registerUser = async (req, res) => {
     });
   }
 };
+
 
 
 // @desc Login a user

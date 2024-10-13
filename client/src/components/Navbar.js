@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutUser } from '../redux/actions/authActions';
 import '../styles/components/Navbar.css';
@@ -7,13 +7,12 @@ import '../styles/components/Navbar.css';
 const Navbar = () => {
   const { isAuthenticated, isAdmin, user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleLogout = async () => {
-    const result = await dispatch(logoutUser());
-    if (!result.success) {
-      // Handle logout error
-      console.error(result.message);
-    }
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    // Optionally navigate to the home page
+    navigate('/');
   };
 
   return (

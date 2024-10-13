@@ -6,7 +6,7 @@ import LandingPage from './pages/home/landingPage.js';
 import LoginPage from './pages/auth/login.js';
 import AdminDashboard from './pages/admin/dashbaord.js';
 import SignupPage from './pages/auth/signUp.js';
-import Navbar from './components/Navbar'; // Assuming you have a Navbar component
+import Navbar from './components/Navbar';
 
 function App() {
   const { isAuthenticated, isAdmin } = useSelector((state) => state.auth);
@@ -17,14 +17,22 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
+          <Route 
+            path="/login" 
+            element={!isAuthenticated ? <LoginPage /> : <Navigate to="/" />} 
+          />
+          <Route 
+            path="/signup" 
+            element={!isAuthenticated ? <SignupPage /> : <Navigate to="/" />} 
+          />
           <Route
             path="/admin"
             element={
               isAuthenticated && isAdmin ? <AdminDashboard /> : <Navigate to="/" />
             }
           />
+          {/* Catch-all route for undefined routes */}
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>
     </Router>

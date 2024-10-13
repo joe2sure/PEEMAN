@@ -1,11 +1,11 @@
 const handleResponse = async (response) => {
-    if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.message || 'Something went wrong');
-    }
-    return response.json();
-  };
-  
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.message || response.statusText);
+  }
+  return response.json();
+};
+
   export const apiRequest = async (endpoint, method = 'GET', body = null, headers = {}) => {
     const options = {
       method,

@@ -1,29 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
 
 import { loginUser } from '../../redux/actions/authActions.js';
 import Spinner from '../../utility/Spinner.js';
 import Toaster from '../../utility/Toaster.js';
 import '../../styles/pages/login.css';
+import { setError } from '../../redux/reducers/authReducer.js';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [toaster, setToaster] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  // Get loading and error from Redux state
   const { loading, error } = useSelector(state => state.auth);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const result = await dispatch(loginUser(email, password));
     if (result.success) {
-      setToaster({ message: 'Login successful', type: 'success' });
       setTimeout(() => navigate('/'), 2000);
-    } else {
-      setToaster({ message: result.message || 'Login failed', type: 'error' });
     }
   };
 
@@ -58,11 +56,12 @@ const LoginPage = () => {
           </button>
         </form>
       </div>
-      {toaster && (
+      {/* Display Toaster only if error exists */}
+      {error && (
         <Toaster
-          message={toaster.message}
-          type={toaster.type}
-          onClose={() => setToaster(null)}
+          message={error}
+          type="error"
+          onClose={() => dispatch(setError(null))} // Clear error on toaster close
         />
       )}
     </div>

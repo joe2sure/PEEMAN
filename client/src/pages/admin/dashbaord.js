@@ -27,6 +27,7 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     dispatch(fetchProperties());
+    // setToaster(null); 
   }, [dispatch]);
 
   const handleInputChange = (e, property = newProperty) => {
