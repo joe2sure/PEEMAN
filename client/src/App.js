@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux';
 import './App.css';
 import LandingPage from './pages/home/landingPage.js';
 import LoginPage from './pages/auth/login.js';
-import AdminDashboard from './pages/admin/dashbaord.js';
 import SignupPage from './pages/auth/signUp.js';
 import Navbar from './components/Navbar';
+import DashboardScreen from './pages/admin/dashboardScreen.js';
 
 function App() {
   const { isAuthenticated, isAdmin } = useSelector((state) => state.auth);
@@ -28,7 +28,8 @@ function App() {
           <Route
             path="/admin"
             element={
-              isAuthenticated && isAdmin ? <AdminDashboard /> : <Navigate to="/" />
+              // isAuthenticated && isAdmin ? <AdminDashboard /> : <Navigate to="/" />
+              isAuthenticated && isAdmin ? <DashboardScreen /> : <Navigate to="/" />
             }
           />
           {/* Catch-all route for undefined routes */}

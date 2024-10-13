@@ -1,0 +1,25 @@
+.dashboard {
+    padding: 20px;
+  }
+  
+  .property-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-content {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .dashboard-content > * {
+    flex: 1;
+  }
+  
+  @media (max-width: 1024px) {
+    .dashboard-content {
+      flex-direction: column;
+    }
+  }

@@ -16,16 +16,6 @@ export const fetchProperties = () => async (dispatch) => {
 };
 
 
-// export const fetchProperties = () => async (dispatch) => {
-//   dispatch(setLoading(true));
-//   try {
-//     const response = await propertyApi.get('/properties');
-//     dispatch(setProperties(response.data.data));
-//   } catch (error) {
-//     dispatch(setError(error.response?.data?.message || 'An error occurred'));
-//   }
-// };
-
 export const addNewProperty = (propertyData) => async (dispatch) => {
   dispatch(setLoading(true));
   try {

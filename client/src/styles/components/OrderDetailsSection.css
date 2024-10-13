@@ -1,0 +1,46 @@
+.order-details-section {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container {
+  position: relative;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+.total-orders {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.order-info-card {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.order-info-card .icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.order-info-card .info h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.order-info-card .info p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: #777;
+}
