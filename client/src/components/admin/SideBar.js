@@ -1,18 +1,18 @@
 import React from 'react';
-import '../styles/components/Sidebar.css';
+import '../../styles/components/admin/SideBar.css';
 
 const Sidebar = ({ setActiveScreen }) => {
   const menuItems = [
     { title: 'Dashboard', icon: '📊' },
     { title: 'Category', icon: '📁' },
-    { title: 'SubCategory', icon: '📂' },
-    { title: 'Brands', icon: '🏷️' },
-    { title: 'VariantType', icon: '🔢' },
-    { title: 'Variants', icon: '🔣' },
-    { title: 'Orders', icon: '📦' },
     { title: 'Coupons', icon: '🎟️' },
     { title: 'Posters', icon: '🖼️' },
     { title: 'Notifications', icon: '🔔' },
+    // { title: 'SubCategory', icon: '📂' },
+    // { title: 'Brands', icon: '🏷️' },
+    // { title: 'VariantType', icon: '🔢' },
+    // { title: 'Variants', icon: '🔣' },
+    // { title: 'Orders', icon: '📦' },
   ];
 
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-import '../styles/components/OrderDetailsSection.css';
+import '../../styles/components/admin/OrderDetailsSection.css';
 
 const OrderDetailsSection = () => {
   const orderData = [

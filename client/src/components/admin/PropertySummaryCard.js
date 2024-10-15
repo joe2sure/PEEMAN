@@ -1,7 +1,9 @@
+
 import React from 'react';
-import '../styles/components/PropertySummaryCard.css';
+import '../../styles/components/admin/PropertySummaryCard.css';
 
 const PropertySummaryCard = ({ info }) => {
+  // console.log(info); 
   return (
     <div className="property-summary-card" style={{ '--card-color': info.color }}>
       <div className="card-header">

@@ -1,0 +1,141 @@
+.navbar {
+    background-color: #0B167C;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .navbar.scrolled {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo img {
+    height: 40px;
+  }
+  
+  .nav-links {
+    display: flex;
+    list-style-type: none;
+  }
+  
+  .nav-links li {
+    margin: 0 1rem;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: #DA7B14;
+  }
+  
+  .auth-buttons {
+    display: flex;
+  }
+  
+  .login-btn,
+  .signup-btn {
+    width: 120px;
+    height: 45px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 1rem;
+  }
+  
+  .login-btn {
+    background-color: transparent;
+    color: #DA7B14;
+  }
+  
+  .signup-btn {
+    background-color: #DA7B14;
+    color: white;
+  }
+  
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      padding: 1rem;
+    }
+  
+    .nav-links {
+      margin: 1rem 0;
+    }
+  
+    .auth-buttons {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+
+
+/* .navbar {
+    background-color: #0B167C;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 4px 2px -2px gray;
+  }
+  
+  .navbar-logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .navbar-links {
+    display: flex;
+    list-style: none;
+  }
+  
+  .navbar-links li {
+    margin: 0 15px;
+  }
+  
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  .nav-link:hover, .nav-link.active {
+    color: #DA7B14;
+  }
+  
+  .navbar-buttons {
+    display: flex;
+  }
+  
+  .login-btn, .signup-btn {
+    width: 120px;
+    height: 45px;
+  }
+  
+  .login-btn {
+    background-color: transparent;
+    color: #DA7B14;
+    border: none;
+  }
+  
+  .signup-btn {
+    background-color: #DA7B14;
+    color: white;
+    border: none;
+  } */
+  

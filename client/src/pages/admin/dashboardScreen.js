@@ -1,11 +1,8 @@
 import React from 'react';
-import '../../styles/pages/dashboardScreen.css';
-import PropertySummaryCard from '../../components/PropertySummaryCard';
-import OrderDetailsSection from '../../components/OrderDetailsSection';
-import PropertyListSection from '../../components/PropertyListSection';
-// import PropertySummaryCard from './PropertySummaryCard';
-// import PropertyListSection from './PropertyListSection';
-// import OrderDetailsSection from './OrderDetailsSection';
+import '../../styles/pages/admin/dashboardScreen.css';
+import PropertySummaryCard from '../../components/admin/PropertySummaryCard';
+import PropertyListSection from '../../components/admin/PropertyListSection';
+import OrderDetailsSection from '../../components/admin/OrderDetailsSection';
 
 const DashboardScreen = () => {
   const propertySummaryItems = [
@@ -44,7 +41,7 @@ const DashboardScreen = () => {
       <h2>Dashboard</h2>
       <div className="property-summary-grid">
         {propertySummaryItems.map((item, index) => (
-          <PropertySummaryCard key={index} info={item} />
+          <PropertySummaryCard key={index} info={item} /> 
         ))}
       </div>
       <div className="dashboard-content">

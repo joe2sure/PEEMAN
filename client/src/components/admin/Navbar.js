@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { logoutUser } from '../redux/actions/authActions';
-import '../styles/components/Navbar.css';
+// import { logoutUser } from '../redux/actions/authActions';
+import '../../styles/components/admin/Navbar.css';
+import { logoutUser } from '../../redux/actions/authActions';
 
 const Navbar = () => {
   const { isAuthenticated, isAdmin, user } = useSelector((state) => state.auth);

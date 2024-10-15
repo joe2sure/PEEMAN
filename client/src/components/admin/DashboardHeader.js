@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/components/DashboardHeader.css';
+import '../../styles/components/admin/DashboardHeader.css';
 
 const DashboardHeader = () => {
   return (

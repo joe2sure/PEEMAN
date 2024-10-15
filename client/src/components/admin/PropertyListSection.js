@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../styles/components/PropertyListSection.css';
+import '../../styles/components/admin/PropertyListSection.css';
 
 const PropertyListSection = () => {
   const [properties, setProperties] = useState([

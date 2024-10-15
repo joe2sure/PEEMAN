@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/components/PropertyCard.css';
+import '../../styles/components/admin/PropertyCard.css';
 
 function PropertyCard({ property }) {
   return (
