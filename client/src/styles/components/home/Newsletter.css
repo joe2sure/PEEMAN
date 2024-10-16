@@ -1,6 +1,7 @@
 .newsletter {
     background-color: #FFFFFF;
-    padding: 4rem 2rem;
+    padding: 4rem 1rem;
+    /* padding: 4rem 2rem; */
     text-align: center;
   }
   
@@ -46,8 +47,24 @@
   .newsletter button:hover {
     background-color: #2a3bb0;
   }
-  
+
   @media (max-width: 768px) {
+    .newsletter h2 {
+      font-size: 32px;
+    }
+  
+    .newsletter form {
+      flex-direction: column;
+    }
+  
+    .newsletter input,
+    .newsletter button {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  }
+
+  /* @media (max-width: 768px) {
     .newsletter form {
       flex-direction: column;
     }
@@ -56,4 +73,15 @@
     .newsletter button {
       width: 100%;
     }
-  }
+  } */
+  
+  /* @media (max-width: 768px) {
+    .newsletter form {
+      flex-direction: column;
+    }
+  
+    .newsletter input,
+    .newsletter button {
+      width: 100%;
+    }
+  } */

@@ -3,7 +3,8 @@
     background-size: cover;
     background-position: center;
     color: #FFFFFF;
-    padding: 4rem 2rem;
+    /* padding: 4rem 2rem; */
+    padding: 4rem 1rem;
   }
   
   .footer-content {
@@ -29,11 +30,13 @@
   
   .footer-column p {
     margin-bottom: 1rem;
+    color: whitesmoke;
   }
   
   .copyright {
     margin-top: 2rem;
     font-size: 14px;
+    color: whitesmoke;
   }
   
   .footer-column h3 {
@@ -59,7 +62,7 @@
   .footer-column ul li a:hover {
     color: #DA7B14;
   }
-  
+
   @media (max-width: 768px) {
     .footer-content {
       flex-direction: column;
@@ -68,5 +71,28 @@
     .footer-column {
       margin-right: 0;
       margin-bottom: 2rem;
+      
     }
-  }
+  }  
+
+  /* @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+    }
+  
+    .footer-column {
+      margin-right: 0;
+      margin-bottom: 2rem;
+    }
+  } */
+  
+  /* @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+    }
+  
+    .footer-column {
+      margin-right: 0;
+      margin-bottom: 2rem;
+    }
+  } */

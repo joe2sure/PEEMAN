@@ -32,24 +32,3 @@ const CustomSearchSection = () => {
 }
 
 export default CustomSearchSection;
-
-
-
-// import React from 'react';
-// import './CustomSearchSection.css';
-
-// const CustomSearchSection = () => {
-//   return (
-//     <section className="custom-search-section">
-//       <h2>Customize Your Search</h2>
-//       <p>We let you tell us what kind of property you want...</p>
-//       <div className="card-container">
-//         <div className="custom-card"> {/* Card 1 contents */} </div>
-//         <div className="custom-card"> {/* Card 2 contents */} </div>
-//         <div className="custom-card"> {/* Card 3 contents */} </div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default CustomSearchSection;

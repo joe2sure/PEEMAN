@@ -12,8 +12,9 @@ const Footer = () => {
             Feedback and insight from our customers and website visitors are used 
             by UX designers, researchers and marketers to improve user experience.
           </p>
-          <p className="copyright">2024© All rights reserved by PEEMAN</p>
+          <p className="copyright">2024© All rights reserved by PEEMAN & Joe</p>
         </div>
+
         <div className="footer-column">
           <h3>Company</h3>
           <ul>

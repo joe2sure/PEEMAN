@@ -4,6 +4,8 @@ import locationIcon from '../../assets/icons/home/location-icon.svg';
 import propertyTypeIcon from '../../assets/icons/home/property-type-icon.svg';
 import priceRangeIcon from '../../assets/icons/home/price-range-icon.svg';
 
+
+
 const BuySellRent = () => {
   const [location, setLocation] = useState('');
   const [propertyType, setPropertyType] = useState('');
@@ -12,6 +14,7 @@ const BuySellRent = () => {
   return (
     <section className="buy-sell-rent">
       <h2>Buy, Sell, Rent!</h2>
+
       <p>
         Whether you're looking to buy, sell, or rent, we've made it easy for you to find exactly what you need. 
         Customize your search by choosing the location, property type, and price range that best fits your preferences. 

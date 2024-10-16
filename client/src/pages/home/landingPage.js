@@ -1,9 +1,5 @@
-import React from 'react';
-// import Navbar from '../components/Navbar';
-// import Banner from '../components/Banner';
-// import CustomSearchSection from '../components/CustomSearchSection';
+import React, { useState, useEffect } from 'react';
 
-// import Footer from '../components/Footer';
 import Banner from '../../components/home/Banner.js';
 import CustomSearchSection from '../../components/home/CustomSearchSection.js';
 import BuySellRent from '../../components/home/BuySellRent.js';
@@ -12,7 +8,46 @@ import Testimonial from '../../components/home/Testimonial.js';
 import Newsletter from '../../components/home/Newsletter.js';
 import Navbar from '../../components/home/Navbar.js';
 import Footer from '../../components/home/Footer.js';
+import '../../App.css';
 
+// ScrollToTop Button Component
+const ScrollToTop = () => {
+  const [visible, setVisible] = useState(false);
+
+  // Show button when page is scrolled down
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setVisible(true);
+    } else {
+      setVisible(false);
+    }
+  };
+
+  // Scroll to the top of the page
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', toggleVisibility);
+    return () => {
+      window.removeEventListener('scroll', toggleVisibility);
+    };
+  }, []);
+
+  return (
+    <div className="scroll-to-top">
+      {visible && (
+        <button onClick={scrollToTop} className="scroll-button">
+          ↑
+        </button>
+      )}
+    </div>
+  );
+};
 
 const LandingPage = () => {
   return (
@@ -27,6 +62,7 @@ const LandingPage = () => {
         <Newsletter />
       </main>
       <Footer />
+      <ScrollToTop /> 
     </div>
   );
 };

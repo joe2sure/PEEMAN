@@ -1,8 +1,11 @@
 .app {
   font-family: Arial, sans-serif;
+  max-width: 100%;
+  overflow-x: hidden;
+  
   /* max-width: 1200px; */
   /* margin: 0 auto; */
-  padding: 0 20px;
+  /* padding: 0 20px; */
 }
 
 .loading, .error {
@@ -27,7 +30,7 @@
 }
 
 main {
-  padding: 20px;
+  padding-top: 20px;
 }
 
 /* Color variables */
@@ -56,5 +59,42 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 768px) {
   .app {
     flex-direction: column;
+  }
+}
+
+/* Floating Scroll to Top Button */
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px; /* Adjusts vertical position */
+  right: 30px;  /* Adjusts horizontal position */
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+.scroll-button {
+  background-color: #0B167C;; /* Your primary brand color */
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.scroll-button:hover {
+  background-color: #1a7ae0; /* Slightly darker shade for hover effect */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-button:focus {
+  outline: none;
+}
+
+/* Ensure button is hidden on small screens until scrolled down */
+@media (max-width: 768px) {
+  .scroll-to-top {
+    bottom: 20px;
+    right: 20px;
   }
 }

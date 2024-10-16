@@ -5,9 +5,37 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #0B167C;
+  overflow-x: hidden;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* General spacing fix */
+@media (max-width: 768px) {
+  .latest-offers,
+  .testimonial,
+  .newsletter,
+  .footer {
+    margin-top: 2rem;
+  }
+}
+
+/* Fix for overlapping issues */
+@media (max-width: 768px) {
+  .testimonial {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .newsletter {
+    margin-top: 2rem;
+  }
+
+  .footer {
+    margin-top: 2rem;
+  }
 }

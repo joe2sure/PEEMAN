@@ -3,11 +3,11 @@ import '../../styles/components/home/Banner.css';
 import bannerImage from '../../assets/images/home/banner-image.svg';
 import arrowRight from '../../assets/icons/home/arrow-right.svg';
 
-export default function Banner() {
+const Banner = () => {
   return (
     <section className="banner">
       <div className="banner-content">
-        <h1>Find Your Dream Home Right Away</h1>
+        <h1>Find Your <i>Dream Home</i><br/> Right Away</h1>
         <p>
           Find your dream property with us and unlock a world of luxurious living. 
           Explore our exceptional collection of homes, apartments, 
@@ -25,24 +25,4 @@ export default function Banner() {
   );
 }
 
-
-// import React from 'react';
-// import '../../styles/components/home/Banner.css';
-// import bannerImage from '../../assets/banner-image.svg';
-
-// const Banner = () => {
-//   return (
-//     <section className="banner-section">
-//       <div className="banner-left">
-//         <h1>Find Your Dream Home Right Away</h1>
-//         <p>Find your dream property with us and unlock a world of luxurious living...</p>
-//         <button className="cta-button">See our latest offers <img src="../assets/arrow.svg" alt="icon" /></button>
-//       </div>
-//       <div className="banner-right">
-//         <img src={bannerImage} alt="banner" />
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Banner;
+export default Banner;

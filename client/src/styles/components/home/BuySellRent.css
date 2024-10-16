@@ -1,98 +1,139 @@
 .buy-sell-rent {
-    background-image: url('../../../assets/images/home/buy-sell-rent-background-image.svg');
-    background-size: cover;
-    background-position: center;
-    padding: 4rem 2rem;
-    color: white;
-    text-align: center;
+  background-image: url('../../../assets/images/home/buy-sell-rent-background-image.svg');
+  background-size: cover; /* Ensure the background image covers the full width and height */
+  background-position: center;
+  background-repeat: no-repeat; /* Prevent the background from repeating */
+  width: 100vw; /* Ensure the section takes the full viewport width */
+  margin-left: calc(-50vw + 50%); /* Correct centering issue caused by full width */
+  padding: 4rem 0; /* Remove horizontal padding to let the background stretch fully */
+  min-height: 100vh; /* Ensure the section takes the full viewport height */
+  color: white;
+  text-align: center;
+  display: flex; /* Flexbox for centering content */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.buy-sell-rent h2 {
+  font-size: 48px;
+  margin-bottom: 1rem;
+}
+
+.buy-sell-rent > p {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  color: white;
+}
+
+.filter-container {
+  position: relative;
+  max-width: 1005px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 8px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter-label {
+  position: absolute;
+  top: -15px;
+  left: 20px;
+  background-color: white;
+  color: #1428DA;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+}
+
+.filter-content {
+  display: flex;
+  flex-grow: 1;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.filter-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+
+.filter-item img {
+  width: 24px;
+  height: 24px;
+  margin-right: 0.5rem;
+}
+
+.filter-item select {
+  flex-grow: 1;
+  border: none;
+  background-color: transparent;
+  color: #666;
+  font-size: 16px;
+}
+
+.search-btn {
+  background-color: #DA7B14;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+@media (max-width: 768px) {
+  .filter-container {
+    flex-direction: column;
   }
-  
-  .buy-sell-rent h2 {
-    font-size: 48px;
+  .buy-sell-rent > h2{
+    font-size: 36px;
+  }
+
+  .buy-sell-rent > p {
+    font-size: 12;
+    line-height: 1.5;
+  }
+
+  .filter-content {
+    flex-direction: column;
+  }
+
+  .filter-item {
+    width: 100%;
     margin-bottom: 1rem;
   }
-  
-  .buy-sell-rent > p {
-    max-width: 800px;
-    margin: 0 auto 2rem;
-  }
-  
-  .filter-container {
-    position: relative;
-    max-width: 1005px;
-    margin: 0 auto;
-    background-color: white;
-    border-radius: 8px;
-    padding: 2rem;
-    display: flex;
-    align-items: center;
-  }
-  
-  .filter-label {
-    position: absolute;
-    top: -15px;
-    left: 20px;
-    background-color: white;
-    color: #1428DA;
-    padding: 0.5rem 1rem;
-    border-radius: 15px;
-  }
-  
-  .filter-content {
-    display: flex;
-    flex-grow: 1;
-    gap: 1rem;
-  }
-  
-  .filter-item {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    background-color: #f0f0f0;
-    border-radius: 4px;
-    padding: 0.5rem;
-  }
-  
-  .filter-item img {
-    width: 24px;
-    height: 24px;
-    margin-right: 0.5rem;
-  }
-  
-  .filter-item select {
-    flex-grow: 1;
-    border: none;
-    background-color: transparent;
-    color: #666;
-    font-size: 16px;
-  }
-  
+
   .search-btn {
-    background-color: #DA7B14;
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
-    font-size: 18px;
-    border-radius: 4px;
-    cursor: pointer;
+    width: 100%;
   }
-  
-  @media (max-width: 768px) {
-    .filter-container {
+}
+
+
+/* @media (max-width: 768px) {
+  .filter-container {
       flex-direction: column;
-    }
-  
-    .filter-content {
+      align-items: stretch; 
+  }
+
+  .filter-content {
       flex-direction: column;
       width: 100%;
-    }
-  
-    .filter-item {
+  }
+
+  .filter-item {
       width: 100%;
-    }
-  
-    .search-btn {
+  }
+
+  .search-btn {
       width: 100%;
       margin-top: 1rem;
-    }
   }
+} */
