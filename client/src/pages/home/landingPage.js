@@ -5,10 +5,11 @@ import CustomSearchSection from '../../components/home/CustomSearchSection.js';
 import BuySellRent from '../../components/home/BuySellRent.js';
 import LatestOffers from '../../components/home/LatestOffer.js';
 import Testimonial from '../../components/home/Testimonial.js';
-// import Newsletter from '../../components/home/Newsletter.js';
 import Navbar from '../../components/home/Navbar.js';
-import Footer from '../../components/home/Footer.js';
 import '../../App.css';
+
+import Footer from '../../components/home/Footer.js';
+// import Newsletter from '../../components/home/Newsletter.js';
 
 // ScrollToTop Button Component
 const ScrollToTop = () => {

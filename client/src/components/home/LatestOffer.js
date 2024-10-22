@@ -75,9 +75,14 @@ const transformPropertyData = (adminProperty) => {
     price + (price * Number(adminProperty.discount || 0) / 100) : 
     price;
 
+
+  // Handle multiple images, limit to 6 images
+  const propertyImages = adminProperty.images?.slice(0, 6).map(img => img.url) || [defaultPropertyImage];
+
   return {
     id: adminProperty.id,
-    image: adminProperty.images?.[0]?.url || defaultPropertyImage,
+    images: propertyImages, // Store all images array
+    image: propertyImages[0], // Keep first image for property card
     forRent: isRental,
     price: price,
     originalPrice: originalPrice,
@@ -88,7 +93,22 @@ const transformPropertyData = (adminProperty) => {
     parking: adminProperty.parking || null,
     description: adminProperty.description,
     furnished: adminProperty.furnished,
-  };
+  };    
+
+  // return {
+  //   id: adminProperty.id,
+  //   image: adminProperty.images?.[0]?.url || defaultPropertyImage,
+  //   forRent: isRental,
+  //   price: price,
+  //   originalPrice: originalPrice,
+  //   title: adminProperty.name,
+  //   location: adminProperty.location,
+  //   bedrooms: Number(adminProperty.beds) || 0,
+  //   bathrooms: Number(adminProperty.baths) || 0,
+  //   parking: adminProperty.parking || null,
+  //   description: adminProperty.description,
+  //   furnished: adminProperty.furnished,
+  // };
 };
 
 const LatestOffers = () => {
@@ -122,7 +142,6 @@ const LatestOffers = () => {
 };
 
 export default LatestOffers;
-
 
 
 
