@@ -61,6 +61,7 @@ export const getPropertyById = async (req, res) => {
 // Create property with images and videos
 export const createProperty = async (req, res) => {
   try {
+    // Remove the duplicate middleware since it's already applied in the route
     const { 
       name, 
       description, 
@@ -71,51 +72,81 @@ export const createProperty = async (req, res) => {
       isOffer, 
       discount, 
       furnished, 
-      propertyType // New field
+      propertyType 
     } = req.body;
 
-    // Calculate the discount price if an offer is available
-    let discountPrice = price;
-    if (isOffer && discount) {
-      discountPrice = price - discount;
+    // Log body and files for debugging
+    console.log('Request body:', req.body);
+    console.log('Uploaded files:', req.files);
+
+    // Validate required fields
+    if (!name || !description || !location || !propertyType) {
+      return res.status(400).json({
+        success: false,
+        message: 'Missing required fields: name, description, location, or propertyType'
+      });
     }
 
-    // Collect image URLs from the upload
-    const images = req.files
-      .filter((file) => file.mimetype.startsWith('image/'))
-      .map((file) => ({ url: file.path })); 
+    // Parse numeric values
+    const parsedPrice = parseFloat(price);
+    const parsedBeds = parseInt(beds, 10);
+    const parsedBaths = parseInt(baths, 10);
+    const parsedDiscount = parseFloat(discount) || 0;
 
-    // Collect video URLs from the upload
-    const videos = req.files
-      .filter((file) => file.mimetype.startsWith('video/'))
-      .map((file) => ({ url: file.path }));
-    
-    // Ensure at least one image and no more than 6 files
-    if (images.length === 0) {
-      return res.status(400).json({ success: false, message: 'At least one image is required' });
+    if (isNaN(parsedPrice) || isNaN(parsedBeds) || isNaN(parsedBaths)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid numeric values for price, beds, or baths'
+      });
     }
+
+    let discountPrice = parsedPrice;
+    if (isOffer === 'true' && parsedDiscount > 0) {
+      discountPrice = parsedPrice - parsedDiscount;
+    }
+
+    // Validate and process uploaded files
+    if (!req.files || req.files.length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: 'At least one image is required'
+      });
+    }
+
+    // Map Cloudinary URLs from uploaded files
+    const images = req.files.map(file => ({
+      url: file.path // Cloudinary URL
+    }));
 
     const newProperty = new Property({
       name,
       description,
       location,
-      price,
+      price: parsedPrice,
       discountPrice,
-      beds,
-      baths,
+      beds: parsedBeds,
+      baths: parsedBaths,
       images,
-      videos,
-      isOffer,
-      discount,
-      furnished,
-      propertyType // New field
+      isOffer: isOffer === 'true',
+      discount: parsedDiscount,
+      furnished: furnished === 'true',
+      propertyType
     });
 
     await newProperty.save();
-    res.json({ success: true, message: 'Property created successfully', property: newProperty });
+
+    res.status(201).json({
+      success: true,
+      message: 'Property created successfully',
+      property: newProperty
+    });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: 'Server Error', error: error.message });
+    console.error('Property creation error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Server Error',
+      error: error.message
+    });
   }
 };
 
@@ -124,10 +155,10 @@ export const updateProperty = async (req, res) => {
   try {
     let property = await Property.findById(req.params.id);
     if (!property) return res.status(404).json({ success: false, message: 'Property not found' });
-
+    
     const { price, isOffer, discount, propertyType } = req.body; // Include propertyType
     let discountPrice = price || property.price;
-
+    
     if (isOffer && discount) {
       discountPrice = price - discount;
     }
@@ -138,13 +169,13 @@ export const updateProperty = async (req, res) => {
           .filter((file) => file.mimetype.startsWith('image/'))
           .map((file) => ({ url: file.path }))
       : property.images;
-
-    property = await Property.findByIdAndUpdate(
-      req.params.id,
+      
+      property = await Property.findByIdAndUpdate(
+        req.params.id,
       { ...req.body, discountPrice, images, propertyType }, // Include propertyType
       { new: true }
     );
-
+    
     res.status(200).json({
       success: true,
       data: property,
@@ -203,7 +234,7 @@ export const deleteProperty = async (req, res) => {
     if (!property) {
       return res.status(404).json({ success: false, message: 'Property not found' });
     }
-
+    
     res.status(200).json({
       success: true,
       message: 'Property deleted successfully'

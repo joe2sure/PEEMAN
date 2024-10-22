@@ -3,8 +3,10 @@ import "../../styles/components/home/LatestOffer.css";
 import bedroomIcon from "../../assets/icons/home/bedroom-icon.svg";
 import bathroomIcon from "../../assets/icons/home/bathroom-icon.svg";
 import parkingIcon from "../../assets/icons/home/parking-icon.svg";
+import { Link } from "react-router-dom";
 
-const PropertyCard = ({
+export const PropertyCard = ({
+  id,
   image,
   forRent,
   price,
@@ -14,45 +16,51 @@ const PropertyCard = ({
   bedrooms,
   bathrooms,
   parking,
+  properties // Pass properties to the card
 }) => (
-  <div className="property-card">
-    <div
-      className="property-image"
-      style={{ backgroundImage: `url(${image})` }}
-    >
-      <span className="property-tag">{forRent ? "For rent" : "For sale"}</span>
-      <span className="property-discount">Use coupon to get discount</span>
-    </div>
-    <div className="property-details">
-      <h3 className="property-price">${price.toLocaleString()}</h3>
-      <p className="property-original-price">
-        ${originalPrice.toLocaleString()}
-      </p>
-      <h4 className="property-title">{title}</h4>
-      <p className="property-location">{location}</p>
-      <div className="property-features">
-        <div className="feature">
-          <img src={bedroomIcon} className="bedrooms" alt="Bedrooms" />
-          <span>{bedrooms} Bedrooms</span>
-        </div>
-        <div className="feature">
-          <img src={bathroomIcon} className="bathrooms" alt="Bathrooms" />
-          <span>{bathrooms} Bathrooms</span>
-          <p></p>
-        </div>
-        <div className="feature">
-          <img src={parkingIcon} className="parking" alt="Parking" />
-          <span>{parking ? parking : "No"} Parking</span>
-          <p></p>
+  <Link 
+    to={`/property/${id}`} 
+    state={{ property: { id, image, forRent, price, originalPrice, title, location, bedrooms, bathrooms, parking }, properties }} // Pass properties in state
+    className="property-card-link"
+  >
+    <div className="property-card">
+      <div
+        className="property-image"
+        style={{ backgroundImage: `url(${image})` }}
+      >
+        <span className="property-tag">{forRent ? "For rent" : "For sale"}</span>
+        <span className="property-discount">Use coupon to get discount</span>
+      </div>
+      <div className="property-details">
+        <h3 className="property-price">${price.toLocaleString()}</h3>
+        <p className="property-original-price">
+          ${originalPrice.toLocaleString()}
+        </p>
+        <h4 className="property-title">{title}</h4>
+        <p className="property-location">{location}</p>
+        <div className="property-features">
+          <div className="feature">
+            <img src={bedroomIcon} className="bedrooms" alt="Bedrooms" />
+            <span>{bedrooms} Bedrooms</span>
+          </div>
+          <div className="feature">
+            <img src={bathroomIcon} className="bathrooms" alt="Bathrooms" />
+            <span>{bathrooms} Bathrooms</span>
+          </div>
+          <div className="feature">
+            <img src={parkingIcon} className="parking" alt="Parking" />
+            <span>{parking ? parking : "No"} Parking</span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </Link>
 );
 
 const LatestOffers = () => {
   const properties = [
     {
+      id: 1,
       image: require("../../assets/images/home/property-image.svg").default,
       forRent: true,
       price: 400000.89,
@@ -65,6 +73,7 @@ const LatestOffers = () => {
     },
     // Add 5 more property objects here with different details
     {
+      id: 2,
       image: require("../../assets/images/home/property-image.svg").default,
       forRent: false,
       price: 350000,
@@ -76,6 +85,7 @@ const LatestOffers = () => {
       parking: 1,
     },
     {
+      id: 3,
       image: require("../../assets/images/home/property-image.svg").default,
       forRent: true,
       price: 2500,
@@ -87,6 +97,7 @@ const LatestOffers = () => {
       parking: null,
     },
     {
+      id: 4,
       image: require("../../assets/images/home/property-image.svg").default,
       forRent: false,
       price: 550000,
@@ -98,6 +109,7 @@ const LatestOffers = () => {
       parking: 2,
     },
     {
+      id: 5,
       image: require("../../assets/images/home/property-image.svg").default,
       forRent: true,
       price: 1800,
@@ -109,6 +121,7 @@ const LatestOffers = () => {
       parking: null,
     },
     {
+      id: 6,
       image: require("../../assets/images/home/property-image.svg").default,
       forRent: false,
       price: 450000,
@@ -124,16 +137,14 @@ const LatestOffers = () => {
   return (
     <section className="latest-offers">
       <h2>Our Latest Offers</h2>
-      <p>
-        Whether you're looking to buy, sell, or rent, we've made it easy for you
-        to find exactly what you need. Customize your search by choosing the
-        location, property type, and price range that best fits your
-        preferences. With just a few clicks, discover homes and properties that
-        match your unique criteria.
-      </p>
       <div className="property-grid">
-        {properties.map((property, index) => (
-          <PropertyCard key={index} {...property} />
+        {properties.map((property) => (
+          <PropertyCard
+            key={property.id}
+            id={property.id}
+            properties={properties} // Ensure properties are passed
+            {...property}
+          />
         ))}
       </div>
     </section>

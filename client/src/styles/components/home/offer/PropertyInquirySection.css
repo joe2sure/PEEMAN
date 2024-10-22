@@ -1,0 +1,21 @@
+.property-inquiry-section {
+    padding: 4rem 0;
+    background-image: url('../../../../assets/images/home/offer-background.svg');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  @media (min-width: 1024px) {
+    .container {
+      flex-direction: row;
+    }
+  }

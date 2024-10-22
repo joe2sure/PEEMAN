@@ -49,6 +49,12 @@
   background-color: #1428DA;
 }
 
+.property-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 .property-price,
 .property-original-price,
 .property-title,
@@ -83,8 +89,8 @@
 .property-tag {
   top: 1rem;
   left: 1rem;
-  background-color: #FBF2E8;
-  color: #1A1A1A;
+  background-color: #FBF2E8 !important;
+  color: #DA7B14 !important;
 }
 
 .property-discount {
@@ -184,37 +190,3 @@
     height: 200px;
   }
 }
-
-
-/* @media (max-width: 1200px) {
-  .property-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-} */
-
-/* @media (max-width: 768px) {
-  .property-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .property-card {
-    width: 100%;
-  }
-} */
-
-
-
-
-
-
-/* @media (max-width: 1200px) {
-  .property-grid {
-    grid-template-columns: repeat(2, 360px);
-  }
-}
-
-@media (max-width: 768px) {
-  .property-grid {
-    grid-template-columns: 360px;
-  }
-} */

@@ -1,0 +1,38 @@
+.dashboard-cards {
+    display: flex;
+    gap: 16px;
+    padding: 24px;
+  }
+  
+  .dashboard-card {
+    background-color: white;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    text-align: center;
+  }
+  
+  .dashboard-card h4 {
+    color: #666;
+    font-size: 16px;
+  }
+  
+  .dashboard-card h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 8px 0;
+  }
+  
+  .dashboard-card .increase {
+    color: #22c55e;
+    font-size: 14px;
+  }
+
+/* Media queries for responsive cards */
+@media (max-width: 1024px) {
+    .dashboard-cards {
+      flex-direction: column;
+    }
+  }
+  

@@ -11,6 +11,12 @@
     align-items: center;
     margin-bottom: 20px;
   }
+
+  .section-header > h2 {
+    color: #1D1F2C !important;
+    font-size: 20px;
+    font-weight: 600;
+  }
   
   .add-property-btn {
     background-color: var(--primary-color);

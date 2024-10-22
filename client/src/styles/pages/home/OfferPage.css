@@ -1,0 +1,229 @@
+.offer-page {
+    width: 100%;
+  }
+  
+  .latest-offers,
+  .for-rent,
+  .for-sale {
+    padding: 4rem 1rem;
+    text-align: center;
+  }
+  
+  .latest-offers {
+    background-color: #FAF6F3;
+  }
+  
+  /* .for-rent,
+  .for-sale {
+    background-color: #FFFFFF;
+  }
+   */
+  .for-rent,
+  .for-sale {
+    background-color: #FFFFFF;
+    padding: 4rem 1rem;
+    text-align: left; /* Align text in the sections to the left */
+  }
+  
+  .for-rent h2,
+  .for-sale h2 {
+    text-align: left; /* Align heading text to the left */
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px; /* Match the max width of the card grid */
+    padding-left: 1rem; /* Ensure alignment with cards */
+  }
+
+  h2 {
+    font-size: 36px;
+    font-weight: 600;
+    color: #1428DA;
+    margin-bottom: 1rem;
+  }
+  
+  .latest-offers > p,
+  .for-rent > p,
+  .for-sale > p {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    color: #1A1A1A;
+    font-family: Poppins, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 36px;
+  }
+  
+
+  .property-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    justify-content: center;
+    max-width: 1200px; 
+    margin: 2rem auto;
+  }
+  
+  
+  .offer-cta {
+    margin-top: 2rem;
+  }
+  
+  .cta-text {
+    color: #1428DA;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .learn-more {
+    color: #DA7B14;
+    text-decoration: none;
+  }
+  
+  /* .load-more {
+    background-color: transparent;
+    border: 2px solid #DA7B14;
+    color: #DA7B14;
+    padding: 0.5rem 1rem;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  } */
+
+  .load-more {
+    display: block; /* Ensure the button behaves like a block element */
+    margin: 2rem auto 0 auto; /* Center the button horizontally */
+    background-color: transparent;
+    border: 2px solid #DA7B14;
+    color: #DA7B14;
+    padding: 0.5rem 1rem;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .load-more:hover {
+    background-color: #DA7B14;
+    color: #FFFFFF;
+  }
+  
+  .inquiry {
+    background-size: cover;
+    background-position: center;
+    padding: 4rem 1rem;
+    color: #FFFFFF;
+  }
+  
+  .inquiry-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .inquiry-text {
+    flex: 1;
+    padding-right: 2rem;
+  }
+  
+  .inquiry-text h2 {
+    font-size: 36px;
+    margin-bottom: 1rem;
+  }
+  
+  .inquiry-text p {
+    font-size: 18px;
+    margin-bottom: 2rem;
+  }
+  
+  .inquiry-text hr {
+    width: 96px;
+    height: 4px;
+    background-color: #FFFFFF;
+    border: none;
+    margin-bottom: 2rem;
+  }
+  
+  .inquiry-steps {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .step {
+    flex: 1;
+  }
+  
+  .step h3 {
+    font-size: 24px;
+    margin-bottom: 1rem;
+  }
+  
+  .inquiry-form {
+    flex: 1;
+    background-color: #FFFFFF;
+    padding: 2rem;
+    border-radius: 8px;
+  }
+  
+  .inquiry-form h3 {
+    color: #1428DA;
+    font-size: 24px;
+    margin-bottom: 1rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #1A1A1A;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .inquiry-form button {
+    width: 100%;
+    background-color: #1428DA;
+    color: #FFFFFF;
+    border: none;
+    padding: 1rem;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .inquiry-form button:hover {
+    background-color: #0F1FA3;
+  }
+  
+  @media (max-width: 768px) {
+    .property-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .inquiry-content {
+      flex-direction: column;
+    }
+  
+    .inquiry-text,
+    .inquiry-form {
+      padding: 0;
+      margin-bottom: 2rem;
+    }
+  
+    .inquiry-steps {
+      flex-direction: column;
+    }
+  
+    .step {
+      margin-bottom: 1rem;
+    }
+  }

@@ -11,16 +11,18 @@
   margin-bottom: 10px;
 }
 
-.icon {
-  font-size: 24px;
-  background-color: var(--card-color);
-  color: white;
+.icon-wrapper {
   width: 40px;
   height: 40px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+}
+
+.icon-svg {
+  width: 24px;
+  height: 24px;
 }
 
 .more-icon {
@@ -33,17 +35,31 @@ h3 {
   font-size: 18px;
 }
 
-.progress-bar {
-  background-color: #f0f0f0;
-  height: 5px;
-  border-radius: 5px;
+/* Card Numbers */
+.card-numbers {
+  display: flex;
+  align-items: center;
   margin-bottom: 10px;
 }
 
-.progress {
-  height: 100%;
-  background-color: var(--card-color);
-  border-radius: 5px;
+.property-count {
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+/* Percentage Container */
+.percentage-container {
+  background-color: #DDFFE2;
+  color: #00B518;
+  border-radius: 4px;
+  width: 48px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 p {

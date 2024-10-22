@@ -1,0 +1,77 @@
+.dashboard-navbar {
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .dashboard-navbar-search input {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    width: 250px;
+  }
+  
+  .dashboard-navbar-icons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .dashboard-navbar-icons .icon {
+    font-size: 18px;
+    color: #666;
+    margin-right: 24px;
+    cursor: pointer;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-info span {
+    color: #666;
+    margin-right: 12px;
+  }
+  
+  .user-info img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+  }
+  
+  /* Sidebar Toggle button (visible on mobile only) */
+  .sidebar-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+  }
+  
+  .sidebar-toggle .icon {
+    color: #333;
+  }
+  
+  @media (max-width: 768px) {
+    .dashboard-navbar-search input {
+      width: 100%;
+    }
+  
+    .dashboard-navbar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .dashboard-navbar-icons {
+      margin-top: 16px;
+    }
+  
+    /* Show sidebar toggle button on small screens */
+    .sidebar-toggle {
+      display: block;
+    }
+  }
+  

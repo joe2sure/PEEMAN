@@ -1,61 +1,218 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 20px 220px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 200px; /* Initial width of the search bar */
+  transition: width 0.3s ease; /* Smooth transition for the width */
+}
+
+.search-bar input {
+  width: 100%; /* Full width inside the parent */
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px 0 0 4px;
+  font-size: 14px;
+  transition: all 0.3s ease; /* Smooth transition for other styles if needed */
+}
+
+.search-bar button {
+  padding: 8px 12px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+/* On focus, expand the width of the search bar */
+.search-bar input:focus {
+  outline: none; /* Remove the default outline */
+}
+
+.search-bar:focus-within {
+  width: 300px; /* Expanded width when focused */
+}
+
+.header-right-items {
+  display: flex;
+  align-items: center;
+}
+
+/* Icon wrapper for SVG icons */
+.icon-wrapper {
+  position: relative;
+  margin-right: 24px;
+  cursor: pointer;
+}
+
+/* Size and style for the SVG icons */
+.icon-svg {
+  width: 24px;
+  height: 24px;
+  fill: #666;
+}
+
+/* Badge for notification and message icons */
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.username {
+  font-weight: bold;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
+
   .search-bar {
-    display: flex;
-    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
   }
-  
+
   .search-bar input {
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px 0 0 4px;
-    font-size: 14px;
+    flex-grow: 1;
   }
-  
-  .search-bar button {
-    padding: 8px 12px;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 0 4px 4px 0;
-    cursor: pointer;
+
+  .icon-wrapper {
+    margin-right: 16px;
   }
-  
-  .user-info {
-    display: flex;
-    align-items: center;
+}
+
+
+
+/* .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 20px 220px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar input {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px 0 0 4px;
+  font-size: 14px;
+}
+
+.search-bar button {
+  padding: 8px 12px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+.header-right-items {
+  display: flex;
+  align-items: center;
+}
+
+.icon-wrapper {
+  position: relative;
+  margin-right: 24px;
+  cursor: pointer;
+}
+
+.icon-svg {
+  width: 24px; 
+  height: 24px;
+  fill: #666;
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.username {
+  font-weight: bold;
+}
+
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  .avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
+
+  .search-bar {
+    width: 100%;
+    margin-bottom: 10px;
   }
-  
-  .username {
-    font-weight: bold;
+
+  .search-bar input {
+    flex-grow: 1;
   }
-  
-  @media (max-width: 768px) {
-    .header {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .search-bar {
-      width: 100%;
-      margin-bottom: 10px;
-    }
-  
-    .search-bar input {
-      flex-grow: 1;
-    }
+
+  .icon-wrapper {
+    margin-right: 16px;
   }
+} */

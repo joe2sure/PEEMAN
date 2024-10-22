@@ -18,12 +18,14 @@
 .buy-sell-rent h2 {
   font-size: 48px;
   margin-bottom: 1rem;
+  color: white;
 }
 
 .buy-sell-rent > p {
   max-width: 800px;
   margin: 0 auto 2rem;
   color: white;
+  line-height: 2.2;
 }
 
 .filter-container {

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 import '../../App.css';
 import DashboardScreen from './dashboardScreen.js';
-import OrderDetailsSection from '../../components/admin/OrderDetailsSection.js';
+import OrderDetailsSection from '../../components/admin/PropertyReservationSection.js';
 import Sidebar from '../../components/admin/SideBar.js';
 import DashboardHeader from '../../components/admin/DashboardHeader.js';
 

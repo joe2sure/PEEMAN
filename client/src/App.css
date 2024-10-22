@@ -19,6 +19,7 @@
 }
 
 .admin {
+  margin: 80px 0 0 100px;
   display: flex;
   height: 100vh;
   background-color: #f0f2f5;

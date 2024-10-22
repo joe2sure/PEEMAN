@@ -1,14 +1,13 @@
 import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-import '../../styles/components/admin/OrderDetailsSection.css';
+import '../../styles/components/admin/PropertyReservationSection.css';
 
-const OrderDetailsSection = () => {
+const PropertyReservationSection = () => {
   const orderData = [
     { name: 'Pending', value: 10, color: '#FFCF26' },
     { name: 'Processing', value: 15, color: '#FFFFFF' },
     { name: 'Cancelled', value: 5, color: '#EE2727' },
-    { name: 'Shipped', value: 20, color: '#2697FF' },
-    { name: 'Delivered', value: 50, color: '#26FF31' },
+    { name: 'Completed', value: 20, color: '#2697FF' },
   ];
 
   const totalOrders = orderData.reduce((sum, item) => sum + item.value, 0);
@@ -18,14 +17,14 @@ const OrderDetailsSection = () => {
       <span className="icon">{icon}</span>
       <div className="info">
         <h4>{title}</h4>
-        <p>{value} Orders</p>
+        <p>{value} Reservations</p>
       </div>
     </div>
   );
 
   return (
     <div className="order-details-section">
-      <h2>Orders Details</h2>
+      <h2>Reservations</h2>
       <div className="chart-container">
         <ResponsiveContainer width="100%" height={200}>
           <PieChart>
@@ -46,10 +45,10 @@ const OrderDetailsSection = () => {
         </ResponsiveContainer>
         <div className="total-orders">{totalOrders}</div>
       </div>
-      {renderOrderInfoCard('📦', 'All Orders', totalOrders)}
-      {orderData.map((item) => renderOrderInfoCard('🔔', item.name + ' Orders', item.value))}
+      {renderOrderInfoCard('📦', 'All Reservations', totalOrders)}
+      {orderData.map((item) => renderOrderInfoCard('🔔', item.name + ' Reservations', item.value))}
     </div>
   );
 };
 
-export default OrderDetailsSection;
+export default PropertyReservationSection;

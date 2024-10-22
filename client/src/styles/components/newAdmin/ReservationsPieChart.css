@@ -1,0 +1,49 @@
+.reservations-pie-chart {
+    background-color: white;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .reservations-pie-chart h4 {
+    color: #666;
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  
+  .reservations-pie-chart img {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .reservation-details {
+    margin-top: 16px;
+  }
+  
+  .reservation-details div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  
+  .reservation-details .pending {
+    color: #9f7aea;
+  }
+  
+  .reservation-details .resolved {
+    color: #f6ad55;
+  }
+  
+  .reservation-details .cancelled {
+    color: #4299e1;
+  }
+  
+/* Stack reservation details on smaller screens */
+@media (max-width: 768px) {
+    .reservation-details div {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }

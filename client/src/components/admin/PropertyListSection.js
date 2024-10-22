@@ -1,35 +1,65 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteExistingProperty, fetchProperties } from '../../redux/actions/propertyActions';
+
 import '../../styles/components/admin/PropertyListSection.css';
+import PropertyModal from './PropertyModal';
 
 const PropertyListSection = () => {
-  const [properties, setProperties] = useState([
-    { id: 1, name: 'Luxury Villa', category: 'Residential', subCategory: 'Villa', price: 500000 },
-    { id: 2, name: 'Downtown Apartment', category: 'Residential', subCategory: 'Apartment', price: 250000 },
-    { id: 3, name: 'Commercial Space', category: 'Commercial', subCategory: 'Office', price: 750000 },
-  ]);
+  const dispatch = useDispatch();
+  const { properties, loading, error } = useSelector(state => state.property);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editingProperty, setEditingProperty] = useState(null);
 
-  const handleEdit = (id) => {
-    // Implement edit functionality
-    console.log(`Edit property with id: ${id}`);
+  useEffect(() => {
+    dispatch(fetchProperties());
+  }, [dispatch]);
+
+  const handleAddProperty = () => {
+    setIsEditing(false);
+    setEditingProperty(null);
+    setModalOpen(true);
   };
 
-  const handleDelete = (id) => {
-    // Implement delete functionality
-    setProperties(properties.filter(property => property.id !== id));
+  const handleEdit = (property) => {
+    setIsEditing(true);
+    setEditingProperty(property);
+    setModalOpen(true);
   };
+
+  const handleDelete = async (id) => {
+    try {
+      await dispatch(deleteExistingProperty(id));
+      // Property will be removed from the list automatically through Redux
+    } catch (error) {
+      console.error('Failed to delete property:', error);
+      // Handle error (show toast notification, etc.)
+    }
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+    setIsEditing(false);
+    setEditingProperty(null);
+  };
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <div className="property-list-section">
       <div className="section-header">
         <h2>All Properties</h2>
-        <button className="add-property-btn">Add New Property</button>
+        <button className="add-property-btn" onClick={handleAddProperty}>
+          Add New Property
+        </button>
       </div>
       <table>
         <thead>
           <tr>
             <th>Property Name</th>
             <th>Category</th>
-            <th>Sub Category</th>
             <th>Price</th>
             <th>Actions</th>
           </tr>
@@ -39,18 +69,123 @@ const PropertyListSection = () => {
             <tr key={property.id}>
               <td>{property.name}</td>
               <td>{property.category}</td>
-              <td>{property.subCategory}</td>
               <td>${property.price.toLocaleString()}</td>
               <td>
-                <button onClick={() => handleEdit(property.id)} className="edit-btn">Edit</button>
-                <button onClick={() => handleDelete(property.id)} className="delete-btn">Delete</button>
+                <button onClick={() => handleEdit(property)} className="edit-btn">
+                  Edit
+                </button>
+                <button onClick={() => handleDelete(property.id)} className="delete-btn">
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+
+      {modalOpen && (
+        <PropertyModal
+          isEditing={isEditing}
+          property={editingProperty}
+          onClose={handleModalClose}
+        />
+      )}
     </div>
   );
 };
 
 export default PropertyListSection;
+
+
+
+
+// import React, { useState } from 'react';
+// import '../../styles/components/admin/PropertyListSection.css';
+// import PropertyModal from './PropertyModal';
+
+
+// const PropertyListSection = () => {
+//   const [properties, setProperties] = useState([
+//     { id: 1, name: 'Luxury Villa', category: 'Residential', subCategory: 'Villa', price: 500000 },
+//     { id: 2, name: 'Downtown Apartment', category: 'Residential', subCategory: 'Apartment', price: 250000 },
+//     { id: 3, name: 'Commercial Space', category: 'Commercial', subCategory: 'Office', price: 750000 },
+//   ]);
+
+//   const [modalOpen, setModalOpen] = useState(false); // Control modal visibility
+//   const [isEditing, setIsEditing] = useState(false); // Track if editing or adding a property
+//   const [editingProperty, setEditingProperty] = useState(null); // Track property being edited
+
+//   const   handleAddProperty = () => {
+//     setIsEditing(false);
+//     setEditingProperty(null);
+//     setModalOpen(true); // Open the modal
+//   };
+
+//   const handleEdit = (property) => {
+//     setIsEditing(true);
+//     setEditingProperty(property);
+//     setModalOpen(true); // Open the modal for editing
+//   };
+
+//   const handleDelete = (id) => {
+//     setProperties(properties.filter((property) => property.id !== id));
+//   };
+
+//   const handleSaveProperty = (newProperty) => {
+//     if (isEditing) {
+//       setProperties((prev) =>
+//         prev.map((property) => (property.id === newProperty.id ? newProperty : property))
+//       );
+//     } else {
+//       setProperties([...properties, { ...newProperty, id: properties.length + 1 }]);
+//     }
+//     setModalOpen(false); // Close the modal after saving
+//   };
+
+//   return (
+//     <div className="property-list-section">
+//       <div className="section-header">
+//         <h2>All Properties</h2>
+//         <button className="add-property-btn" onClick={handleAddProperty}>
+//           Add New Property
+//         </button>
+//       </div>
+//       <table>
+//         <thead>
+//           <tr>
+//             <th>Property Name</th>
+//             <th>Category</th>
+//             {/* <th>Sub Category</th> */}
+//             <th>Price</th>
+//             <th>Actions</th>
+//           </tr>
+//         </thead>
+//         <tbody>
+//           {properties.map((property) => (
+//             <tr key={property.id}>
+//               <td>{property.name}</td>
+//               <td>{property.category}</td>
+//               {/* <td>{property.subCategory}</td> */}
+//               <td>${property.price.toLocaleString()}</td>
+//               <td>
+//                 <button onClick={() => handleEdit(property)} className="edit-btn">Edit</button>
+//                 <button onClick={() => handleDelete(property.id)} className="delete-btn">Delete</button>
+//               </td>
+//             </tr>
+//           ))}
+//         </tbody>
+//       </table>
+
+//       {modalOpen && (
+//         <PropertyModal
+//           isEditing={isEditing}
+//           property={editingProperty}
+//           onSave={handleSaveProperty}
+//           onClose={() => setModalOpen(false)}
+//         />
+//       )}
+//     </div>
+//   );
+// };
+
+// export default PropertyListSection;

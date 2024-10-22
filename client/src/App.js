@@ -2,12 +2,18 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './App.css';
-import Navbar from './components/admin/Navbar.js';
+// import Navbar from './components/admin/Navbar.js';
 // import LandingPage from './pages/home/landingPage.js';
 import LandingPage from './pages/home/landingPage.js'
 import LoginPage from './pages/auth/login.js';
 import SignupPage from './pages/auth/signUp.js';
 import AdminScreen from './pages/admin/adminScreen.js';
+import OfferPage from './pages/home/OfferPage.js';
+import Footer from './components/home/Footer.js';
+import PropertyDetailPage from './pages/home/PropertyDetail.js';
+import Newsletter from './components/home/Newsletter.js';
+import Navbar from './components/home/Navbar.js';
+import MainDashboard from './pages/newAdmin/mainDashboard.js';
 
 
 function App() {
@@ -19,6 +25,11 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/offers" element={<OfferPage />} /> 
+          <Route path="/property/:id" element={<PropertyDetailPage />} />
+          {/* <Route path="/blog" element={<BlogPage />} />     
+          <Route path="/about" element={<AboutPage />} />   
+          <Route path="/contact" element={<ContactPage />} /> */}
           <Route 
             path="/login" 
             element={!isAuthenticated ? <LoginPage /> : <Navigate to="/" />} 
@@ -33,8 +44,16 @@ function App() {
               isAuthenticated && isAdmin ? <AdminScreen /> : <Navigate to="/" />
             }
           />
+          {/* <Route
+            path="/admin"
+            element={
+              isAuthenticated && isAdmin ? <MainDashboard /> : <Navigate to="/" />
+            }
+          /> */}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
+        <Newsletter />
+        <Footer/>
       </div>
     </Router>
   );

@@ -15,39 +15,83 @@ export const fetchProperties = () => async (dispatch) => {
   }
 };
 
-
 export const addNewProperty = (propertyData) => async (dispatch) => {
   dispatch(setLoading(true));
   try {
-    const response = await propertyApi.post('/properties', propertyData);
-    dispatch(addProperty(response.data.property));
-    return { success: true };
+    const response = await propertyApi.addProperty(propertyData);
+    dispatch(addProperty(response.data));
+    return { success: true, data: response.data };
   } catch (error) {
-    dispatch(setError(error.response?.data?.message || 'An error occurred'));
-    return { success: false, message: error.response?.data?.message || 'Failed to add property' };
+    console.error('Error adding property:', error);
+    throw new Error(error.message || 'Failed to add property');
+  } finally {
+    dispatch(setLoading(false));
   }
 };
 
 export const updateExistingProperty = (id, propertyData) => async (dispatch) => {
   dispatch(setLoading(true));
   try {
-    const response = await propertyApi.put(`/properties/${id}`, propertyData);
-    dispatch(updateProperty(response.data.data));
-    return { success: true };
+    const response = await propertyApi.updateProperty(id, propertyData);
+    dispatch(updateProperty(response.data));
+    return { success: true, data: response.data };
   } catch (error) {
-    dispatch(setError(error.response?.data?.message || 'An error occurred'));
-    return { success: false, message: error.response?.data?.message || 'Failed to update property' };
+    console.error('Error updating property:', error);
+    throw new Error(error.message || 'Failed to update property');
+  } finally {
+    dispatch(setLoading(false));
   }
 };
 
-export const deleteExistingProperty = (id) => async (dispatch) => {
+export const deleteExistingProperty  = (id) => async (dispatch) => {
   dispatch(setLoading(true));
   try {
-    await propertyApi.delete(`/properties/${id}`);
+    await propertyApi.deleteProperty(id);
     dispatch(deleteProperty(id));
     return { success: true };
   } catch (error) {
-    dispatch(setError(error.response?.data?.message || 'An error occurred'));
-    return { success: false, message: error.response?.data?.message || 'Failed to delete property' };
+    console.error('Error deleting property:', error);
+    throw new Error(error.message || 'Failed to delete property');
+  } finally {
+    dispatch(setLoading(false));
   }
 };
+
+// export const addNewProperty = (propertyData) => async (dispatch) => {
+//   dispatch(setLoading(true));
+//   try {
+//     const response = await propertyApi.addProperty(propertyData);
+//     dispatch(addProperty(response.data));
+//     return { success: true };
+//   } catch (error) {
+//     console.error('Error adding property:', error);
+//     dispatch(setError(error.message || 'An error occurred'));
+//     return { success: false, message: error.message || 'Failed to add property' };
+//   } finally {
+//     dispatch(setLoading(false));
+//   }
+// };
+
+// export const updateExistingProperty = (id, propertyData) => async (dispatch) => {
+//   dispatch(setLoading(true));
+//   try {
+//     const response = await propertyApi.put(`/properties/${id}`, propertyData);
+//     dispatch(updateProperty(response.data.data));
+//     return { success: true };
+//   } catch (error) {
+//     dispatch(setError(error.response?.data?.message || 'An error occurred'));
+//     return { success: false, message: error.response?.data?.message || 'Failed to update property' };
+//   }
+// };
+
+// export const deleteExistingProperty = (id) => async (dispatch) => {
+//   dispatch(setLoading(true));
+//   try {
+//     await propertyApi.delete(`/properties/${id}`);
+//     dispatch(deleteProperty(id));
+//     return { success: true };
+//   } catch (error) {
+//     dispatch(setError(error.response?.data?.message || 'An error occurred'));
+//     return { success: false, message: error.response?.data?.message || 'Failed to delete property' };
+//   }
+// };

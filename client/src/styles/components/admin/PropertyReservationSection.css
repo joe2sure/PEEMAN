@@ -4,6 +4,11 @@
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+.order-details-section > h2 {
+  color: #1D1F2C !important;
+  font-size: 20px;
+  font-weight: 600;
+}
 
 .chart-container {
   position: relative;
