@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import "../../styles/components/home/Navbar.css";
 import peemanLogo from "../../assets/peeman-logo.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutUser } from "../../redux/actions/authActions";  // assuming the action is imported here
+import { logoutUser } from "../../redux/actions/authActions";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   const { isAuthenticated, isAdmin, user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -23,13 +24,18 @@ export default function Navbar() {
     };
   }, []);
 
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   const handleLogout = () => {
     dispatch(logoutUser());
-    navigate("/");  // Navigate to home after logout
+    navigate("/");
   };
 
   const handleLogin = () => {
@@ -38,6 +44,11 @@ export default function Navbar() {
 
   const handleSignup = () => {
     navigate("/signup");
+  };
+
+  // Helper function to determine if a link is active
+  const isLinkActive = (path) => {
+    return location.pathname === path;
   };
 
   return (
@@ -55,23 +66,53 @@ export default function Navbar() {
         <div className="nav-content">
           <ul className="nav-links">
             <li>
-              <Link to="/" className="active">Home</Link>
+              <Link 
+                to="/" 
+                className={isLinkActive('/') ? 'active' : ''}
+              >
+                Home
+              </Link>
             </li>
             <li>
-              <Link to="/offers">Offers</Link>
+              <Link 
+                to="/offers" 
+                className={isLinkActive('/offers') ? 'active' : ''}
+              >
+                Offers
+              </Link>
             </li>
             <li>
-              <Link to="/blog">Blog</Link>
+              <Link 
+                to="/blog" 
+                className={isLinkActive('/blog') ? 'active' : ''}
+              >
+                Blog
+              </Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link 
+                to="/about" 
+                className={isLinkActive('/about') ? 'active' : ''}
+              >
+                About
+              </Link>
             </li>
             <li>
-              <Link to="/contact">Contact</Link>
+              <Link 
+                to="/contact" 
+                className={isLinkActive('/contact') ? 'active' : ''}
+              >
+                Contact
+              </Link>
             </li>
             {isAdmin && (
               <li>
-                <Link to="/admin" className="navbar-link">Admin Dashboard</Link>
+                <Link 
+                  to="/admin" 
+                  className={`navbar-link ${isLinkActive('/admin') ? 'active' : ''}`}
+                >
+                  Admin Dashboard
+                </Link>
               </li>
             )}
           </ul>
@@ -94,12 +135,12 @@ export default function Navbar() {
 
 
 
-
 // import React, { useState, useEffect } from "react";
 // import { Link, useNavigate } from "react-router-dom";
 // import "../../styles/components/home/Navbar.css";
 // import peemanLogo from "../../assets/peeman-logo.svg";
-// import { useDispatch } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
+// import { logoutUser } from "../../redux/actions/authActions";  // assuming the action is imported here
 
 // export default function Navbar() {
 //   const [isScrolled, setIsScrolled] = useState(false);
@@ -125,16 +166,19 @@ export default function Navbar() {
 
 //   const handleLogout = () => {
 //     dispatch(logoutUser());
-//     // Optionally navigate to the home page
-//     navigate("/");
+//     navigate("/");  // Navigate to home after logout
+//   };
+
+//   const handleLogin = () => {
+//     navigate("/login");
+//   };
+
+//   const handleSignup = () => {
+//     navigate("/signup");
 //   };
 
 //   return (
-//     <nav
-//       className={`navbar ${isScrolled ? "scrolled" : ""} ${
-//         isMenuOpen ? "menu-open" : ""
-//       }`}
-//     >
+//     <nav className={`navbar ${isScrolled ? "scrolled" : ""} ${isMenuOpen ? "menu-open" : ""}`}>
 //       <div className="navbar-container">
 //         <div className="logo mobile-logo">
 //           <Link to="/" className="navbar-logo">
@@ -147,44 +191,38 @@ export default function Navbar() {
 //         </button>
 //         <div className="nav-content">
 //           <ul className="nav-links">
-//             {isAuthenticated ? (
-//               <>
-//                 <span className="navbar-welcome">
-//                   Welcome, {user?.username}
-//                 </span>
-//                 <li>
-//                   <Link to="/" className="active">
-//                     Home
-//                   </Link>
-//                 </li>
-//                 <li>
-//                   <Link to="/offers">Offers</Link>
-//                 </li>
-//                 <li>
-//                   <Link to="/blog">Blog</Link>
-//                 </li>
-//                 <li>
-//                   <Link to="/about">About</Link>
-//                 </li>
-//                 <li>
-//                   <Link to="/contact">Contact</Link>
-//                 </li>
-//                 {isAdmin && (
-//                   <Link to="/admin" className="navbar-link">
-//                     Admin Dashboard
-//                   </Link>
-//                 )}
-//                 <button onClick={handleLogout} className="signup-btn">
-//                   Sign Up
-//                 </button>
-//               </>
-//             ) : (
-//               <div className="auth-buttons">
-//                 <button className="login-btn">Login</button>
-//                 <button className="signup-btn">Sign Up</button>
-//               </div>
+//             <li>
+//               <Link to="/" className="active">Home</Link>
+//             </li>
+//             <li>
+//               <Link to="/offers">Offers</Link>
+//             </li>
+//             <li>
+//               <Link to="/blog">Blog</Link>
+//             </li>
+//             <li>
+//               <Link to="/about">About</Link>
+//             </li>
+//             <li>
+//               <Link to="/contact">Contact</Link>
+//             </li>
+//             {isAdmin && (
+//               <li>
+//                 <Link to="/admin" className="navbar-link">Admin Dashboard</Link>
+//               </li>
 //             )}
 //           </ul>
+//           {isAuthenticated ? (
+//             <div className="navbar-welcome">
+//               <span>Welcome, {user?.username}</span>
+//               <button onClick={handleLogout} className="logout-btn">Logout</button>
+//             </div>
+//           ) : (
+//             <div className="auth-buttons">
+//               <button className="login-btn" onClick={handleLogin}>Login</button>
+//               <button className="signup-btn" onClick={handleSignup}>Sign Up</button>
+//             </div>
+//           )}
 //         </div>
 //       </div>
 //     </nav>

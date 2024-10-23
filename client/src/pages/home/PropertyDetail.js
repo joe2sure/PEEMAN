@@ -194,12 +194,12 @@ const PropertyDetailPage = () => {
               </div>
               <div className="info-column">
                 <span>Price:</span>
-                <strong>${property.price.toLocaleString()}</strong>
+                <strong>£{property.price.toLocaleString()}</strong>
               </div>
               {property.originalPrice > property.price && (
                 <div className="info-column">
                   <span>Original Price:</span>
-                  <strong>${property.originalPrice.toLocaleString()}</strong>
+                  <strong>£{property.originalPrice.toLocaleString()}</strong>
                 </div>
               )}
             </div>

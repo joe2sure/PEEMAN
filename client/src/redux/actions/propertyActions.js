@@ -2,15 +2,32 @@ import { propertyApi } from '../../api';
 import { setProperties, addProperty, updateProperty, deleteProperty, setLoading, setError } from '../reducers/propertyReducer';
 
 
+// export const fetchProperties = () => async (dispatch) => {
+//   dispatch(setLoading(true));
+//   try {
+//     const response = await propertyApi.fetchProperties();
+//     dispatch(setProperties(response.data));
+//     return { success: true, data: response.data };
+//   } catch (error) {
+//     console.error('Error fetching properties:', error);
+//     dispatch(setError(error.message || 'An error occurred while fetching properties'));
+//     return { success: false, error: error.message };
+//   } finally {
+//     dispatch(setLoading(false));
+//   }
+// };
+
 export const fetchProperties = () => async (dispatch) => {
   dispatch(setLoading(true));
   try {
     const response = await propertyApi.fetchProperties();
-    dispatch(setProperties(response.data));
-    return { success: true, data: response.data };
+    const validProperties = Array.isArray(response.data) ? response.data : [];
+    dispatch(setProperties(validProperties));
+    return { success: true, data: validProperties };
   } catch (error) {
     console.error('Error fetching properties:', error);
     dispatch(setError(error.message || 'An error occurred while fetching properties'));
+    dispatch(setProperties([])); // Ensure properties is always an array
     return { success: false, error: error.message };
   } finally {
     dispatch(setLoading(false));

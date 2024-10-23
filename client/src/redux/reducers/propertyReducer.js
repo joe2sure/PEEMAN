@@ -11,15 +11,24 @@ const propertySlice = createSlice({
   initialState,
   reducers: {
     setProperties: (state, action) => {
-      state.properties = action.payload;
+      // state.properties = action.payload;
+      state.properties = Array.isArray(action.payload) ? action.payload : [];
       state.loading = false;
       state.error = null;
     },
     addProperty: (state, action) => {
-      state.properties.push(action.payload);
+      if (action.payload && action.payload.id) {
+        state.properties.push(action.payload);
+      }
       state.loading = false;
       state.error = null;
     },
+
+    // addProperty: (state, action) => {
+    //   state.properties.push(action.payload);
+    //   state.loading = false;
+    //   state.error = null;
+    // },
     updateProperty: (state, action) => {
       const index = state.properties.findIndex(p => p.id === action.payload.id);
       if (index !== -1) {

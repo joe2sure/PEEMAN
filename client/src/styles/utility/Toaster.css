@@ -12,10 +12,12 @@
   
   .toaster.success {
     background-color: #4CAF50;
+    color: #fff !important;
   }
   
   .toaster.error {
     background-color: #f44336;
+    color: #fff !important;
   }
   
   @keyframes slideIn {

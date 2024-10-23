@@ -62,15 +62,34 @@ const PropertyModal = ({ isEditing, property, onClose }) => {
     }
   };
 
+// Format category from propertyType
+const formatCategory = (type) => {
+  if (!type) return '';
+  // Split by space and capitalize each word
+  return type.split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
 
+  // Updated handlePropertyTypeChange
   const handlePropertyTypeChange = (e) => {
     const { value } = e.target;
     setFormValues(prev => ({
       ...prev,
       propertyType: value,
-      category: value.charAt(0).toUpperCase() + value.slice(1)
+      category: formatCategory(value) // Format category when propertyType changes
     }));
   };
+
+  // const handlePropertyTypeChange = (e) => {
+  //   const { value } = e.target;
+  //   setFormValues(prev => ({
+  //     ...prev,
+  //     propertyType: value,
+  //     category: value.charAt(0).toUpperCase() + value.slice(1)
+  //   }));
+  // };
+
 
   const handleToggle = (field) => {
     setFormValues(prev => ({
@@ -110,6 +129,13 @@ const PropertyModal = ({ isEditing, property, onClose }) => {
       formData.append('discount', formValues.discount);
     }
   
+    // Append form fields including category
+    Object.entries(formValues).forEach(([key, value]) => {
+      if (key !== 'images' && key !== 'videos' && value !== undefined) {
+        formData.append(key, value);
+      }
+    });
+
     // Append files
     if (formValues.images) {
       formValues.images.forEach(file => {
@@ -150,26 +176,6 @@ const PropertyModal = ({ isEditing, property, onClose }) => {
       setLoading(false);
     }
       
-    //   if (result.success) {
-    //     setToaster({ 
-    //       message: `Property ${isEditing ? 'updated' : 'added'} successfully`, 
-    //       type: 'success' 
-    //     });
-    //     setTimeout(() => onClose(), 1500);
-    //   } else {
-    //     setToaster({ 
-    //       message: result.message || `Failed to ${isEditing ? 'update' : 'add'} property`, 
-    //       type: 'error' 
-    //     });
-    //   }
-    // } catch (error) {
-    //   setToaster({ 
-    //     message: error.message || 'An error occurred', 
-    //     type: 'error' 
-    //   });
-    // } finally {
-    //   setLoading(false);
-    // }
   };
 
   return (
@@ -380,3 +386,26 @@ const PropertyModal = ({ isEditing, property, onClose }) => {
 };
 
 export default PropertyModal;
+
+
+
+  //   if (result.success) {
+    //     setToaster({ 
+    //       message: `Property ${isEditing ? 'updated' : 'added'} successfully`, 
+    //       type: 'success' 
+    //     });
+    //     setTimeout(() => onClose(), 1500);
+    //   } else {
+    //     setToaster({ 
+    //       message: result.message || `Failed to ${isEditing ? 'update' : 'add'} property`, 
+    //       type: 'error' 
+    //     });
+    //   }
+    // } catch (error) {
+    //   setToaster({ 
+    //     message: error.message || 'An error occurred', 
+    //     type: 'error' 
+    //   });
+    // } finally {
+    //   setLoading(false);
+    // }

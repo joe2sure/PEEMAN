@@ -38,10 +38,10 @@ export const PropertyCard = ({
         )}
       </div>
       <div className="property-details">
-        <h3 className="property-price">${Number(price).toLocaleString()}</h3>
+        <h3 className="property-price">£{Number(price).toLocaleString()}</h3>
         {originalPrice > price && (
           <p className="property-original-price">
-            ${Number(originalPrice).toLocaleString()}
+            £{Number(originalPrice).toLocaleString()}
           </p>
         )}
         <h4 className="property-title">{title}</h4>
@@ -94,21 +94,6 @@ const transformPropertyData = (adminProperty) => {
     description: adminProperty.description,
     furnished: adminProperty.furnished,
   };    
-
-  // return {
-  //   id: adminProperty.id,
-  //   image: adminProperty.images?.[0]?.url || defaultPropertyImage,
-  //   forRent: isRental,
-  //   price: price,
-  //   originalPrice: originalPrice,
-  //   title: adminProperty.name,
-  //   location: adminProperty.location,
-  //   bedrooms: Number(adminProperty.beds) || 0,
-  //   bathrooms: Number(adminProperty.baths) || 0,
-  //   parking: adminProperty.parking || null,
-  //   description: adminProperty.description,
-  //   furnished: adminProperty.furnished,
-  // };
 };
 
 const LatestOffers = () => {

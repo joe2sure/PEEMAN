@@ -1,10 +1,22 @@
-.login-page {
+/* .login-page {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background-color: #f0f2f5;
-  }
+  } */
+
+  .login-page { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; 
+    background-image: url('../../assets/images/home/footer-background.svg');  /* Update path based on your project structure */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-color: #f0f2f5; /* Fallback color in case image fails to load */
+} 
   
   .login-form-container {
     background-color: #ffffff;

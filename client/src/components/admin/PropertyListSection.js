@@ -23,12 +23,14 @@ const PropertyListSection = () => {
   };
 
   const handleEdit = (property) => {
+    if (!property) return; // Guard clause
     setIsEditing(true);
     setEditingProperty(property);
     setModalOpen(true);
   };
 
   const handleDelete = async (id) => {
+    if (!id) return; // Guard clause
     try {
       await dispatch(deleteExistingProperty(id));
       // Property will be removed from the list automatically through Redux
@@ -44,8 +46,25 @@ const PropertyListSection = () => {
     setEditingProperty(null);
   };
 
+  // Helper function to format category display
+  const formatCategoryDisplay = (property) => {
+    if (!property) return 'N/A';
+    return property.category || formatCategory(property.propertyType) || 'N/A';
+  };
+
+  // Helper function to format category (same as in PropertyModal)
+  const formatCategory = (type) => {
+    if (!type) return '';
+    return type.split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
+
+  // Ensure properties is always an array
+  const safeProperties = Array.isArray(properties) ? properties : [];
 
   return (
     <div className="property-list-section">
@@ -56,6 +75,63 @@ const PropertyListSection = () => {
         </button>
       </div>
       <table>
+        <thead>
+          <tr>
+            <th>Property Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {safeProperties.map((property) => {
+            // Guard against invalid property objects
+            if (!property || !property.id) return null;
+            
+            return (
+              <tr key={property.id}>
+                <td>{property?.name || 'N/A'}</td>
+                <td>{formatCategoryDisplay(property)}</td>
+                <td>${(property?.price || 0).toLocaleString()}</td>
+                <td>
+                  <button 
+                    onClick={() => handleEdit(property)} 
+                    className="edit-btn"
+                    disabled={!property.id}
+                  >
+                    Edit
+                  </button>
+                  <button 
+                    onClick={() => handleDelete(property.id)} 
+                    className="delete-btn"
+                    disabled={!property.id}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+
+
+      {modalOpen && (
+        <PropertyModal
+          isEditing={isEditing}
+          property={editingProperty}
+          onClose={handleModalClose}
+        />
+      )}
+    </div>
+  );
+};
+
+export default PropertyListSection;
+
+
+
+      {/* <table>
         <thead>
           <tr>
             <th>Property Name</th>
@@ -81,20 +157,7 @@ const PropertyListSection = () => {
             </tr>
           ))}
         </tbody>
-      </table>
-
-      {modalOpen && (
-        <PropertyModal
-          isEditing={isEditing}
-          property={editingProperty}
-          onClose={handleModalClose}
-        />
-      )}
-    </div>
-  );
-};
-
-export default PropertyListSection;
+      </table> */}
 
 
 
