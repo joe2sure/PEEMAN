@@ -40,19 +40,34 @@ connectDB();
 
 // for production
 const corsOptions = {
-    origin: ["https://peemandevelopers.co.uk", "http://peemandevelopers.co.uk"],
+    origin: [
+        "https://peemandevelopers.co.uk", 
+        "http://peemandevelopers.co.uk",
+        "https://peeman-frontend.onrender.com" // Add your Render domain
+    ],
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     optionsSuccessStatus: 200
 };
 
 /** Start of middlewares **/
 
 // Body parsers
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());  // development
+//app.use(express.urlencoded({ extended: true }));  // development
+app.use(express.json({ limit: '50mb' })); // production
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));  // production
+
 
 app.use(cors(corsOptions));
-app.use(helmet());
+// app.use(helmet());  // development
+
+//  add more specific headers to your Helmet configuration for handling file uploads:
+app.use(helmet({
+    crossOriginResourcePolicy: { policy: "cross-origin" },
+    crossOriginEmbedderPolicy: false
+}));
 
 // Apply the sanitization middleware
 sanitizeInput(app);
