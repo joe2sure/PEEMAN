@@ -31,10 +31,18 @@ app.set('trust proxy', 1); // Trust the first proxy, you can adjust the number b
 // Initialize database connection
 connectDB();
 
+// for developement
+// const corsOptions = {
+//     origin: "*",
+//     "Access-Control-Allow-Origin": true,
+//     optionSuccessStatus: 200,
+// };
+
+// for production
 const corsOptions = {
-    origin: "*",
-    "Access-Control-Allow-Origin": true,
-    optionSuccessStatus: 200,
+    origin: ["https://peemandevelopers.co.uk", "http://peemandevelopers.co.uk"],
+    credentials: true,
+    optionsSuccessStatus: 200
 };
 
 /** Start of middlewares **/
