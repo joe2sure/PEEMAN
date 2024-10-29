@@ -60,7 +60,7 @@ const PropertyListSection = () => {
       .join(' ');
   };
 
-  if (loading) return <div>Loading...</div>;
+  // if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
   // Ensure properties is always an array
@@ -70,50 +70,59 @@ const PropertyListSection = () => {
     <div className="property-list-section">
       <div className="section-header">
         <h2>All Properties</h2>
-        <button className="add-property-btn" onClick={handleAddProperty}>
-          Add New Property
+        <button className="add-property-btn" onClick={handleAddProperty} disabled={loading}>
+        {loading ? 'Adding Property...' : 'Add New Property'}
         </button>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Property Name</th>
-            <th>Category</th>
-            <th>Price</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {safeProperties.map((property) => {
-            // Guard against invalid property objects
-            if (!property || !property.id) return null;
-            
-            return (
-              <tr key={property.id}>
-                <td>{property?.name || 'N/A'}</td>
-                <td>{formatCategoryDisplay(property)}</td>
-                <td>${(property?.price || 0).toLocaleString()}</td>
-                <td>
-                  <button 
-                    onClick={() => handleEdit(property)} 
-                    className="edit-btn"
-                    disabled={!property.id}
-                  >
-                    Edit
-                  </button>
-                  <button 
-                    onClick={() => handleDelete(property.id)} 
-                    className="delete-btn"
-                    disabled={!property.id}
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <div className='table-container'>
+        {loading ? (
+          <div className="spinner-container">
+            <Spinner />
+          </div>
+        ) : (
+          <table>
+          <thead>
+            <tr>
+              <th>Property Name</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {safeProperties.map((property) => {
+              // Guard against invalid property objects
+              if (!property || !property.id) return null;
+              
+              return (
+                <tr key={property.id}>
+                  <td>{property?.name || 'N/A'}</td>
+                  <td>{formatCategoryDisplay(property)}</td>
+                  <td>${(property?.price || 0).toLocaleString()}</td>
+                  <td>
+                    <button 
+                      onClick={() => handleEdit(property)} 
+                      className="edit-btn"
+                      disabled={!property.id}
+                    >
+                      Edit
+                    </button>
+                    <button 
+                      onClick={() => handleDelete(property.id)} 
+                      className="delete-btn"
+                      disabled={!property.id}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+  
+        )}
+      </div>
 
 
       {modalOpen && (
