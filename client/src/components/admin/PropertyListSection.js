@@ -4,6 +4,7 @@ import { deleteExistingProperty, fetchProperties } from '../../redux/actions/pro
 
 import '../../styles/components/admin/PropertyListSection.css';
 import PropertyModal from './PropertyModal';
+import Spinner from '../../utility/Spinner';
 
 const PropertyListSection = () => {
   const dispatch = useDispatch();
@@ -76,7 +77,7 @@ const PropertyListSection = () => {
       </div>
       <div className='table-container'>
         {loading ? (
-          <div className="spinner-container">
+          <div className="Spinnerontainer">
             <Spinner />
           </div>
         ) : (
