@@ -114,30 +114,30 @@ const formatCategory = (type) => {
   
     const formData = new FormData();
     
-    // Append form fields
-    formData.append('name', formValues.name);
-    formData.append('description', formValues.description);
-    formData.append('location', formValues.location);
-    formData.append('price', formValues.price);
-    formData.append('beds', formValues.beds);
-    formData.append('baths', formValues.baths);
-    formData.append('isOffer', formValues.isOffer);
-    formData.append('propertyType', formValues.propertyType);
-    formData.append('furnished', formValues.furnished);
-    
-    if (formValues.isOffer && formValues.discount) {
-      formData.append('discount', formValues.discount);
-    }
-  
-    // Append form fields including category
+    // Properly append form fields as strings
     Object.entries(formValues).forEach(([key, value]) => {
       if (key !== 'images' && key !== 'videos' && value !== undefined) {
-        formData.append(key, value);
+        // Convert boolean values to strings
+        if (typeof value === 'boolean') {
+          formData.append(key, value.toString());
+        }
+        // Convert numbers to strings
+        else if (typeof value === 'number') {
+          formData.append(key, value.toString());
+        }
+        // Handle arrays (if any)
+        else if (Array.isArray(value)) {
+          formData.append(key, value.join(','));
+        }
+        // Handle regular strings
+        else {
+          formData.append(key, String(value));
+        }
       }
     });
 
-    // Append files
-    if (formValues.images) {
+    // Handle image files separately
+    if (formValues.images && formValues.images.length > 0) {
       formValues.images.forEach(file => {
         formData.append('media', file);
       });
@@ -155,10 +155,8 @@ const formatCategory = (type) => {
           message: `Property ${isEditing ? 'updated' : 'added'} successfully`, 
           type: 'success' 
         });
-        // Close modal after a short delay
         setTimeout(() => {
           onClose();
-          // Refresh the property list
           dispatch(fetchProperties());
         }, 1500);
       } else {
@@ -175,8 +173,87 @@ const formatCategory = (type) => {
     } finally {
       setLoading(false);
     }
-      
   };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+  
+  //   // Client-side validation
+  //   if (!formValues.name || !formValues.description || !formValues.location || !formValues.propertyType) {
+  //     setToaster({ 
+  //       message: 'Please fill in all required fields', 
+  //       type: 'error' 
+  //     });
+  //     setLoading(false);
+  //     return;
+  //   }
+  
+  //   const formData = new FormData();
+    
+  //   // Append form fields
+  //   formData.append('name', formValues.name);
+  //   formData.append('description', formValues.description);
+  //   formData.append('location', formValues.location);
+  //   formData.append('price', formValues.price);
+  //   formData.append('beds', formValues.beds);
+  //   formData.append('baths', formValues.baths);
+  //   formData.append('isOffer', formValues.isOffer);
+  //   formData.append('propertyType', formValues.propertyType);
+  //   formData.append('furnished', formValues.furnished);
+    
+  //   if (formValues.isOffer && formValues.discount) {
+  //     formData.append('discount', formValues.discount);
+  //   }
+  
+  //   // Append form fields including category
+  //   Object.entries(formValues).forEach(([key, value]) => {
+  //     if (key !== 'images' && key !== 'videos' && value !== undefined) {
+  //       formData.append(key, value);
+  //     }
+  //   });
+
+  //   // Append files
+  //   if (formValues.images) {
+  //     formValues.images.forEach(file => {
+  //       formData.append('media', file);
+  //     });
+  //   }
+  
+  //   try {
+  //     const action = isEditing ? 
+  //       updateExistingProperty(property.id, formData) : 
+  //       addNewProperty(formData);
+      
+  //     const result = await dispatch(action);
+
+  //     if (result.success) {
+  //       setToaster({ 
+  //         message: `Property ${isEditing ? 'updated' : 'added'} successfully`, 
+  //         type: 'success' 
+  //       });
+  //       // Close modal after a short delay
+  //       setTimeout(() => {
+  //         onClose();
+  //         // Refresh the property list
+  //         dispatch(fetchProperties());
+  //       }, 1500);
+  //     } else {
+  //       setToaster({ 
+  //         message: result.message || `Failed to ${isEditing ? 'update' : 'add'} property`, 
+  //         type: 'error' 
+  //       });
+  //     }
+  //   } catch (error) {
+  //     setToaster({ 
+  //       message: error.message || 'An error occurred', 
+  //       type: 'error' 
+  //     });
+  //   } finally {
+  //     setLoading(false);
+  //   }
+      
+  // };
 
   return (
     <div className="modal-overlay">
