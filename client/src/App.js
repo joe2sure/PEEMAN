@@ -12,6 +12,8 @@ import PropertyDetailPage from './pages/home/PropertyDetail.js';
 import Newsletter from './components/home/Newsletter.js';
 import Navbar from './components/home/Navbar.js';
 import ContactPage from './pages/home/ContactPage.js';
+import AboutPage from './pages/home/AboutPage.js';
+import BlogPage from './pages/home/BlogPage.js';
 // import MainDashboard from './pages/newAdmin/mainDashboard.js';
 
 // Layout component to handle conditional rendering
@@ -45,8 +47,8 @@ function App() {
             <Route path="/offers" element={<OfferPage />} />
             <Route path="/property/:id" element={<PropertyDetailPage />} />
             <Route path="/contact" element={<ContactPage />} />
-            {/* <Route path="/blog" element={<BlogPage />} />      
-            <Route path="/about" element={<AboutPage />} />     */}
+            <Route path="/about" element={<AboutPage />} />    
+            <Route path="/blog" element={<BlogPage />} />      
             <Route
               path="/login"
               element={!isAuthenticated ? <LoginPage /> : <Navigate to="/" />}

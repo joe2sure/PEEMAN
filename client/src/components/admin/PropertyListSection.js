@@ -141,36 +141,6 @@ export default PropertyListSection;
 
 
 
-      {/* <table>
-        <thead>
-          <tr>
-            <th>Property Name</th>
-            <th>Category</th>
-            <th>Price</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {properties.map((property) => (
-            <tr key={property.id}>
-              <td>{property.name}</td>
-              <td>{property.category}</td>
-              <td>${property.price.toLocaleString()}</td>
-              <td>
-                <button onClick={() => handleEdit(property)} className="edit-btn">
-                  Edit
-                </button>
-                <button onClick={() => handleDelete(property.id)} className="delete-btn">
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table> */}
-
-
-
 
 // import React, { useState } from 'react';
 // import '../../styles/components/admin/PropertyListSection.css';

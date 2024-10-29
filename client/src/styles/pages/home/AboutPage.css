@@ -1,0 +1,44 @@
+/* General Styles for the About Page */
+.about-page {
+  font-family: 'Arial', sans-serif;
+  color: var(--text-color);
+  background-color: var(--background);
+  line-height: 1.6;
+}
+
+/* Container alignment for different sections */
+.about-page .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Spacing between sections */
+.about-page section {
+  padding: 4rem 0;
+}
+
+/* Add consistent padding to all sections */
+.about-page section + section {
+  padding-top: 2rem;
+}
+
+/* Responsive layout adjustments for About Page */
+@media (max-width: 768px) {
+  .about-page section {
+    padding: 3rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-page section {
+    padding: 2rem 0;
+  }
+}
+
+
+
+/* .about-page {
+    min-height: 100vh;
+    background-color: #ffffff;
+  } */

@@ -7,11 +7,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #0B167C;
   overflow-x: hidden;
+  line-height: 1.5;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+input {
+  font: inherit;
 }
 
 /* General spacing fix */

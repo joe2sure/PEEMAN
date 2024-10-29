@@ -1,11 +1,13 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .app {
   font-family: Arial, sans-serif;
   max-width: 100%;
   overflow-x: hidden;
-  
-  /* max-width: 1200px; */
-  /* margin: 0 auto; */
-  /* padding: 0 20px; */
 }
 
 .loading, .error {
@@ -41,9 +43,50 @@ main {
   --background-color: #f0f2f5;
   --text-color: #333;
   --light-text-color: #777;
+  --text-color: #1f2937;
+  --light-text: #6b7280;
+  --white: #ffffff;
+  --background: #f9fafb;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+
+ /* Typography */
+ --font-size-sm: 0.875rem;
+ --font-size-base: 1rem;
+ --font-size-lg: 1.125rem;
+ --font-size-xl: 1.25rem;
+ --font-size-2xl: 1.5rem;
+ --font-size-3xl: 2rem;
+ --font-size-4xl: 2.5rem;
+ 
+ /* Spacing */
+ --spacing-1: 0.25rem;
+ --spacing-2: 0.5rem;
+ --spacing-3: 0.75rem;
+ --spacing-4: 1rem;
+ --spacing-6: 1.5rem;
+ --spacing-8: 2rem;
+ --spacing-12: 3rem;
+ --spacing-16: 4rem;
+ --spacing-20: 5rem;
+ 
+ /* Borders */
+ --border-radius-sm: 0.25rem;
+ --border-radius-md: 0.5rem;
+ --border-radius-lg: 0.75rem;
+ --border-radius-full: 9999px;
+ 
+ /* Shadows */
+ --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+ --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+ --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+ 
+ /* Container */
+ --container-max-width: 1200px;
+ --container-padding: 1rem;
 }
 
-/* Global styles */
+
 body {
   font-family: 'Roboto', sans-serif;
   color: var(--text-color);
