@@ -1,5 +1,6 @@
 import { setUser, logout, setLoading, setError } from '../reducers/authReducer';
 import { authApi } from '../../api';
+import { apiRequest } from '../../api/apiUtils';
 
 export const loginUser = (email, password) => async (dispatch) => {
   dispatch(setLoading(true));
@@ -15,6 +16,29 @@ export const loginUser = (email, password) => async (dispatch) => {
   } catch (error) {
     dispatch(setError(error.message));
     return { success: false, message: error.message || "An error occurred during login" };
+  } finally {
+    dispatch(setLoading(false));
+  }
+};
+
+// New Google login function
+export const googleLoginUser = (tokenId) => async (dispatch) => {
+  dispatch(setLoading(true));
+  try {
+    // Call the backend API for Google login with the tokenId
+    const data = await apiRequest('auth/google-login', 'POST', { tokenId });
+    
+    // Set the user in Redux state
+    dispatch(setUser(data.user));
+    localStorage.setItem('token', data.token);
+
+    // Clear any previous errors
+    dispatch(setError(null));
+
+    return { success: true, message: "Google login successful" };
+  } catch (error) {
+    dispatch(setError(error.message));
+    return { success: false, message: error.message || "An error occurred during Google login" };
   } finally {
     dispatch(setLoading(false));
   }

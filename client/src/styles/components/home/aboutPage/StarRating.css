@@ -1,19 +1,19 @@
-.star-rating {
+.about-star-rating {
     display: flex;
     align-items: center;
   }
   
-  .star {
+  .about-star {
     color: #e5e7eb;
     font-size: 1rem;
     position: relative;
   }
   
-  .star.filled {
+  .about-star.about-filled {
     color: #fbbf24;
   }
   
-  .star.half-filled::after {
+  .about-star.about-half-filled::after {
     content: '★';
     color: #fbbf24;
     position: absolute;
@@ -22,7 +22,7 @@
     overflow: hidden;
   }
   
-  .rating-number {
+  .about-rating-number {
     margin-left: 0.5rem;
     color: #666666;
   }

@@ -129,37 +129,6 @@
     opacity: 0.8;
   }
 
-  /* .image-carousel {
-    position: absolute;
-    bottom: 1rem;
-    left: 1rem;
-    right: 1rem;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 10px;
-    border-radius: 8px;
-  } */
-  
-  /* .carousel-thumbnail {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    cursor: pointer;
-    transition: opacity 0.3s ease;
-    border-radius: 4px;
-  }
-  
-  .carousel-thumbnail.active {
-    opacity: 1;
-    border: 2px solid #1428DA;
-  }
-  
-  .carousel-thumbnail:not(.active) {
-    opacity: 0.6;
-  } */
-
   
   .property-info {
     display: flex;

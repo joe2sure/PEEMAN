@@ -1,9 +1,3 @@
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 .app {
   font-family: Arial, sans-serif;
   max-width: 100%;
@@ -43,7 +37,6 @@ main {
   --background-color: #f0f2f5;
   --text-color: #333;
   --light-text-color: #777;
-  --text-color: #1f2937;
   --light-text: #6b7280;
   --white: #ffffff;
   --background: #f9fafb;
@@ -126,14 +119,14 @@ h1, h2, h3, h4, h5, h6 {
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.scroll-button:hover {
-  background-color: #1a7ae0; /* Slightly darker shade for hover effect */
+/* .scroll-button:hover {
+  background-color: #1a7ae0; 
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .scroll-button:focus {
   outline: none;
-}
+} */
 
 /* Ensure button is hidden on small screens until scrolled down */
 @media (max-width: 768px) {

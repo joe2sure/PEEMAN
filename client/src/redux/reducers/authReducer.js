@@ -20,7 +20,7 @@ const authSlice = createSlice({
       state.error = null;
     },
     logout: (state) => {
-      return initialState; // This will reset all state to initial values
+      return initialState; 
     },
     setLoading: (state, action) => {
       state.loading = action.payload;

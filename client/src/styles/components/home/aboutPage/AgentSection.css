@@ -1,33 +1,106 @@
-.agents-section {
+.about-agents-section { 
+  padding: 4rem 0; 
+  background-color: var(--background); 
+  margin: 0 100px; 
+  
+} 
+
+.about-agents-section .about-agents-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.about-agents-container > h2 {
+  color: #3C4DE0;
+}
+ 
+/* .about-agents-grid { 
+  display: grid; 
+  grid-template-columns: repeat(5, 1fr); 
+  gap: 1.5rem; 
+  
+}  */
+.about-agents-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ 
+.about-agent-card { 
+  background-color: var(--white); 
+  box-shadow: var(--card-shadow); 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  margin-right: 10px;
+} 
+ 
+.about-agent-card img { 
+  width: 100%; 
+  max-height: 200px; 
+  object-fit: cover; 
+} 
+ 
+.about-agent-info { 
+  padding: 1rem; 
+  text-align: center; 
+} 
+ 
+.about-job-title { 
+  font-style: italic; 
+  color: var(--text-muted);
+} 
+ 
+/* Responsive */ 
+@media (max-width: 1024px) { 
+  .about-agents-grid { 
+    grid-template-columns: repeat(3, 1fr); 
+  } 
+} 
+ 
+@media (max-width: 780px) { 
+  /* .about-agents-grid { 
+    grid-template-columns: 1fr; 
+  }  */
+  .about-agents-grid{
+    flex-direction: column;
+    
+  }
+  .about-agent-card {
+    margin-bottom: 10px;
+  }
+}
+
+/* .about-agents-section {
     padding: 4rem 0;
     background-color: var(--background);
+    margin: 0 100px;
   }
   
-  .agents-grid {
+  .about-agents-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 1.5rem;
   }
   
-  .agent-card {
+  .about-agent-card {
     background-color: var(--white);
     box-shadow: var(--card-shadow);
   }
   
-  .agent-info {
+  .about-agent-info {
     padding: 1rem;
   }
   
-  /* Responsive */
   @media (max-width: 1024px) {
-    .agents-grid {
+    .about-agents-grid {
       grid-template-columns: repeat(3, 1fr);
     }
   }
   
   @media (max-width: 480px) {
-    .agents-grid {
+    .about-agents-grid {
       grid-template-columns: 1fr;
     }
-  }
-  
+  } */

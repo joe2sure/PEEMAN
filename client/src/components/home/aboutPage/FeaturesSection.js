@@ -4,22 +4,22 @@ import '../../../styles/components/home/aboutPage/FeatureSection.css';
 
 const features = [
   {
-    icon: <Home className="feature-icon" />,
+    icon: <Home className="about-feature-icon" />,
     title: "Find Your Ideal Home",
     description: "We help you discover the perfect property that matches your lifestyle and preferences."
   },
   {
-    icon: <Shield className="feature-icon" />,
+    icon: <Shield className="about-feature-icon" />,
     title: "Secure Transactions",
     description: "Our platform ensures safe and protected property transactions for your peace of mind."
   },
   {
-    icon: <Users className="feature-icon" />,
+    icon: <Users className="about-feature-icon" />,
     title: "Expert Guidance",
     description: "Get support from our experienced real estate professionals throughout your journey."
   },
   {
-    icon: <Clock className="feature-icon" />,
+    icon: <Clock className="about-feature-icon" />,
     title: "Efficient Process",
     description: "We streamline the property buying and selling process to save you time and effort."
   }
@@ -27,11 +27,11 @@ const features = [
 
 const FeatureSection = () => {
   return (
-    <section className="features-section">
-      <div className="container features-grid">
+    <section className="about-features-section">
+      <div className="about-container about-features-grid">
         {features.map((feature, index) => (
-          <div key={index} className="feature-card">
-            <div className="feature-icon-wrapper">
+          <div key={index} className="about-feature-card">
+            <div className="about-feature-icon-wrapper">
               {feature.icon}
             </div>
             <h3>{feature.title}</h3>

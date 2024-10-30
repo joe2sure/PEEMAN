@@ -5,11 +5,11 @@ const TabsFilter = ({ currentCategory, setCategory }) => {
   const categories = ['All', 'Market', 'Tips', 'Finance', 'Investment'];
 
   return (
-    <div className="tabs-filter">
+    <div className="blog-tabs-filter">
       {categories.map(category => (
         <button
           key={category}
-          className={currentCategory === category ? 'active' : ''}
+          className={currentCategory === category ? 'blog-active' : ''}
           onClick={() => setCategory(category)}
         >
           {category}

@@ -1,0 +1,28 @@
+.blog-categories-list {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .blog-category-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .blog-category-item:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .blog-category-name {
+    font-size: 0.875rem;
+    color: #1a1a1a;
+  }
+  
+  .blog-category-count {
+    font-size: 0.875rem;
+    color: #666;
+  }
