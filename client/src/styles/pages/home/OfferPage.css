@@ -2,14 +2,14 @@
     width: 100%;
   }
   
-  .latest-offers,
-  .for-rent,
-  .for-sale {
+  .offer-page-latest-offers,
+  .offer-page-for-rent,
+  .offer-page-for-sale {
     padding: 4rem 1rem;
     text-align: center;
   }
   
-  .latest-offers {
+  .offer-page-latest-offers {
     background-color: #FAF6F3;
   }
   
@@ -18,32 +18,33 @@
     background-color: #FFFFFF;
   }
    */
-  .for-rent,
-  .for-sale {
+  .offer-page-for-rent,
+  .offer-page-for-sale {
     background-color: #FFFFFF;
     padding: 4rem 1rem;
     text-align: left; /* Align text in the sections to the left */
   }
   
-  .for-rent h2,
-  .for-sale h2 {
+  .offer-page-for-rent h2,
+  .offer-page-for-sale h2 {
     text-align: left; /* Align heading text to the left */
     margin-left: auto;
     margin-right: auto;
     max-width: 1200px; /* Match the max width of the card grid */
     padding-left: 1rem; /* Ensure alignment with cards */
+    color: #1428DA;
   }
 
-  h2 {
+  .offer-page-latest-offers h2 {
     font-size: 36px;
     font-weight: 600;
     color: #1428DA;
     margin-bottom: 1rem;
   }
   
-  .latest-offers > p,
-  .for-rent > p,
-  .for-sale > p {
+  .offer-page-latest-offers > p,
+  .offer-page-for-rent > p,
+  .offer-page-for-sale > p {
     max-width: 800px;
     margin: 0 auto 2rem;
     color: #1A1A1A;
@@ -54,7 +55,7 @@
   }
   
 
-  .property-grid {
+  .offer-page-property-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
@@ -64,17 +65,17 @@
   }
   
   
-  .offer-cta {
+  .offer-page-offer-cta {
     margin-top: 2rem;
   }
   
-  .cta-text {
+  .offer-page-cta-text {
     color: #1428DA;
     font-weight: bold;
     margin-bottom: 1rem;
   }
   
-  .learn-more {
+  .offer-page-learn-more {
     color: #DA7B14;
     text-decoration: none;
   }
@@ -89,7 +90,7 @@
     transition: background-color 0.3s ease, color 0.3s ease;
   } */
 
-  .load-more {
+  .offer-page-load-more {
     display: block; /* Ensure the button behaves like a block element */
     margin: 2rem auto 0 auto; /* Center the button horizontally */
     background-color: transparent;
@@ -101,41 +102,41 @@
     transition: background-color 0.3s ease, color 0.3s ease;
   }
   
-  .load-more:hover {
+  .offer-page-load-more:hover {
     background-color: #DA7B14;
     color: #FFFFFF;
   }
   
-  .inquiry {
+  .offer-page-inquiry {
     background-size: cover;
     background-position: center;
     padding: 4rem 1rem;
     color: #FFFFFF;
   }
   
-  .inquiry-content {
+  .offer-page-inquiry-content {
     display: flex;
     justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
   }
   
-  .inquiry-text {
+  .offer-page-inquiry-text {
     flex: 1;
     padding-right: 2rem;
   }
   
-  .inquiry-text h2 {
+  .offer-page-inquiry-text h2 {
     font-size: 36px;
     margin-bottom: 1rem;
   }
   
-  .inquiry-text p {
+  .offer-page-inquiry-text p {
     font-size: 18px;
     margin-bottom: 2rem;
   }
   
-  .inquiry-text hr {
+  .offer-page-inquiry-text hr {
     width: 96px;
     height: 4px;
     background-color: #FFFFFF;
@@ -143,53 +144,53 @@
     margin-bottom: 2rem;
   }
   
-  .inquiry-steps {
+  .offer-page-inquiry-steps {
     display: flex;
     justify-content: space-between;
   }
   
-  .step {
+  .offer-page-step {
     flex: 1;
   }
   
-  .step h3 {
+  .offer-page-step h3 {
     font-size: 24px;
     margin-bottom: 1rem;
   }
   
-  .inquiry-form {
+  .offer-page-inquiry-form {
     flex: 1;
     background-color: #FFFFFF;
     padding: 2rem;
     border-radius: 8px;
   }
   
-  .inquiry-form h3 {
+  .offer-page-inquiry-form h3 {
     color: #1428DA;
     font-size: 24px;
     margin-bottom: 1rem;
   }
   
-  .form-group {
+  .offer-page-form-group {
     margin-bottom: 1rem;
   }
   
-  .form-group label {
+  .offer-page-form-group label {
     display: block;
     margin-bottom: 0.5rem;
     color: #1A1A1A;
   }
   
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
+  .offer-page-form-group input,
+  .offer-page-form-group select,
+  .offer-page-form-group textarea {
     width: 100%;
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 4px;
   }
   
-  .inquiry-form button {
+  .offer-page-inquiry-form button {
     width: 100%;
     background-color: #1428DA;
     color: #FFFFFF;
@@ -200,30 +201,30 @@
     transition: background-color 0.3s ease;
   }
   
-  .inquiry-form button:hover {
+  .offer-page-inquiry-form button:hover {
     background-color: #0F1FA3;
   }
   
   @media (max-width: 768px) {
-    .property-grid {
+    .offer-page-property-grid {
       grid-template-columns: 1fr;
     }
   
-    .inquiry-content {
+    .offer-page-inquiry-content {
       flex-direction: column;
     }
   
-    .inquiry-text,
-    .inquiry-form {
+    .offer-page-inquiry-text,
+    .offer-page-inquiry-form {
       padding: 0;
       margin-bottom: 2rem;
     }
   
-    .inquiry-steps {
+    .offer-page-inquiry-steps {
       flex-direction: column;
     }
   
-    .step {
+    .offer-page-step {
       margin-bottom: 1rem;
     }
   }

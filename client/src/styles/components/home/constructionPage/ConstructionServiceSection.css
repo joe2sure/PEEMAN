@@ -1,0 +1,23 @@
+.construction-services-section {
+    padding: 3rem 2rem;
+  }
+  
+  .construction-services-grid {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .construction-service-card {
+    flex: 1;
+    min-width: 200px;
+    background-color: #eee;
+    padding: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    .construction-services-grid {
+      flex-direction: column;
+    }
+  }
+  

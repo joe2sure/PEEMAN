@@ -38,13 +38,13 @@ connectDB();
 //     optionSuccessStatus: 200,
 // };
 
-// for production
+// CORS Configuration
 const corsOptions = {
-    origin: [
-        "https://peemandevelopers.co.uk", 
+    origin: process.env.NODE_ENV === 'production' ? [
+        "https://peemandevelopers.co.uk",
         "http://peemandevelopers.co.uk",
-        "https://peeman-frontend.onrender.com" // Add your Render domain
-    ],
+        "https://peeman-frontend.onrender.com"
+    ] : "http://localhost:3000",  // Allow localhost for development
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
@@ -60,8 +60,11 @@ app.use(express.json({ limit: '50mb' })); // production
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));  // production
 
 
+// Enable CORS
 app.use(cors(corsOptions));
-// app.use(helmet());  // development
+
+// Handle preflight requests
+app.options('*', cors(corsOptions));
 
 //  add more specific headers to your Helmet configuration for handling file uploads:
 app.use(helmet({

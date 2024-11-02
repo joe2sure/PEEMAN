@@ -105,6 +105,14 @@ export default function Navbar() {
                 Contact
               </Link>
             </li>
+            <li>
+              <Link 
+                to="/construction" 
+                className={isLinkActive('/construction') ? 'active' : ''}
+              >
+                Construction
+              </Link>
+            </li>
             {isAdmin && (
               <li>
                 <Link 

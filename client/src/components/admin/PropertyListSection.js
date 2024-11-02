@@ -77,7 +77,7 @@ const PropertyListSection = () => {
       </div>
       <div className='table-container'>
         {loading ? (
-          <div className="Spinnerontainer">
+          <div className="spinner-container">
             <Spinner />
           </div>
         ) : (

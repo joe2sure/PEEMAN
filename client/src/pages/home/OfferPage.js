@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 import { fetchProperties } from '../../redux/actions/propertyActions';
 import "../../styles/pages/home/OfferPage.css";
 import BuySellRent from "../../components/home/BuySellRent";
-import Newsletter from "../../components/home/Newsletter";
 import { PropertyCard } from "../../components/home/LatestOffer";
 import PropertyInquirySection from "../../components/home/offer/PropertyInquirySection";
 import Spinner from "../../utility/Spinner";
 import defaultPropertyImage from "../../assets/images/home/property-image.svg";
+// import Newsletter from "../../components/home/Newsletter";
 
 const ITEMS_PER_PAGE = 6;
 
@@ -98,7 +98,7 @@ const OfferPage = () => {
     <div className="offer-page">
       <BuySellRent />
 
-      <section className="latest-offers">
+      <section className="offer-page-latest-offers">
         <h2>Our Latest Offers</h2>
         <p>
           Whether you're looking to buy, sell, or rent, we've made it easy for
@@ -107,7 +107,7 @@ const OfferPage = () => {
           preferences. With just a few clicks, discover homes and properties
           that match your unique criteria.
         </p>
-        <div className="property-grid">
+        <div className="offer-page-property-grid">
           {transformedProperties
             .slice(0, visibleLatestItems)
             .map((property) => (
@@ -119,25 +119,25 @@ const OfferPage = () => {
             ))}
         </div>
         {transformedProperties.length > visibleLatestItems && (
-          <div className="offer-cta">
+          <div className="offer-page-offer-cta">
             <button onClick={handleLoadMoreLatest} className="load-more">
               Load more options
             </button>
           </div>
         )}
-        <div className="offer-cta">
-          <p className="cta-text">
+        <div className="offer-page-offer-cta">
+          <p className="offer-page-cta-text">
             You can also place your own properties up for sale at great prices!
           </p>
-          <Link to="/learn-more" className="learn-more">
+          <Link to="/learn-more" className="offer-page-learn-more">
             Learn More
           </Link>
         </div>
       </section>
 
-      <section className="for-rent">
+      <section className="offer-page-for-rent">
         <h2>For Rent</h2>
-        <div className="property-grid">
+        <div className="offer-page-property-grid">
           {rentProperties
             .slice(0, visibleRentItems)
             .map((property) => (
@@ -149,15 +149,15 @@ const OfferPage = () => {
             ))}
         </div>
         {rentProperties.length > visibleRentItems && (
-          <button onClick={handleLoadMoreRent} className="load-more">
+          <button onClick={handleLoadMoreRent} className="offer-page-load-more">
             Load more options
           </button>
         )}
       </section>
 
-      <section className="for-sale">
+      <section className="offer-page-for-sale">
         <h2>For Sale</h2>
-        <div className="property-grid">
+        <div className="offer-page-property-grid">
           {saleProperties
             .slice(0, visibleSaleItems)
             .map((property) => (
@@ -169,7 +169,7 @@ const OfferPage = () => {
             ))}
         </div>
         {saleProperties.length > visibleSaleItems && (
-          <button onClick={handleLoadMoreSale} className="load-more">
+          <button onClick={handleLoadMoreSale} className="offer-page-load-more">
             Load more options
           </button>
         )}

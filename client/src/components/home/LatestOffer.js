@@ -11,6 +11,7 @@ import defaultPropertyImage from "../../assets/images/home/property-image.svg";
 
 export const PropertyCard = ({
   id,
+  images,
   image,
   forRent,
   price,
@@ -24,7 +25,7 @@ export const PropertyCard = ({
 }) => (
   <Link 
     to={`/property/${id}`} 
-    state={{ property: { id, image, forRent, price, originalPrice, title, location, bedrooms, bathrooms, parking }, properties }}
+    state={{ property: { id, images, image, forRent, price, originalPrice, title, location, bedrooms, bathrooms, parking }, properties }}
     className="property-card-link"
   >
     <div className="property-card">
@@ -75,14 +76,15 @@ const transformPropertyData = (adminProperty) => {
     price + (price * Number(adminProperty.discount || 0) / 100) : 
     price;
 
-
-  // Handle multiple images, limit to 6 images
-  const propertyImages = adminProperty.images?.slice(0, 6).map(img => img.url) || [defaultPropertyImage];
+  // Ensure images array exists and has at least one image, otherwise use default
+  const propertyImages = adminProperty.images?.length > 0 
+    ? adminProperty.images.slice(0, 6).map(img => img.url || defaultPropertyImage) 
+    : [defaultPropertyImage];
 
   return {
     id: adminProperty.id,
     images: propertyImages, // Store all images array
-    image: propertyImages[0], // Keep first image for property card
+    image: propertyImages[0], // Use first image for property card
     forRent: isRental,
     price: price,
     originalPrice: originalPrice,
@@ -95,6 +97,7 @@ const transformPropertyData = (adminProperty) => {
     furnished: adminProperty.furnished,
   };    
 };
+
 
 const LatestOffers = () => {
   const dispatch = useDispatch();
@@ -128,6 +131,38 @@ const LatestOffers = () => {
 
 export default LatestOffers;
 
+
+
+
+// const transformPropertyData = (adminProperty) => {
+//   const isRental = adminProperty.propertyType?.toLowerCase().includes('rent') || 
+//                    adminProperty.propertyType?.toLowerCase().includes('lease');
+  
+//   const price = Number(adminProperty.price);
+//   const originalPrice = adminProperty.isOffer ? 
+//     price + (price * Number(adminProperty.discount || 0) / 100) : 
+//     price;
+
+
+//   // Handle multiple images, limit to 6 images
+//   const propertyImages = adminProperty.images?.slice(0, 6).map(img => img.url) || [defaultPropertyImage];
+
+//   return {
+//     id: adminProperty.id,
+//     images: propertyImages, // Store all images array
+//     image: propertyImages[0], // Keep first image for property card
+//     forRent: isRental,
+//     price: price,
+//     originalPrice: originalPrice,
+//     title: adminProperty.name,
+//     location: adminProperty.location,
+//     bedrooms: Number(adminProperty.beds) || 0,
+//     bathrooms: Number(adminProperty.baths) || 0,
+//     parking: adminProperty.parking || null,
+//     description: adminProperty.description,
+//     furnished: adminProperty.furnished,
+//   };    
+// };
 
 
 

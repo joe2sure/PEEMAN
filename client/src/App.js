@@ -14,7 +14,9 @@ import Navbar from './components/home/Navbar.js';
 import ContactPage from './pages/home/ContactPage.js';
 import AboutPage from './pages/home/AboutPage.js';
 import BlogPage from './pages/home/BlogPage.js';
+import ConstructionLandingPage from './pages/home/ConstructionLandingPage.js';
 // import MainDashboard from './pages/newAdmin/mainDashboard.js';
+
 
 // Layout component to handle conditional rendering
 const Layout = ({ children }) => {
@@ -48,7 +50,8 @@ function App() {
             <Route path="/property/:id" element={<PropertyDetailPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/about" element={<AboutPage />} />    
-            <Route path="/blog" element={<BlogPage />} />      
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/construction" element={<ConstructionLandingPage />} />      
             <Route
               path="/login"
               element={!isAuthenticated ? <LoginPage /> : <Navigate to="/" />}

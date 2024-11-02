@@ -168,84 +168,6 @@ const formatCategory = (type) => {
       setLoading(false);
     }
   };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setLoading(true);
-  
-  //   // Client-side validation
-  //   if (!formValues.name || !formValues.description || !formValues.location || !formValues.propertyType) {
-  //     setToaster({ 
-  //       message: 'Please fill in all required fields', 
-  //       type: 'error' 
-  //     });
-  //     setLoading(false);
-  //     return;
-  //   }
-  
-  //   const formData = new FormData();
-    
-  //   // Properly append form fields as strings
-  //   Object.entries(formValues).forEach(([key, value]) => {
-  //     if (key !== 'images' && key !== 'videos' && value !== undefined) {
-  //       // Convert boolean values to strings
-  //       if (typeof value === 'boolean') {
-  //         formData.append(key, value.toString());
-  //       }
-  //       // Convert numbers to strings
-  //       else if (typeof value === 'number') {
-  //         formData.append(key, value.toString());
-  //       }
-  //       // Handle arrays (if any)
-  //       else if (Array.isArray(value)) {
-  //         formData.append(key, value.join(','));
-  //       }
-  //       // Handle regular strings
-  //       else {
-  //         formData.append(key, String(value));
-  //       }
-  //     }
-  //   });
-
-  //   // Handle image files separately
-  //   if (formValues.images && formValues.images.length > 0) {
-  //     formValues.images.forEach(file => {
-  //       formData.append('media', file);
-  //     });
-  //   }
-  
-  //   try {
-  //     const action = isEditing ? 
-  //       updateExistingProperty(property.id, formData) : 
-  //       addNewProperty(formData);
-      
-  //     const result = await dispatch(action);
-
-  //     if (result.success) {
-  //       setToaster({ 
-  //         message: `Property ${isEditing ? 'updated' : 'added'} successfully`, 
-  //         type: 'success' 
-  //       });
-  //       setTimeout(() => {
-  //         onClose();
-  //         dispatch(fetchProperties());
-  //       }, 1500);
-  //     } else {
-  //       setToaster({ 
-  //         message: result.message || `Failed to ${isEditing ? 'update' : 'add'} property`, 
-  //         type: 'error' 
-  //       });
-  //     }
-  //   } catch (error) {
-  //     setToaster({ 
-  //       message: error.message || 'An error occurred', 
-  //       type: 'error' 
-  //     });
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
   
   return (
     <div className="modal-overlay">
@@ -455,6 +377,86 @@ const formatCategory = (type) => {
 };
 
 export default PropertyModal;
+
+
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+  
+  //   // Client-side validation
+  //   if (!formValues.name || !formValues.description || !formValues.location || !formValues.propertyType) {
+  //     setToaster({ 
+  //       message: 'Please fill in all required fields', 
+  //       type: 'error' 
+  //     });
+  //     setLoading(false);
+  //     return;
+  //   }
+  
+  //   const formData = new FormData();
+    
+  //   // Properly append form fields as strings
+  //   Object.entries(formValues).forEach(([key, value]) => {
+  //     if (key !== 'images' && key !== 'videos' && value !== undefined) {
+  //       // Convert boolean values to strings
+  //       if (typeof value === 'boolean') {
+  //         formData.append(key, value.toString());
+  //       }
+  //       // Convert numbers to strings
+  //       else if (typeof value === 'number') {
+  //         formData.append(key, value.toString());
+  //       }
+  //       // Handle arrays (if any)
+  //       else if (Array.isArray(value)) {
+  //         formData.append(key, value.join(','));
+  //       }
+  //       // Handle regular strings
+  //       else {
+  //         formData.append(key, String(value));
+  //       }
+  //     }
+  //   });
+
+  //   // Handle image files separately
+  //   if (formValues.images && formValues.images.length > 0) {
+  //     formValues.images.forEach(file => {
+  //       formData.append('media', file);
+  //     });
+  //   }
+  
+  //   try {
+  //     const action = isEditing ? 
+  //       updateExistingProperty(property.id, formData) : 
+  //       addNewProperty(formData);
+      
+  //     const result = await dispatch(action);
+
+  //     if (result.success) {
+  //       setToaster({ 
+  //         message: `Property ${isEditing ? 'updated' : 'added'} successfully`, 
+  //         type: 'success' 
+  //       });
+  //       setTimeout(() => {
+  //         onClose();
+  //         dispatch(fetchProperties());
+  //       }, 1500);
+  //     } else {
+  //       setToaster({ 
+  //         message: result.message || `Failed to ${isEditing ? 'update' : 'add'} property`, 
+  //         type: 'error' 
+  //       });
+  //     }
+  //   } catch (error) {
+  //     setToaster({ 
+  //       message: error.message || 'An error occurred', 
+  //       type: 'error' 
+  //     });
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
 
 
 

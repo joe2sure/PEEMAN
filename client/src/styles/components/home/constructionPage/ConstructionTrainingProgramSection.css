@@ -1,0 +1,46 @@
+.construction-training-program-section {
+    padding: 3rem 2rem;
+    background-color: #fff;
+    text-align: center;
+  }
+  
+  .construction-training-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .construction-training-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .construction-training-content p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  
+  .construction-join-button {
+    background-color: #ffd700;
+    color: #333;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .construction-join-button:hover {
+    background-color: #e6b800;
+  }
+  
+  @media (max-width: 768px) {
+    .construction-training-content h2 {
+      font-size: 1.8rem;
+    }
+  
+    .construction-training-content p {
+      font-size: 0.9rem;
+    }
+  }
+  

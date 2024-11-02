@@ -1,0 +1,31 @@
+ .construction-landing-page {
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #fff;
+  }
+  
+  /* Styling for section headers */
+  .construction-landing-page h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  /* General padding for sections */
+  /* section {
+    padding: 4rem 2rem;
+  } */
+  
+
+  
+  /* Responsive layout adjustments */
+  @media (max-width: 768px) {
+    .construction-landing-page h2 {
+      font-size: 1.8rem;
+    }
+    section {
+      padding: 3rem 1rem;
+    }
+  }
+  

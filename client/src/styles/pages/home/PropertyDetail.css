@@ -6,35 +6,35 @@
     box-sizing: border-box;
   }
   
-  .hero-section {
+  .property-detail-page-hero-section {
     margin-bottom: 2rem;
     padding-top: 80px;
   }
 
 
-  .hero-content {
+  .property-detail-page-hero-content {
     display: flex;
     justify-content: space-between;
     gap: 2rem;
     align-items: stretch;
   }
 
-  .hero-left {
+  .property-detail-page-hero-left {
     flex: 1;
     min-width: 0; 
   }
   
-  .hero-header {
+  .property-detail-page-hero-header {
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
   }
   
-  .hero-header h1 {
+  .property-detail-page-hero-header h1 {
     margin-right: 1rem;
   }
   
-  .property-tag {
+  .property-detail-page-property-tag {
     background-color: #1428DA;
     color: #FFFFFF;
     padding: 0.5rem 1rem;
@@ -42,95 +42,32 @@
     font-size: 0.875rem;
   }
   
-  .hero-image-container {
-    position: relative;
-    margin-bottom: 1rem;
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-  }
 
-  .hero-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-
-  .image-nav-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 24px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s;
-  }
   
-  .image-nav-button:hover {
+  .property-detail-page-image-nav-button:hover {
     background: rgba(0, 0, 0, 0.7);
   }
   
-  .image-nav-button.prev {
+  .property-detail-page-image-nav-button.prev {
     left: 10px;
   }
   
-  .image-nav-button.next {
+  .property-detail-page-image-nav-button.next {
     right: 10px;
   }
 
-  .image-counter {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-size: 14px;
-  }
 
-  .image-carousel {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-    overflow-x: auto;
-    padding: 5px;
-  }
-
-  .carousel-thumbnail-wrapper {
-    flex: 0 0 80px;
-    height: 60px;
-    border: 2px solid transparent;
-    border-radius: 4px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: border-color 0.3s;
+  .property-detail-page-carousel-thumbnail-wrapper.active {
+    border-color: #1428DA; /* Match your brand color */
+    transform: scale(1.05); /* Slight scale effect for active thumbnail */
   }
   
-  .carousel-thumbnail-wrapper.active {
-    border-color: #007bff;
-  }
-  
-  .carousel-thumbnail {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .carousel-thumbnail:hover {
+  .property-detail-page-carousel-thumbnail:hover {
     opacity: 0.8;
   }
 
   
-  .property-info {
+  .property-detail-page-property-info {
     display: flex;
     background-color: #FFFFFF;
     padding: 1rem;
@@ -138,14 +75,14 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
-  .info-column {
+  .property-detail-page-info-column {
     flex: 1;
     display: flex;
     flex-direction: column;
   }
   
 
-  .hero-right {
+  .property-detail-page-hero-right {
     width: 432px;
     flex-shrink: 0;
     display: flex;
@@ -153,7 +90,7 @@
   }
   
 
-  .overview-section {
+  .property-detail-page-overview-section {
     background-color: #FFFFFF !important;
     border-radius: 15px;
     padding: 0;
@@ -164,9 +101,9 @@
   }
 
 /* Remove card-like appearance from sections */
-.overview-section, 
-.property-details-section, 
-.property-description-section {
+.property-detail-page-overview-section, 
+.property-detail-page-property-details-section, 
+.property-detail-page-property-description-section {
     background-color: #FFFFFF;
     margin-bottom: 2rem;
     padding: 0; 
@@ -176,58 +113,58 @@
 }
 
 /* Ensure text is always visible */
-.overview-section:hover, 
-.property-details-section:hover, 
-.property-description-section:hover {
+.property-detail-page-overview-section:hover, 
+.property-detail-page-property-details-section:hover, 
+.property-detail-page-property-description-section:hover {
     background-color: #FFFFFF;
     color: #000; /* Ensure text is always visible */
 }
 
-  .property-description {
+  .property-detail-page-property-description {
     line-height: 1.6;
     color: #333;
 }
 
 /* Property Details Section - Layout for two columns */
-.property-details-section {
+.property-detail-page-property-details-section {
   width: 100%;
   margin-bottom: 2rem;
 }
 
-  .property-details-content {
+  .property-detail-page-property-details-content {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Two equal columns */
     gap: 2rem; /* Space between columns */
 }
   
-  .property-detail-item {
+  .property-detail-page-property-detail-item {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
 }
   
-  .detail-label {
+  .property-detail-page-detail-label {
     font-weight: bold;
     margin-right: 0.5rem;
   }
   
-  .detail-value {
+  .property-detail-page-detail-value {
     color: #666;
   }
 
 /* Fix any hover issue with disappearing text */
-.property-detail-item:hover .detail-label, 
-.property-detail-item:hover .detail-value {
+.property-detail-page-property-detail-item:hover .detail-label, 
+.property-detail-page-property-detail-item:hover .detail-value {
     color: #666; /* Maintain consistent text color */
 }
   
-  .property-description {
+  .property-detail-page-property-description {
     line-height: 1.6;
     color: #333;
   }
   
 
-  .section-header {
+  .property-detail-page-section-header {
     background-color: #F3F3F3 !important;
     color: #000;
     font-size: 32px;
@@ -240,14 +177,14 @@
   }
   
 
-  .overview-content,
-  .property-details-content,
-  .property-description {
+  .property-detail-page-overview-content,
+  .property-detail-page-property-details-content,
+  .property-detail-page-property-description {
     padding: 2rem;
   }
 
 
-  .overview-content {
+  .property-detail-page-overview-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Make columns flexible */
     gap: 2rem;
@@ -255,98 +192,112 @@
 }
 
 
-  .overview-item {
+  .property-detail-page-overview-item {
     display: flex;
     flex-direction: column;
     justify-content: center;
 
 }
 
-  .overview-item span {
+  .property-detail-page-overview-item span {
     color: #666;
     font-size: 0.9rem;
     
   }
   
-  .overview-item strong {
+  .property-detail-page-overview-item strong {
     color: #000;
     font-size: 1rem;
   }
   
 
-  .feature {
+  .property-detail-page-feature {
     display: flex;
     flex-direction: column;
   }
 
-  .feature-item {
+  .property-detail-page-feature-item {
     display: flex;
     flex-direction: row;
   } 
   
-  .feature img {
+  .property-detail-page-feature img {
     width: 20px;
     height: 20px;
     margin-bottom: 0.25rem;
     margin-right: 0.55rem;
   }
   
-  .featured-section {
+  .property-detail-page-featured-section {
     text-align: center;
     margin-bottom: 2rem;
     border-radius: 15px;
     padding: 2rem;
   }
 
-  .featured-carousel .slick-slide {
+  .property-detail-page-featured-carousel .property-detail-page-slick-slide {
     transition: transform 0.5s ease-in-out;
   }
   
-  .slick-center .carousel-item {
+  .property-detail-page-slick-center .property-detail-page-carousel-item {
     transform: scale(1.1); /* Scale the center item */
-    z-index: 1; /* Bring the center item to the front */
+    z-index: 1; 
   }
   
-  .carousel-item {
+  .property-detail-page-carousel-item {
     transition: all 0.3s ease;
-    opacity: 0.8; /* Slightly dim the non-center cards */
+    opacity: 0.8; 
   }
   
-  .slick-center .carousel-item {
+  .property-detail-page-slick-center .property-detail-page-carousel-item {
     opacity: 1; /* Make the center card fully visible */
   }
   
-  .carousel-dots {
+  .property-detail-page-carousel-dots {
     display: flex;
     justify-content: center;
     gap: 0.5rem;
   }
 
-  .section-header {
+  .property-detail-page-section-header {
+    color: #1428DA !important;
+    /* text-align: center; */
+  }
+
+  .property-detail-page-featured-section-header {
     color: #1428DA !important;
     text-align: center;
   }
-  
-  .featured-carousel {
-    display: flex;
+
+  .slick-slide {
+    display: flex !important;
     justify-content: center;
-    gap: 2rem;
-    margin: 2rem 0;
+    align-items: center;
   }
   
-  .carousel-item {
+  .slick-track {
+    display: flex !important;
+    align-items: center;
+  }
+  
+  .property-detail-page-carousel-item {
+    width: auto !important;
+    margin: 0 15px; /* Add some spacing between items */
+  }
+  
+  .property-detail-page-carousel-item {
     transition: all 0.3s ease;
   }
   
-  .carousel-item.active {
+  .property-detail-page-carousel-item.active {
     transform: scale(1.05);
   }
   
-  .carousel-item:not(.active) {
+  .property-detail-page-carousel-item:not(.active) {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
-  .carousel-dots {
+  .property-detail-page-carousel-dots {
     display: flex;
     justify-content: center;
     gap: 0.5rem;
@@ -354,52 +305,47 @@
 
   
   @media (max-width: 1024px) {
-    .hero-content {
+    .property-detail-page-hero-content {
       flex-direction: column;
     }
-    .hero-right {
+    .property-detail-page-hero-right {
         width: 100%;
         margin-top: 2rem;
       }
-      .slick-slide {
+      .property-detail-page-slick-slide {
         transform: scale(0.9);
       }
   }
   
   @media (max-width: 768px) {
-    .overview-content {
+    .property-detail-page-overview-content {
       flex-wrap: wrap;
     }
   
-    .overview-item {
+    .property-detail-page-overview-item {
       flex-basis: 50%;
       margin-bottom: 1rem;
     }
-  
-    .featured-carousel {
-      flex-direction: column;
-      align-items: center;
-    }
 
-    .property-detail-item {
+    .property-detail-page-property-detail-item {
       flex: 1 1 calc(50% - 2rem);
     }
 
-    .slick-slide {
+    .property-detail-page-slick-slide {
       transform: scale(0.8);
     }
   }
   
   @media (max-width: 480px) {
-    .property-info {
+    .property-detail-page-property-info {
       flex-direction: column;
     }
   
-    .info-column {
+    .property-detail-page-info-column {
       margin-bottom: 1rem;
     }
 
-    .property-detail-item {
+    .property-detail-page-property-detail-item {
       flex: 1 1 100%;
       margin-right: 0;
     }

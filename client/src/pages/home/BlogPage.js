@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "../../styles/pages/home/BlogPage.css";
-import HeroSection from "../../components/home/blogPage/HeroSection";
 import TabsFilter from "../../components/home/blogPage/TabFilter";
 import BlogCard from "../../components/home/blogPage/BlogCard";
 import Pagination from "../../components/home/blogPage/Pagination";
 import { FaSearch, FaCandyCane } from "react-icons/fa";
 import BlogSidebar from "./Sidebar";
+import BlogHeroSection from "../../components/home/blogPage/HeroSection";
 // import Sidebar from '../../components/home/blogPage/Sidebar';
 
 const BlogPage = () => {
@@ -96,7 +96,7 @@ const BlogPage = () => {
 
   return (
     <div className="blog-page">
-      <HeroSection />
+      <BlogHeroSection />
 
       <div className="content-wrapper">
         <div className="filter-header">

@@ -1,4 +1,169 @@
 .banner {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 555px;
+  min-height: 555px;
+  color: #F5F5F5;
+  overflow: hidden;
+  padding: 4rem 2rem;
+}
+
+.banner-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.banner-carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.banner-image-overlay::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Light black overlay */
+}
+
+.banner-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 80%;
+}
+
+.banner-content h1 {
+  font-family: Poppins, sans-serif;
+  font-size: 64px;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.banner-content h1 i {
+  font-style: italic;
+  font-weight: 300;
+}
+
+.banner-content p {
+  font-family: Poppins, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  color: #F5F5F5;
+}
+
+.cta-button {
+  background-color: #3C4DE0;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 18px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.cta-button:hover {
+  background-color: #2a3bb0;
+}
+
+.cta-button img {
+  margin-left: 1rem;
+}
+
+.banner-image-indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 1;
+}
+
+.banner-image-indicator {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.banner-image-indicator.active {
+  background-color: white;
+}
+
+/* Responsive Adjustments */
+
+@media (max-width: 992px) {
+  .banner {
+    height: 400px;
+    padding: 2rem;
+  }
+
+  .banner-content h1 {
+    font-size: 48px;
+  }
+
+  .banner-content p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .banner {
+    height: 350px;
+    flex-direction: column;
+    padding: 2rem 1rem;
+  }
+
+  .banner-content {
+    max-width: 90%;
+    text-align: center;
+  }
+
+  .banner-content h1 {
+    font-size: 36px;
+    line-height: 1.2;
+  }
+
+  .banner-content p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .banner {
+    padding: 1.5rem;
+    height: 300px;
+  }
+
+  .banner-content h1 {
+    font-size: 28px;
+  }
+
+  .banner-content p {
+    font-size: 14px;
+  }
+}
+
+
+
+/* .banner {
   background-color: #0B167C;
   display: flex;
   justify-content: space-between;
@@ -63,6 +228,38 @@
   align-items: center;
 }
 
+
+.banner-carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.banner-image-indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.banner-image-indicator {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.banner-image-indicator.active {
+  background-color: white;
+}
+
+
+
 .banner-image img {
   max-width: 100%;
   height: auto;
@@ -119,29 +316,6 @@
   }
 }
 
-/* @media (max-width: 768px) {
-  .banner {
-    flex-direction: column;
-    text-align: center;
-    padding: 8rem 1.5rem;
-    
-  }
-
-  .banner-content {
-    max-width: 100%;
-    margin-bottom: 2rem;
-  }
-
-  .banner-content h1,
-  .banner-content p {
-    text-align: center;
-  }
-
-  .cta-button {
-    margin: 0 auto;
-  }
-} */
-
 @media (max-width: 576px) {
   .banner {
     flex-direction: column;
@@ -166,4 +340,4 @@
     font-size: 14px;
     line-height: 24px;
   }
-}
+} */

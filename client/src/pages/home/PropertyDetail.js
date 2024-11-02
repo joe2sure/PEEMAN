@@ -9,6 +9,7 @@ import { PropertyCard } from "../../components/home/LatestOffer";
 import "../../styles/pages/home/PropertyDetail.css";
 import PropertyDetailForm from "../../components/home/propertyDetail/PropertyDetailForm";
 import defaultPropertyImage from "../../assets/images/home/property-image.svg";
+import PropertyDetailCarousel from "../../components/home/propertyDetail/PropertyDetailCarousel";
 
 const PropertyDetailPage = () => {
   const { id } = useParams();
@@ -20,19 +21,39 @@ const PropertyDetailPage = () => {
    // Initialize and validate property images
    useEffect(() => {
     if (property) {
-      // If property has images array, use it; otherwise, create array with single image
+      // Ensure images array exists and has at least one image
       const images = property.images?.length > 0 
         ? property.images 
         : [property.image || defaultPropertyImage];
       
       setPropertyImages(images);
     }
-  }, [property]);
+  
+    // Auto-scroll effect for thumbnails
+    let intervalId;
+    if (propertyImages.length > 1) {
+      intervalId = setInterval(() => {
+        setSelectedImage((prev) => 
+          prev === propertyImages.length - 1 ? 0 : prev + 1
+        );
+      }, 5000); // Change image every 5 seconds
+    }
+  
+    // Cleanup interval on component unmount or when propertyImages changes
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [property, propertyImages]);
 
   // Redirect if no property data
   if (!property) {
     return <Navigate to="/" replace />;
   }
+
+
+
 
   // Use actual property images or fallback to default
   const carouselImages = property.images?.length > 0 
@@ -75,6 +96,10 @@ const PropertyDetailPage = () => {
     ?.filter(p => p.id !== property.id)
     .slice(0, 4) || [];
 
+    const safeImageUrl = (imageUrl) => {
+      return imageUrl || defaultPropertyImage;
+    };
+
   // Carousel settings
   const settings = {
     dots: true,
@@ -104,68 +129,156 @@ const PropertyDetailPage = () => {
 
   return (
     <div className="property-detail-page">
-      <section className="hero-section">
-        <div className="hero-content">
-          <div className="hero-left">
-            <div className="hero-header">
-              <h1>{property.title}</h1>
-              <span className="property-tag">
-                {property.forRent ? "For Rent" : "For Sale"}
-              </span>
+
+<section className="property-detail-page-hero-section">
+  <div className="property-detail-page-hero-content">
+    <div className="property-detail-page-hero-left">
+      <div className="property-detail-page-hero-header">
+        <h1>{property.title}</h1>
+        <span className="property-detail-page-property-tag">
+          {property.forRent ? "For Rent" : "For Sale"}
+        </span>
+      </div>
+      <div className="property-detail-page-hero-image-container">
+        {/* PropertyImageCarousel component replacing main image, arrows, and thumbnails */}
+        <PropertyDetailCarousel
+          images={propertyImages}         // Pass the images array
+          autoScrollInterval={5000}       // Set auto-scroll interval
+        />
+      </div>
+
+      <div className="property-detail-page-property-info">
+        <div className="property-detail-page-info-column">
+          <span>Status:</span>
+          <strong>{property.forRent ? "For Rent" : "For Sale"}</strong>
+        </div>
+        <div className="property-detail-page-info-column">
+          <span>Price:</span>
+          <strong>£{property.price.toLocaleString()}</strong>
+        </div>
+        {property.originalPrice > property.price && (
+          <div className="property-detail-page-info-column">
+            <span>Original Price:</span>
+            <strong>£{property.originalPrice.toLocaleString()}</strong>
+          </div>
+        )}
+      </div>
+    </div>
+    <div className="property-detail-page-hero-right">
+      <PropertyDetailForm
+        propertyType={property.forRent ? "rent" : "sale"}
+        propertyId={property.id}
+        propertyTitle={property.title}
+      />
+    </div>
+  </div>
+</section>
+
+
+
+      <section className="property-detail-page-overview-section">
+        <h2 className="property-detail-page-section-header">Overview</h2>
+        <div className="property-detail-page-overview-content">
+          <div className="property-detail-page-overview-item">
+            <span>Property Type</span>
+            <strong>{property.propertyType || property.title}</strong>
+          </div>
+          <div className="property-detail-page-overview-item">
+            <div className="property-detail-page-feature">
+              <span>Bedrooms</span>
+              <div className="property-detail-page-feature-item">
+                <img src={bedroomIcon} className="property-detail-page-bedrooms" alt="Bedrooms" />
+                <span>{property.bedrooms}</span>
+              </div>
             </div>
-            <div className="hero-image-container">
-              {/* Main hero image */}
-              <img
-                src={propertyImages[selectedImage]}
-                alt={`${property.title} - View ${selectedImage + 1}`}
-                className="hero-image"
-              />
+          </div>
+          <div className="property-detail-page-overview-item">
+            <div className="property-detail-page-feature">
+              <span>Bathrooms</span>
+              <div className="property-detail-page-feature-item">
+                <img src={bathroomIcon} className="property-detail-page-bathrooms" alt="Bathrooms" />
+                <span>{property.bathrooms}</span>
+              </div>
+            </div>
+          </div>
+          <div className="property-detail-page-overview-item">
+            <div className="property-detail-page-feature">
+              <span>Parking</span>
+              <div className="property-detail-page-feature-item">
+                <img src={parkingIcon} className="property-detail-page-parking" alt="Parking" />
+                <span>{property.parking ? property.parking : "No"}</span>
+              </div>
+            </div>
+          </div>
+          <div className="property-detail-page-overview-item">
+            <span>Furnished</span>
+            <strong>{property.furnished ? "Yes" : "No"}</strong>
+          </div>
+        </div>
+      </section>
 
-                {/* Navigation arrows for hero image */}
-                {propertyImages.length > 1 && (
-                <>
-                  <button 
-                    onClick={handlePrevImage} 
-                    className="image-nav-button prev"
-                    aria-label="Previous image"
-                  >
-                    ‹
-                  </button>
-                  <button 
-                    onClick={handleNextImage} 
-                    className="image-nav-button next"
-                    aria-label="Next image"
-                  >
-                    ›
-                  </button>
-                </>
-              )}          
+      <section className="property-details-section">
+        <h2 className="property-detail-page-section-header">Property Details</h2>
+        <div className="property-detail-page-property-details-content">
+          {propertyDetails.map((detail, index) => (
+            <div key={index} className="property-detail-page-property-detail-item">
+              <span className="property-detail-page-detail-label">{detail.label}:</span>
+              <span className="property-detail-page-detail-value">{detail.value}</span>
+            </div>
+          ))}
+        </div>
+      </section>
 
-             {/* Image counter */}
-             <div className="image-counter">
-                {selectedImage + 1} / {propertyImages.length}
-              </div>    
+      <section className="property-detail-page-property-description-section">
+        <h2 className="property-detail-page-section-header">Property Description</h2>
+        <p className="property-detail-page-property-description">
+          {property.description || "No description available"}
+        </p>
+      </section>
 
-              {/* Thumbnail carousel */}
-              {propertyImages.length > 1 && (
-                <div className="image-carousel">
-                  {propertyImages.map((image, index) => (
-                    <div
-                      key={index}
-                      className={`carousel-thumbnail-wrapper ${
-                        selectedImage === index ? "active" : ""
-                      }`}
-                    >
-                      <img
-                        src={image}
-                        alt={`${property.title} - Thumbnail ${index + 1}`}
-                        className="carousel-thumbnail"
-                        onClick={() => handleImageClick(index)}
-                      />
-                    </div>
-                  ))}
-                </div>
-              )}          
+      {featuredProperties.length > 0 && (
+        <section className="property-detail-page-featured-section">
+          <h2 className="property-detail-page-featured-section-header">Featured this week...</h2>
+          <p>See some of our featured listings for this week</p>
+          <Slider {...settings}>
+            {featuredProperties.map((prop) => (
+              <div key={prop.id} className="property-detail-page-carousel-item">
+                <PropertyCard {...prop} />
+              </div>
+            ))}
+          </Slider>
+        </section>
+      )}
+    </div>
+  );
+};
+
+export default PropertyDetailPage;
+
+
+
+
+
+
+
+
+  // // Auto-scroll effect
+  // useEffect(() => {
+  //   let intervalId;
+  //   if (propertyImages.length > 1) {
+  //     intervalId = setInterval(() => {
+  //       handleNextImage();
+  //     }, 5000); // Change image every 5 seconds
+  //   }
+
+  //   // Cleanup interval on component unmount or when propertyImages changes
+  //   return () => {
+  //     if (intervalId) {
+  //       clearInterval(intervalId);
+  //     }
+  //   };
+  // }, [propertyImages, selectedImage]);
+
 
               {/* <img
                 src={carouselImages[selectedImage]}
@@ -185,116 +298,6 @@ const PropertyDetailPage = () => {
                   />
                 ))}
               </div> */}
-            </div>
-
-            <div className="property-info">
-              <div className="info-column">
-                <span>Status:</span>
-                <strong>{property.forRent ? "For Rent" : "For Sale"}</strong>
-              </div>
-              <div className="info-column">
-                <span>Price:</span>
-                <strong>£{property.price.toLocaleString()}</strong>
-              </div>
-              {property.originalPrice > property.price && (
-                <div className="info-column">
-                  <span>Original Price:</span>
-                  <strong>£{property.originalPrice.toLocaleString()}</strong>
-                </div>
-              )}
-            </div>
-          </div>
-          <div className="hero-right">
-            <PropertyDetailForm
-              propertyType={property.forRent ? "rent" : "sale"}
-              propertyId={property.id}
-              propertyTitle={property.title}
-            />
-          </div>
-        </div>
-      </section>
-
-      <section className="overview-section">
-        <h2 className="section-header">Overview</h2>
-        <div className="overview-content">
-          <div className="overview-item">
-            <span>Property Type</span>
-            <strong>{property.propertyType || property.title}</strong>
-          </div>
-          <div className="overview-item">
-            <div className="feature">
-              <span>Bedrooms</span>
-              <div className="feature-item">
-                <img src={bedroomIcon} className="bedrooms" alt="Bedrooms" />
-                <span>{property.bedrooms}</span>
-              </div>
-            </div>
-          </div>
-          <div className="overview-item">
-            <div className="feature">
-              <span>Bathrooms</span>
-              <div className="feature-item">
-                <img src={bathroomIcon} className="bathrooms" alt="Bathrooms" />
-                <span>{property.bathrooms}</span>
-              </div>
-            </div>
-          </div>
-          <div className="overview-item">
-            <div className="feature">
-              <span>Parking</span>
-              <div className="feature-item">
-                <img src={parkingIcon} className="parking" alt="Parking" />
-                <span>{property.parking ? property.parking : "No"}</span>
-              </div>
-            </div>
-          </div>
-          <div className="overview-item">
-            <span>Furnished</span>
-            <strong>{property.furnished ? "Yes" : "No"}</strong>
-          </div>
-        </div>
-      </section>
-
-      <section className="property-details-section">
-        <h2 className="section-header">Property Details</h2>
-        <div className="property-details-content">
-          {propertyDetails.map((detail, index) => (
-            <div key={index} className="property-detail-item">
-              <span className="detail-label">{detail.label}:</span>
-              <span className="detail-value">{detail.value}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="property-description-section">
-        <h2 className="section-header">Property Description</h2>
-        <p className="property-description">
-          {property.description || "No description available"}
-        </p>
-      </section>
-
-      {featuredProperties.length > 0 && (
-        <section className="featured-section">
-          <h2 className="featured-section-header">Featured this week...</h2>
-          <p>See some of our featured listings for this week</p>
-          <Slider {...settings}>
-            {featuredProperties.map((prop) => (
-              <div key={prop.id} className="carousel-item">
-                <PropertyCard {...prop} />
-              </div>
-            ))}
-          </Slider>
-        </section>
-      )}
-    </div>
-  );
-};
-
-export default PropertyDetailPage;
-
-
-
 
 
 
