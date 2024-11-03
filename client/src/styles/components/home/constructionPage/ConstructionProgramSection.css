@@ -1,0 +1,301 @@
+.construction-faq-section {
+  padding: 48px 32px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.construction-faq-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+/* Query Column Styles */
+.construction-query-column {
+  position: relative;
+}
+
+.construction-query-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 32px;
+}
+
+.construction-query-form {
+  background-color: #1a1a1a;
+  padding: 24px;
+  border-radius: 8px;
+  color: white;
+}
+
+.construction-query-form h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.construction-query-form p {
+  color: #a3a3a3;
+  margin-bottom: 16px;
+}
+
+.construction-submit-button {
+  background-color: #fbbf24 !important;
+  color: #1a1a1a !important;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.construction-submit-button:hover {
+  background-color: #f59e0b !important;
+}
+
+/* FAQ Content Styles */
+.construction-faq-content {
+  padding-right: 32px;
+}
+
+.construction-section-subtitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.construction-section-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 32px;
+}
+
+.construction-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.construction-faq-item {
+  margin-bottom: 16px;
+}
+
+.construction-faq-question {
+  width: 100%;
+  text-align: left;
+  padding: 16px;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.construction-faq-question:hover {
+  background-color: #f9fafb;
+}
+
+.construction-faq-question.open {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.construction-faq-answer {
+  background-color: #f9fafb;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-top: none;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.construction-faq-answer p {
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+/* Schedule Section Styles */
+.construction-schedule-section {
+  background-color: #1a1a1a;
+  padding: 48px 32px;
+}
+
+.construction-schedule-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.construction-schedule-content {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.construction-schedule-icon {
+  width: 96px;
+  height: 96px;
+}
+
+.construction-schedule-text {
+  color: white !important;
+}
+
+.construction-schedule-text h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: white !important;
+}
+
+.construction-schedule-text p {
+  color: #a3a3a3;
+}
+
+.construction-schedule-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.construction-quote-button {
+  background-color: #fbbf24;
+  color: #1a1a1a;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.construction-quote-button:hover {
+  background-color: #f59e0b;
+}
+
+.construction-book-button {
+  background-color: white;
+  color: #1a1a1a;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.construction-book-button:hover {
+  background-color: #f3f4f6;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .construction-faq-section {
+    padding: 32px 16px;
+  }
+
+  .construction-faq-container {
+    grid-template-columns: 1fr;
+  }
+
+  .construction-faq-content {
+    padding-right: 0;
+  }
+
+  .construction-schedule-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .construction-schedule-content {
+    flex-direction: column;
+  }
+
+  .construction-schedule-buttons {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .construction-section-title {
+    font-size: 28px;
+  }
+
+  .construction-schedule-text h2 {
+    font-size: 28px;
+  }
+}
+
+/* Animation Styles */
+.construction-faq-answer {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+/* .construction-training-program-section {
+    padding: 3rem 2rem;
+    background-color: #fff;
+    text-align: center;
+  }
+  
+  .construction-training-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .construction-training-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .construction-training-content p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  
+  .construction-join-button {
+    background-color: #ffd700;
+    color: #333;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .construction-join-button:hover {
+    background-color: #e6b800;
+  }
+  
+  @media (max-width: 768px) {
+    .construction-training-content h2 {
+      font-size: 1.8rem;
+    }
+  
+    .construction-training-content p {
+      font-size: 0.9rem;
+    }
+  }
+   */

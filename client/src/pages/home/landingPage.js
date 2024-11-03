@@ -8,8 +8,7 @@ import Testimonial from '../../components/home/Testimonial.js';
 import Navbar from '../../components/home/Navbar.js';
 import '../../App.css';
 
-import Footer from '../../components/home/Footer.js';
-// import Newsletter from '../../components/home/Newsletter.js';
+
 
 // ScrollToTop Button Component
 const ScrollToTop = () => {

@@ -1,0 +1,198 @@
+.construction-testimonial-section {
+    background-color: #ffffff;
+    padding: 100px 0;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .construction-testimonial-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    position: relative;
+    padding: 0 20px;
+  }
+  
+  .construction-testimonial-left {
+    flex: 0 0 35%;
+    padding-right: 50px;
+  }
+  
+  .construction-testimonial-worker {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .construction-testimonial-worker-illustration {
+    width: 100%;
+    height: auto;
+    stroke: #000;
+    stroke-width: 1;
+  }
+  
+  .construction-testimonial-right {
+    flex: 0 0 55%;
+    padding-right: 80px; /* Space for navigation dots */
+    position: relative;
+  }
+  
+  .construction-testimonial-header {
+    margin-bottom: 30px;
+  }
+  
+  .construction-testimonial-client-says {
+    display: block;
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 15px;
+    font-weight: 500;
+  }
+  
+  .construction-testimonial-happy-customers {
+    font-size: 42px;
+    color: #333;
+    margin: 0;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  
+  .construction-testimonial-rating {
+    margin-bottom: 25px;
+  }
+  
+  .construction-testimonial-star {
+    color: #ffd700;
+    font-size: 20px;
+    margin-right: 4px;
+  }
+  
+  .construction-testimonial-content {
+    margin-bottom: 30px;
+  }
+  
+  .construction-testimonial-text {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 30px;
+  }
+  
+  .construction-testimonial-footer {
+    margin-top: 40px;
+  }
+  
+  .construction-testimonial-author-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .construction-testimonial-author-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .construction-testimonial-author-details h4 {
+    font-size: 18px;
+    color: #333;
+    margin: 0 0 5px 0;
+    font-weight: 600;
+  }
+  
+  .construction-testimonial-author-details p {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .construction-testimonial-additional-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #eee;
+  }
+  
+  .construction-testimonial-navigation-dots {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 2;
+  }
+  
+  .construction-testimonial-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid #666;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .construction-testimonial-dot.construction-testimonial-active {
+    background-color: #666;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 1024px) {
+    .construction-testimonial-container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 50px;
+    }
+  
+    .construction-testimonial-left {
+      flex: 0 0 auto;
+      padding-right: 0;
+      max-width: 300px;
+    }
+  
+    .construction-testimonial-right {
+      flex: 0 0 auto;
+      padding-right: 0;
+      width: 100%;
+      max-width: 600px;
+    }
+  
+    .construction-testimonial-navigation-dots {
+      position: static;
+      flex-direction: row;
+      justify-content: center;
+      margin-top: 30px;
+      transform: none;
+    }
+  
+    .construction-testimonial-author-info {
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .construction-testimonial-section {
+      padding: 60px 0;
+    }
+  
+    .construction-testimonial-happy-customers {
+      font-size: 32px;
+    }
+  
+    .construction-testimonial-text {
+      font-size: 16px;
+    }
+  
+    .construction-testimonial-additional-text {
+      font-size: 14px;
+    }
+  }

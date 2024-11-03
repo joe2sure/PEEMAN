@@ -1,23 +1,303 @@
+.construction-services-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* First Section - Services */
 .construction-services-section {
-    padding: 3rem 2rem;
+  margin-bottom: 80px;
+}
+
+.construction-services-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.construction-header-left {
+  flex: 1;
+}
+
+.construction-section-subtitle {
+  color: #333;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.construction-section-title {
+  color: #222;
+  font-size: 48px;
+  line-height: 1.2;
+  margin-bottom: 0;
+}
+
+.construction-header-description {
+  flex: 1;
+  color: #666;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-top: 40px;
+}
+
+.construction-services-grid {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding-bottom: 20px;
+}
+
+.construction-services-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.construction-service-card {
+  min-width: 300px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.construction-service-image {
+  height: 240px;
+  overflow: hidden;
+}
+
+.construction-service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.construction-service-content {
+  padding: 24px;
+  position: relative;
+}
+
+.construction-service-content h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: #222;
+}
+
+.construction-service-content p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.construction-service-arrow {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  font-size: 24px;
+  color: #FFB800;
+}
+
+.construction-cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.construction-btn-primary, .construction-btn-secondary {
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.construction-btn-primary {
+  background-color: #FFB800;
+  color: #222;
+}
+
+.construction-btn-secondary {
+  background-color: #222;
+  color: #fff;
+}
+
+/* Second Section - Quote */
+.construction-quote-section {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 60px;
+  align-items: center;
+  background-color: #F8F8F8;
+  padding: 60px;
+  border-radius: 12px;
+  margin-bottom: 80px;
+}
+
+.construction-quote-subtitle {
+  color: #666;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.construction-quote-title {
+  font-size: 42px;
+  margin-bottom: 40px;
+  color: #222;
+}
+
+.construction-quote-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.construction-form-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.construction-form-row-bottom {
+  align-items: end;
+}
+
+.construction-quote-form input,
+.construction-quote-form select {
+  padding: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 100%;
+  background-color: #fff;
+}
+
+.construction-btn-estimate {
+  background-color: #FFB800;
+  color: #222;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  height: 100%;
+}
+
+.construction-quote-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.construction-quote-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Third Section - Trust Features */
+.construction-trust-section {
+  margin-bottom: 80px;
+}
+
+.construction-trust-features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.construction-trust-feature-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.construction-highlight-card {
+  background-color: #FFB800;
+  text-align: left;
+}
+
+.construction-trust-subtitle {
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  color: #222;
+}
+
+.construction-trust-title {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #222;
+  line-height: 1.2;
+}
+
+.construction-trust-header p {
+  color: #222;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.construction-feature-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 20px;
+  color: #FFB800;
+}
+
+.construction-trust-feature-card h3 {
+  margin-bottom: 15px;
+  color: #222;
+  font-size: 20px;
+}
+
+.construction-trust-feature-card p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+@media (max-width: 1200px) {
+  .construction-trust-features {
+    grid-template-columns: repeat(2, 1fr);
   }
   
-  .construction-services-grid {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
+  .construction-highlight-card {
+    grid-column: 1 / -1;
   }
-  
-  .construction-service-card {
-    flex: 1;
-    min-width: 200px;
-    background-color: #eee;
-    padding: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .construction-services-header {
+    flex-direction: column;
   }
-  
-  @media (max-width: 768px) {
-    .construction-services-grid {
-      flex-direction: column;
-    }
+
+  .construction-section-title {
+    font-size: 36px;
   }
-  
+
+  .construction-quote-section {
+    grid-template-columns: 1fr;
+    padding: 30px;
+  }
+
+  .construction-form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .construction-trust-features {
+    grid-template-columns: 1fr;
+  }
+
+  .construction-quote-image {
+    display: none;
+  }
+}

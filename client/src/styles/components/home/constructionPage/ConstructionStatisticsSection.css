@@ -1,0 +1,156 @@
+.construction-statistics-section {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 4rem 2rem;
+  }
+  
+  .construction-statistics-top-section {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .construction-statistics-content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+  }
+  
+  .construction-statistics-text-content {
+    max-width: 600px;
+  }
+  
+  .construction-statistics-service-label {
+    color: #ffd700;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  
+  .construction-statistics-main-heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+  
+  .construction-statistics-description {
+    color: #a0a0a0;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+  
+  .construction-statistics-reviews {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .construction-statistics-review-avatars {
+    display: flex;
+  }
+  
+  .construction-statistics-review-avatars img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-left: -10px;
+  }
+  
+  .construction-statistics-rating {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .construction-statistics-stars {
+    color: #ffd700;
+  }
+  
+  .construction-statistics-stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+  
+  .construction-statistics-stat-item {
+    text-align: center;
+  }
+  
+  .construction-statistics-stat-item h2 {
+    color: #ffd700;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  
+  .construction-statistics-stat-item p {
+    color: #ffffff;
+  }
+  
+  .construction-statistics-gallery-section {
+    max-width: 1200px;
+    margin: 4rem auto 0;
+  }
+  
+  .construction-statistics-image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .construction-statistics-image-item {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .construction-statistics-image-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 1;
+  }
+  
+  .construction-statistics-portfolio-button {
+    background-color: #ffd700;
+    color: #1a1a1a;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    display: block;
+    margin: 3rem auto 0;
+    transition: background-color 0.3s ease;
+  }
+  
+  .construction-statistics-portfolio-button:hover {
+    background-color: #e6c200;
+  }
+  
+  @media (max-width: 1024px) {
+    .construction-statistics-stats-row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .construction-statistics-image-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .construction-statistics-content-wrapper {
+      flex-direction: column;
+    }
+    
+    .construction-statistics-main-heading {
+      font-size: 2rem;
+    }
+    
+    .construction-statistics-image-grid {
+      grid-template-columns: 1fr;
+    }
+  }

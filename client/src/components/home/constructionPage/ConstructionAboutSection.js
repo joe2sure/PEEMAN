@@ -1,40 +1,44 @@
-import React from 'react';
-import '../../../styles/components/home/constructionPage/ConstructionAboutSection.css';
+import React from "react";
+import "../../../styles/components/home/constructionPage/ConstructionAboutSection.css";
 
 const ConstructionAboutSection = () => {
   const stats = [
-    { number: '560+', label: 'Projects Done' },
-    { number: '180+', label: 'Projects Done' },
-    { number: '180+', label: 'Technicians' }
+    { number: "560+", label: "Projects Done" },
+    { number: "180+", label: "Projects Done" },
+    { number: "180+", label: "Technicians" },
   ];
 
   const images = [
-    require('../../../assets/images/home/property-image-3.svg').default,
-    require('../../../assets/images/home/property-image-2.svg').default,
-    require('../../../assets/images/home/property-image.svg').default,
+    require("../../../assets/images/home/property-image-3.svg").default,
+    require("../../../assets/images/home/property-image-2.svg").default,
+    require("../../../assets/images/home/property-image.svg").default,
   ];
 
   const features = [
     {
-      title: 'Earliest Consultation',
-      description: 'Felis bibendum ut tristique et egestas quis ipsum suspendisse ultrices. Aenean vel elit scelerisque mauris pellentesque consectetur adipiscing elit.',
-      icon: '👷‍♂️'
+      title: "Earliest Consultation",
+      description:
+        "Our team provides prompt consultations to help kickstart your project quickly. We assess your requirements and offer expert guidance to bring your vision to life while ensuring the project aligns with your timeline and budget.",
+      icon: "👷‍♂️",
     },
     {
-      title: 'Customized Solution',
-      description: 'Augue interdum velit euismod in pellentesque massa placerat duis ultricies. Purus gravida quis blandit turpis. Dolor sit amet consectetur adipiscing elit.',
-      icon: '📄'
+      title: "Customized Solution",
+      description:
+        "Every project is unique, and so are our solutions. We develop tailored construction plans based on your specific needs, site conditions, and design preferences. From blueprint to final build, we adapt to meet your exact requirements.",
+      icon: "📄",
     },
     {
-      title: 'Affordable Pricing',
-      description: 'Quis vel eros donec ac odio tempor. Praesent semper feugiat nibh sed pulvinar proin gravida hendrerit.Suspendisse interdum consectetur.',
-      icon: '💳'
+      title: "Affordable Pricing",
+      description:
+        "Quality construction doesn’t have to break the bank. We offer competitive pricing and transparent estimates to help you manage costs effectively without sacrificing quality or safety standards. No hidden fees or surprises—just fair pricing.",
+      icon: "💳",
     },
     {
-      title: 'All-In-One Service',
-      description: 'Pellentesque id nibh tortor id. Quis vel eros donec ac odio tempor orci. Tristique sollicitudin nibh sit amet commodo nulla facilisi nullam.',
-      icon: '📝'
-    }
+      title: "All-In-One Service",
+      description:
+        "We handle every aspect of your project, from design and permits to construction and final inspection. Our all-in-one approach ensures seamless coordination and accountability, so you can focus on your vision while we manage the details.",
+      icon: "📝",
+    },
   ];
 
   return (
@@ -43,20 +47,35 @@ const ConstructionAboutSection = () => {
         <span className="construction-subtitle">24/7 HASSLE-FREE</span>
         <h1>Home And Businesses Installation Services</h1>
         <p className="construction-description">
-          Imperdiet massa tincidunt nunc pulvinar sapien. Sit amet facilisis magna etiam odio mollis mollis. Integer lacus ligula, imperdiet vel massa in, maximus suscipit turpis.
+          Our team combines industry expertise with a commitment to quality,
+          ensuring every project is delivered to the highest standards. From
+          initial consultation to final inspection, we focus on precision,
+          efficiency, and customer satisfaction to bring your vision to life.
         </p>
       </div>
 
       <div className="construction-content">
         <div className="construction-stats-section">
           <div className="construction-images-container">
-            <img src={images[0]} alt="Worker installing light" className="construction-main-image" />
+            <img
+              src={images[0]}
+              alt="Worker installing light"
+              className="construction-main-image"
+            />
             <div className="construction-secondary-images">
-              <img src={images[1]} alt="Installation work" className="construction-secondary-image" />
-              <img src={images[2]} alt="Technician at work" className="construction-secondary-image" />
+              <img
+                src={images[1]}
+                alt="Installation work"
+                className="construction-secondary-image"
+              />
+              <img
+                src={images[2]}
+                alt="Technician at work"
+                className="construction-secondary-image"
+              />
             </div>
           </div>
-          
+
           <div className="construction-stats-card">
             {stats.map((stat, index) => (
               <div key={index} className="construction-stat-item">
@@ -93,15 +112,3 @@ const ConstructionAboutSection = () => {
 };
 
 export default ConstructionAboutSection;
-
-
-// const ConstructionAboutSection = () => {
-//   return (
-//     <section id="construction-about" className="construction-about-section">
-//       <h2>About Us</h2>
-//       <p>Victoria Construction specializes in delivering high-quality renovation services.</p>
-//     </section>
-//   );
-// };
-
-// export default ConstructionAboutSection;

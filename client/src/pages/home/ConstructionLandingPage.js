@@ -1,11 +1,54 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../styles/pages/home/ConstructionLandingPage.css';
 import ConstructionHeroSection from '../../components/home/constructionPage/ConstructionHeroSection';
 import ConstructionAboutSection from '../../components/home/constructionPage/ConstructionAboutSection';
 import ConstructionServicesSection from '../../components/home/constructionPage/ConstructionServiceSection';
-import ConstructionWorkProgressSection from '../../components/home/constructionPage/ConstructionWorkProgressSection';
-import ConstructionTrainingProgramSection from '../../components/home/constructionPage/ConstructionTrainingProgramSection';
+import ConstructionWorkSection from '../../components/home/constructionPage/ConstructionWorkSection';
+import ConstructionProgramSection from '../../components/home/constructionPage/ConstructionProgramSection';
+import ConstructionStatisticsSection from '../../components/home/constructionPage/ConstructionStatisticsSection';
+import ConstructionBookingSection from '../../components/home/constructionPage/ConstructionBookingSection';
+import ConstructionPaymentSection from '../../components/home/constructionPage/ConstructionPaymentSection';
+import ConstructionTestimonialSection from '../../components/home/constructionPage/ConstructionTestimonialSection';
 
+
+// ScrollToTop Button Component
+const ScrollToTop = () => {
+  const [visible, setVisible] = useState(false);
+
+  // Show button when page is scrolled down
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setVisible(true);
+    } else {
+      setVisible(false);
+    }
+  };
+
+  // Scroll to the top of the page
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', toggleVisibility);
+    return () => {
+      window.removeEventListener('scroll', toggleVisibility);
+    };
+  }, []);
+
+  return (
+    <div className="scroll-to-top">
+      {visible && (
+        <button onClick={scrollToTop} className="scroll-button">
+          ↑
+        </button>
+      )}
+    </div>
+  );
+};
 
 
 function ConstructionLandingPage() {
@@ -14,8 +57,14 @@ function ConstructionLandingPage() {
       <ConstructionHeroSection />
       <ConstructionAboutSection />
       <ConstructionServicesSection />
-      <ConstructionWorkProgressSection />
-      <ConstructionTrainingProgramSection />
+      <ConstructionWorkSection />
+      <ConstructionProgramSection />
+      <ConstructionBookingSection/>
+      <ConstructionStatisticsSection/>
+      <ConstructionPaymentSection/>
+      <ConstructionTestimonialSection/>
+
+      <ScrollToTop /> 
     </div>
   );
 }

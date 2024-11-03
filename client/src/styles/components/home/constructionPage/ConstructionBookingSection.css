@@ -1,0 +1,144 @@
+.construction-booking-section {
+    background-color: #ffc107;
+    padding: 4rem 0;
+  }
+  
+  .construction-booking-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .construction-booking-content {
+    display: flex;
+    gap: 2rem;
+    align-items: stretch;
+  }
+  
+  .construction-booking-image-section {
+    flex: 1;
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+  
+  .construction-booking-worker-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+  
+  .construction-booking-contact-info {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: white;
+  }
+  
+  .construction-booking-contact-icon {
+    background-color: #ffc107;
+    padding: 0.75rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .construction-booking-contact-text h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .construction-booking-contact-text p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #fff;
+  }
+  
+  .construction-booking-form-section {
+    flex: 1;
+    padding: 2rem;
+  }
+  
+  .construction-booking-form-header {
+    margin-bottom: 2rem;
+  }
+  
+  .construction-booking-form-header h3 {
+    color: #333;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .construction-booking-form-header h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .construction-booking-form-header p {
+    color: #666;
+    line-height: 1.6;
+  }
+  
+  .construction-booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .construction-booking-form-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 10px;
+  }
+  
+  .construction-booking-form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: white;
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  
+  .construction-booking-message-input {
+    min-height: 120px;
+    resize: vertical;
+  }
+  
+  .construction-booking-submit-button {
+    background-color: #212121;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    width: fit-content;
+    transition: background-color 0.3s ease;
+  }
+  
+  .construction-booking-submit-button:hover {
+    background-color: #000;
+  }
+  
+  @media (max-width: 768px) {
+    .construction-booking-content {
+      flex-direction: column;
+    }
+    
+    .construction-booking-form-row {
+      flex-direction: column;
+    }
+    
+    .construction-booking-form-header h2 {
+      font-size: 2rem;
+    }
+  }

@@ -1,0 +1,237 @@
+.construction-payment-section {
+    padding: 4rem 2rem;
+    background-color: #fff;
+    font-family: sans-serif;
+  }
+  
+  .construction-payment-package-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .construction-payment-section-title {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .construction-payment-main-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .construction-payment-description {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    color: #666;
+    line-height: 1.6;
+  }
+  
+  .construction-payment-billing-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  
+  .construction-payment-toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  .construction-payment-toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .construction-payment-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+  }
+  
+  .construction-payment-slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .construction-payment-slider {
+    background-color: #ffc107;
+  }-payment
+  
+  input:checked + .construction-payment-slider:before {
+    transform: translateX(26px);
+  }
+  
+  .construction-payment-packages-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+  
+  .construction-payment-package-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .construction-payment-package-card.construction-payment-popular {
+    background: #ffc107;
+  }
+  
+  .construction-payment-popular-tag {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #333;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+  }
+  
+  .construction-payment-package-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .construction-payment-package-price {
+    margin-bottom: 2rem;
+  }
+  
+  .construction-payment-currency {
+    font-size: 1.2rem;
+    vertical-align: top;
+  }
+  
+  .construction-payment-amount {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .construction-payment-period {
+    color: #666;
+  }
+  
+  .construction-payment-features-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+  
+  .construction-payment-features-list li {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .construction-payment-features-list li.construction-payment-not-included {
+    color: #999;
+    text-decoration: line-through;
+  }
+  
+  .construction-payment-check-icon {
+    color: #28a745;
+    font-weight: bold;
+  }
+  
+  .construction-payment-not-included .construction-payment-check-icon {
+    color: #dc3545;
+  }
+  
+  .construction-payment-get-package-btn {
+    background: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  .construction-payment-popular .construction-payment-get-package-btn {
+    background: #333;
+    color: white;
+  }
+  
+  .construction-payment-get-package-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .construction-payment-footer-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .construction-payment-footer-text {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+  }
+  
+  .construction-payment-footer-text a {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .construction-payment-sponsors-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  
+  .construction-payment-sponsor-logo {
+    max-width: 120px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+  
+  .construction-payment-sponsor-logo:hover {
+    opacity: 1;
+  }
+  
+  @media (max-width: 1024px) {
+    .construction-payment-packages-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .construction-payment-packages-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .construction-payment-sponsors-container {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
