@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import '../../../styles/components/home/constructionPage/ConstructionServiceSection.css';
-import constructionWorker from '../../../assets/images/home/property-image.svg';
-import plumbingImg from '../../../assets/images/home/property-image-3.svg';
-import acInstallImg from '../../../assets/images/home/property-image-3.svg';
-import cabinetImg from '../../../assets/images/home/property-image-2.svg';
-import carpentryImg from '../../../assets/images/home/property-image.svg';
+import constructionWorker from '../../../assets/images/home/construction/images/construction-worker3.jpg';
+import plumbingImg from '../../../assets/images/home/construction/images/plumber1.jpg';
+import acInstallImg from '../../../assets/images/home/construction/images/ac-installer2.jpg';
+import cabinetImg from '../../../assets/images/home/construction/images/cabinet-making2.jpg';
+import carpentryImg from '../../../assets/images/home/construction/images/capentary3.jpg';
 import { HandshakeIcon, ThumbsUpIcon, ClockIcon } from 'lucide-react';
 
 const ConstructionServicesSection = () => {

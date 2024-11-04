@@ -7,7 +7,7 @@ const ConstructionWorkSection = () => {
     <section id="construction-work-section" className="construction-work-section">
       <div className="construction-overlay">
         <h5>GET STARTED TODAY</h5>
-        <h2>Mezan Services<br/>Excellence in Every Service</h2>
+        <h2>Peeman Developers Services<br/>Excellence in Every Service</h2>
         <p>
           From plumbing repairs to AC maintenance and electrical work, we offer a full spectrum of services 
           delivered with precision and care. Our team of licensed professionals is dedicated to providing 

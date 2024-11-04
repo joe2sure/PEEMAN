@@ -1,4 +1,141 @@
+/* Background and overlay setup */
 .contact-container {
+  position: relative;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-image: url('../../../assets/images/home/property-image.svg'); /* Replace with your image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Overlay to dim the background */
+.contact-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6); /* Adjust opacity as needed */
+  z-index: 1;
+}
+
+/* Ensure content appears above overlay */
+.contact-title,
+.contact-subtitle,
+.contact-content {
+  position: relative;
+  z-index: 2;
+}
+
+.contact-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #ffffff; /* Changed to white for better visibility */
+}
+
+.contact-subtitle {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #ffffff; /* Changed to white for better visibility */
+  max-width: 700px;
+}
+
+/* Content Wrapper */
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white */
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 900px;
+  backdrop-filter: blur(5px); /* Adds a subtle blur effect */
+}
+
+@media (min-width: 768px) {
+  .contact-content {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Contact Information */
+.contact-info {
+  background-color: #1428DA;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.contact-info h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.contact-info p {
+  margin-bottom: 0.5rem;
+  color: white !important;
+}
+
+.contact-info a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Contact Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-input,
+.contact-textarea {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.contact-textarea {
+  height: 120px;
+}
+
+.contact-button {
+  background-color: #3C4DE0;
+  color: white;
+  padding: 0.75rem;
+  border: none; 
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-button:hover {
+  background-color: #2a3bb0;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .contact-container {
+    padding: 1rem;
+  }
+}
+
+
+/* .contact-container {
   background: linear-gradient(to bottom, #e0f7fa, #ffffff);
   padding: 2rem;
   display: flex;
@@ -24,7 +161,7 @@
   max-width: 700px;
 }
 
-/* Content Wrapper */
+
 .contact-content {
   display: grid;
   grid-template-columns: 1fr;
@@ -44,7 +181,7 @@
   }
 }
 
-/* Contact Information */
+
 .contact-info {
   background-color: #1428DA;
   padding: 1rem;
@@ -67,7 +204,7 @@
   text-decoration: underline;
 }
 
-/* Contact Form */
+
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -100,9 +237,8 @@
   background-color: #2a3bb0;
 }
 
-/* Responsive Styling */
 @media (max-width: 768px) {
   .contact-container {
     padding: 1rem;
   }
-}
+} */

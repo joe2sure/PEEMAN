@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import '../../../styles/components/home/constructionPage/ConstructionHeroSection.css';
 
 const images = [
-  require('../../../assets/images/home/property-image-3.svg').default,
-  require('../../../assets/images/home/property-image-2.svg').default,
-  require('../../../assets/images/home/property-image.svg').default,
+  require('../../../assets/images/home/construction/images/construction-banner-image-2.png'),
+  require('../../../assets/images/home/construction/images/construction-banner-image-1.png'),
+  require('../../../assets/images/home/construction/images/construction-banner-image-5.png'),
 ];
 
 const ConstructionHeroSection = () => {

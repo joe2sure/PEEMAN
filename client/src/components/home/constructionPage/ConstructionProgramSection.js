@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronUp, ChevronDown } from 'lucide-react';
 import '../../../styles/components/home/constructionPage/ConstructionProgramSection.css';
-import constructionWorker from '../../../assets/images/home/property-image.svg';
+import constructionWorker from '../../../assets/images/home/construction/images/construction-image-8-removebg.png';
 
 const FAQ_ITEMS = [
   {

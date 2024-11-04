@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import '../../../styles/components/home/constructionPage/ConstructionPaymentSection.css';
 
-import partnerImg1 from '../../../assets/images/home/construction/png/partnerImg1.png';
-import partnerImg2 from '../../../assets/images/home/construction/png/partnerImg2.png';
-import partnerImg3 from '../../../assets/images/home/construction/png/partnerImg3.png';
-import partnerImg4 from '../../../assets/images/home/construction/png/partnerImg4.png';
-import partnerImg5 from '../../../assets/images/home/construction/png/partnerImg5.png';
+import partnerImg1 from '../../../assets/images/home/construction/logo/partnerImg1.png';
+import partnerImg2 from '../../../assets/images/home/construction/logo/partnerImg2.png';
+import partnerImg3 from '../../../assets/images/home/construction/logo/partnerImg3.png';
+import partnerImg4 from '../../../assets/images/home/construction/logo/partnerImg4.png';
+import partnerImg5 from '../../../assets/images/home/construction/logo/partnerImg5.png';
 
 const ConstructionPaymentSection = () => {
   const [billingType, setBillingType] = useState('monthly');

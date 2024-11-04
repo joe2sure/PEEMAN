@@ -9,9 +9,9 @@ const ConstructionAboutSection = () => {
   ];
 
   const images = [
-    require("../../../assets/images/home/property-image-3.svg").default,
-    require("../../../assets/images/home/property-image-2.svg").default,
-    require("../../../assets/images/home/property-image.svg").default,
+    require("../../../assets/images/home/construction/images/construction-image-8.png"),
+    require("../../../assets/images/home/construction/images/construction-image-10.jpg"),
+    require("../../../assets/images/home/construction/images/construction-banner-image-1.png"),
   ];
 
   const features = [

@@ -45,9 +45,9 @@ const BuySellRent = () => {
             <img src={priceRangeIcon} alt="Price range icon" />
             <select value={priceRange} onChange={(e) => setPriceRange(e.target.value)}>
               <option value="">Price Range</option>
-              <option value="0-100000">$0 - $100,000</option>
-              <option value="100000-500000">$100,000 - $500,000</option>
-              <option value="500000+">$500,000+</option>
+              <option value="0-100000">£0 - £100,000</option>
+              <option value="100000-500000">£100,000 - £500,000</option>
+              <option value="500000+">£500,000+</option>
             </select>
           </div>
         </div>

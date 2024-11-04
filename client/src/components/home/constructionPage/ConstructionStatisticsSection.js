@@ -1,10 +1,10 @@
 import React from 'react';
 import '../../../styles/components/home/constructionPage/ConstructionStatisticsSection.css';
-import constructionWorker from '../../../assets/images/home/property-image.svg';
-import plumbingImg from '../../../assets/images/home/property-image-3.svg';
-import acInstallImg from '../../../assets/images/home/property-image-3.svg';
-import cabinetImg from '../../../assets/images/home/property-image-2.svg';
-import carpentryImg from '../../../assets/images/home/property-image.svg';
+import constructionWorker from '../../../assets/images/home/construction/images/construction-worker1.jpg';
+import plumbingImg from '../../../assets/images/home/construction/images/construction-worker2.jpg';
+import acInstallImg from '../../../assets/images/home/construction/images/construction-worker-painter.jpg';
+import cabinetImg from '../../../assets/images/home/construction/images/capentary1.jpg';
+import carpentryImg from '../../../assets/images/home/construction/images/ac-installer1.jpg';
 
 const ConstructionStatisticsSection = () => {
   const stats = [
