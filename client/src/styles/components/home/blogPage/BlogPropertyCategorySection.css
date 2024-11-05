@@ -1,0 +1,119 @@
+.blog-property-categories {
+    margin: 2rem 0 3rem 0;
+    padding: 1rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .blog-categories-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .blog-categories-header h2 {
+    font-size: 1.8rem;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+  }
+  
+  .blog-categories-header p {
+    color: #4a5568;
+    font-size: 1.1rem;
+  }
+  
+  .blog-categories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+  
+  .blog-category-card {
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .blog-category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .blog-category-icon {
+    background: #e5e7eb;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem auto;
+    color: #4299e1;
+  }
+  
+  .blog-category-card h3 {
+    font-size: 1.2rem;
+    color: #2d3748;
+    margin-bottom: 0.75rem;
+  }
+  
+  .blog-category-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .blog-property-count {
+    font-weight: 600;
+    color: #4a5568;
+  }
+  
+  .blog-growth-rate {
+    color: #48bb78;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  
+  .blog-category-description {
+    color: #718096;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    min-height: 40px;
+  }
+  
+  .blog-category-button {
+    background-color: transparent;
+    border: 2px solid #4299e1;
+    color: #4299e1;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .blog-category-button:hover {
+    background-color: #4299e1;
+    color: white;
+  }
+  
+  @media (max-width: 1024px) {
+    .blog-categories-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .blog-categories-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .blog-category-card {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+  }

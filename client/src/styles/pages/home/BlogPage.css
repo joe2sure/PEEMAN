@@ -5,13 +5,13 @@
   background-color: #fff;
 }
 
-.content-wrapper {
+.blog-content-wrapper {
   width: 90%;
   margin: 0 auto;
   padding: 20px;
 }
 
-.filter-header {
+.blog-filter-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,23 +19,72 @@
   width: 100%;
 }
 
-.header-icons {
+.blog-header-icons {
   display: flex;
   gap: 15px;
 }
 
-.icon-button {
+.blog-search-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: all 0.3s ease;
+  width: 40px;
+}
+
+.blog-search-container.blog-active {
+  width: 250px;
+  background-color: #f5f5f5;
+  border-radius: 20px;
+  padding: 0 10px;
+}
+
+.blog-search-input {
+  width: 100%;
+  padding: 8px 35px 8px 15px;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 14px;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.blog-search-container.active .blog-search-input {
+  opacity: 1;
+}
+
+.blog-icon-button {
   background: none;
   border: none;
   cursor: pointer;
   padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  z-index: 2;
 }
 
-.search-icon,
+.blog-search-icon,
+.blog-candy-icon {
+  font-size: 20px;
+  color: #333;
+  transition: all 0.3s ease;
+}
+/* .icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+} */
+
+/* .search-icon,
 .candy-icon {
   font-size: 20px;
-  color: #fff;
-}
+  color: #000;
+} */
 
 .blog-main-content {
   display: flex;
@@ -60,55 +109,22 @@
 
   .blog-content {
     width: 100%;
+    max-width: 100%;
     margin: 0 50px;
   }
+
+  .blog-search-container.blog-active {
+    width: 200px;
+  }
+
 }
 
 @media (max-width: 576px) {
   .blog-list {
     grid-template-columns: 1fr;
   }
-}
 
-
-/* .blog-page {
-  padding: 20px;
-}
-
-.main-content {
-  display: flex;
-  justify-content: space-between;
-}
-
-.blog-content {
-  display: flex;
-  width: 75%;
-  flex-direction: column;
-}
-
-.blog-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 20px;
-}
-
-
-@media (max-width: 768px) {
-  .main-content {
-    flex-direction: column;
-  }
-
-  .blog-content {
-    width: 100%;
-  }
-  
-  .sidebar {
-    width: 100%;
+  .blog-search-container.blog-active {
+    width: 150px;
   }
 }
-
-@media (max-width: 576px) {
-  .blog-list {
-    grid-template-columns: 1fr;
-  }
-} */

@@ -21,7 +21,7 @@ const ConstructionBookingSection = () => {
               </div>
               <div className="construction-booking-contact-text">
                 <h3>24/7 Customer Support</h3>
-                <p>contact@constructionpro.com</p>
+                <p>emmaonwe79@gmail.com</p>
               </div>
             </div>
           </div>
