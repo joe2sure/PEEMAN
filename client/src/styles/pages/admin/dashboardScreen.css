@@ -10,12 +10,16 @@
   margin-bottom: 20px;
 }
 
-.header-right {
+.dashboard-header  h2 {
+  color: #3C4DE0;
+}
+
+.dashboard-header-right {
   display: flex;
   align-items: center;
 }
 
-.refresh-icon {
+.dashboard-refresh-icon {
   cursor: pointer;
   width: 24px;
   height: 24px;
@@ -23,7 +27,7 @@
   color: #4A4C56;
 }
 
-.date-picker-btn {
+.dashboard-date-picker-btn {
   display: flex;
   align-items: center;
   background-color: #fff;
@@ -36,13 +40,13 @@
   height: 40px;
 }
 
-.date-picker-icon {
+.dashboard-date-picker-icon {
   margin-right: 8px;
   width: 16px;
   height: 16px;
 }
 
-.property-summary-grid {
+.dashboard-property-summary-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
@@ -63,32 +67,3 @@
     flex-direction: column;
   }
 }
-
-
-
-
-/* .dashboard {
-    padding: 20px 20px 20px 220px;
-  }
-  
-  .property-summary-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .dashboard-content {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .dashboard-content > * {
-    flex: 1;
-  }
-  
-  @media (max-width: 1024px) {
-    .dashboard-content {
-      flex-direction: column;
-    }
-  } */

@@ -1,0 +1,81 @@
+.admin-blog-management-screen {
+  margin: 2rem;
+}
+
+.admin-blog-management-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.admin-blog-management-header h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #3C4DE0;
+}
+
+.admin-blog-post-buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.admin-blog-create-post-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+
+.admin-blog-post-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.admin-blog-post-table th,
+.admin-blog-post-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+}blog-
+
+.admin-blog-post-table th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+.admin-blog-edit-post-btn,
+.admin-blog-delete-post-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+.admin-blog-delete-post-btn {
+  background-color: #dc3545;
+}
+
+.admin-blog-statistics {
+  margin-top: 2rem;
+}
+
+.admin-blog-statistics h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #3C4DE0;
+}
+
+.admin-blog-statistics-chart {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}

@@ -146,12 +146,6 @@ const BlogPage = () => {
                 )}
               </button>
             </div>
-            {/* <button className="icon-button" onClick={() => {}}>
-              <FaSearch className="search-icon" />
-            </button> */}
-            {/* <button className="icon-button" onClick={() => {}}>
-              <FaCandyCane className="candy-icon" />
-            </button> */}
           </div>
         </div>
 

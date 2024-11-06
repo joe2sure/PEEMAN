@@ -4,16 +4,17 @@ import '../../styles/components/admin/SideBar.css';
 const Sidebar = ({ setActiveScreen }) => {
   const menuItems = [
     { title: 'Dashboard', icon: '📊' },
-    { title: 'Category', icon: '📁' },
+    { title: 'Blogs', icon: '📁' },
+    { title: 'Constructions', icon: '🏷️' },
     { title: 'Coupons', icon: '🎟️' },
     { title: 'Posters', icon: '🖼️' },
     { title: 'Notifications', icon: '🔔' },
-    // { title: 'SubCategory', icon: '📂' },
-    // { title: 'Brands', icon: '🏷️' },
-    // { title: 'VariantType', icon: '🔢' },
-    // { title: 'Variants', icon: '🔣' },
-    // { title: 'Orders', icon: '📦' },
+
   ];
+
+  const handleNavigation = (title) => {
+    setActiveScreen(title);  // Trigger the state update in AdminScreen
+  };
 
   return (
     <aside className="sidebar">
@@ -24,7 +25,7 @@ const Sidebar = ({ setActiveScreen }) => {
         <ul>
           {menuItems.map((item) => (
             <li key={item.title}>
-              <button onClick={() => setActiveScreen(item.title)}>
+              <button onClick={() => handleNavigation(item.title)}>
                 <span className="icon">{item.icon}</span>
                 {item.title}
               </button>
@@ -37,3 +38,14 @@ const Sidebar = ({ setActiveScreen }) => {
 };
 
 export default Sidebar;
+
+
+    // { title: 'Constructions', icon: '🏷️' },
+    // { title: 'Coupons', icon: '🎟️' },
+    // { title: 'Posters', icon: '🖼️' },
+    // { title: 'Notifications', icon: '🔔' },
+    // { title: 'SubCategory', icon: '📂' },
+    // { title: 'Brands', icon: '🏷️' },
+    // { title: 'VariantType', icon: '🔢' },
+    // { title: 'Variants', icon: '🔣' },
+    // { title: 'Orders', icon: '📦' },

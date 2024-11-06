@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+
 import '../../styles/pages/admin/dashboardScreen.css';
 import PropertySummaryCard from '../../components/admin/PropertySummaryCard';
 import PropertyListSection from '../../components/admin/PropertyListSection';
@@ -9,9 +12,29 @@ import datePickerIcon from '../../assets/icons/admin/date-picker-icon.svg';
 import DashboardStatisticsCard from '../../components/admin/DashboardStatisticsCard';
 
 
-
-
 const DashboardScreen = () => {
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  const handleRefresh = async () => {
+    setIsRefreshing(true);
+    try {
+      // Add your refresh logic here
+      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulated delay
+      // Refresh your data here
+    } finally {
+      setIsRefreshing(false);
+    }
+  };
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    setIsDatePickerOpen(false);
+    // Add your date change logic here
+  };
+
+
   const propertySummaryItems = [
     {
       title: "All Properties",
@@ -45,27 +68,44 @@ const DashboardScreen = () => {
     <div className="dashboard">
       <div className="dashboard-header">
         <h2>Dashboard</h2>
-        <div className="header-right">
-          <img src={refreshIcon} alt="Refresh" className="refresh-icon" />
-          <button className="date-picker-btn">
-            <img src={datePickerIcon} alt="Date Picker" className="date-picker-icon" />
-            Select Dates
-          </button>
+        <div className="dashboard-header-right">
+        <img 
+              src={refreshIcon} 
+              alt="Refresh" 
+              className="dashboard-refresh-icon"
+              onClick={handleRefresh}
+            />
+            <div className="date-picker-container">
+              <button 
+                className="dashboard-date-picker-btn"
+                onClick={() => setIsDatePickerOpen(!isDatePickerOpen)}
+              >
+                <img src={datePickerIcon} alt="Date Picker" className="dashboard-date-picker-icon" />
+                {selectedDate.toLocaleDateString()}
+              </button>
+              {isDatePickerOpen && (
+                <div className="date-picker-popup">
+                  <DatePicker
+                    selected={selectedDate}
+                    onChange={handleDateChange}
+                    inline
+                  />
+                </div>
+              )}
+            </div>
         </div>
       </div>
 
-      <div className="property-summary-grid">
+      <div className="dashboard-property-summary-grid">
         {propertySummaryItems.map((item, index) => (
           <PropertySummaryCard key={index} info={item} />
         ))}
       </div>
-
-      <DashboardStatisticsCard/>
-
       <div className="dashboard-content">
         <PropertyListSection />
         <PropertyReservationSection />
       </div>
+      <DashboardStatisticsCard/>
     </div>
   );
 };
