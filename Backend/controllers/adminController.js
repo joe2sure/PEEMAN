@@ -71,7 +71,8 @@ export const createProperty = async (req, res) => {
       baths,  
       isOffer, 
       discount, 
-      furnished, 
+      furnished,
+      parkingSpace, 
       propertyType 
     } = req.body;
 
@@ -130,6 +131,7 @@ export const createProperty = async (req, res) => {
       isOffer: isOffer === 'true',
       discount: parsedDiscount,
       furnished: furnished === 'true',
+      parkingSpace: parkingSpace === 'true',
       propertyType
     });
 

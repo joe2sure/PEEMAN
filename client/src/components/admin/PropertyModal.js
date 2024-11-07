@@ -21,6 +21,7 @@ const PropertyModal = ({ isEditing, property, onClose }) => {
     isOffer: false,
     discount: '',
     furnished: false,
+    parkingSpace: false,
     propertyType: '',
     category: '',
     images: [],
@@ -298,6 +299,26 @@ const formatCategory = (type) => {
               </div>
             </div>
           </div>
+
+          <div className="form-group">
+              <label>Parking Space</label>
+              <div className="toggle-buttons">
+                <button
+                  type="button"
+                  className={`toggle-btn ${formValues.parkingSpace ? 'active' : ''}`}
+                  onClick={() => handleToggle('parkingSpace')}
+                >
+                  Yes
+                </button>
+                <button
+                  type="button"
+                  className={`toggle-btn ${!formValues.parkingSpace ? 'active' : ''}`}
+                  onClick={() => handleToggle('parkingSpace')}
+                >
+                  No
+                </button>
+              </div>
+            </div>
 
           {formValues.isOffer && (
             <div className="form-group">

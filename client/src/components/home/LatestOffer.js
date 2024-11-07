@@ -6,8 +6,8 @@ import { fetchProperties } from '../../redux/actions/propertyActions';
 import "../../styles/components/home/LatestOffer.css";
 import bedroomIcon from "../../assets/icons/home/bedroom-icon.svg";
 import bathroomIcon from "../../assets/icons/home/bathroom-icon.svg";
-import parkingIcon from "../../assets/icons/home/parking-icon.svg";
 import defaultPropertyImage from "../../assets/images/home/property-image.svg";
+import buildingIcon from "../../assets/icons/home/building-icon.png";
 
 export const PropertyCard = ({
   id,
@@ -17,15 +17,17 @@ export const PropertyCard = ({
   price,
   originalPrice,
   title,
+  description,
   location,
+  furnished,
   bedrooms,
   bathrooms,
-  parking,
+  parkingSpace,
   properties
 }) => (
   <Link 
     to={`/property/${id}`} 
-    state={{ property: { id, images, image, forRent, price, originalPrice, title, location, bedrooms, bathrooms, parking }, properties }}
+    state={{ property: { id, images, image, forRent, price, originalPrice, title, description, location, furnished, bedrooms, bathrooms, parkingSpace }, properties }}
     className="property-card-link"
   >
     <div className="property-card">
@@ -57,8 +59,8 @@ export const PropertyCard = ({
             <span>{bathrooms} Bathrooms</span>
           </div>
           <div className="feature">
-            <img src={parkingIcon} className="parking" alt="Parking" />
-            <span>{parking ? parking : "No"} Parking</span>
+            <img src={buildingIcon} className="parking" alt="Parking" />
+            <span>{furnished ? `Yes` : "Not"} Furnished</span>
           </div>
         </div>
       </div>
@@ -92,7 +94,7 @@ const transformPropertyData = (adminProperty) => {
     location: adminProperty.location,
     bedrooms: Number(adminProperty.beds) || 0,
     bathrooms: Number(adminProperty.baths) || 0,
-    parking: adminProperty.parking || null,
+    parkingSpace: adminProperty.parkingSpace || null,
     description: adminProperty.description,
     furnished: adminProperty.furnished,
   };    

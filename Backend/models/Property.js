@@ -35,6 +35,10 @@ const PropertySchema = new mongoose.Schema(
       type: Boolean,
       default: false, // Indicating if the property is furnished
     },
+    parkingSpace: {
+      type: Boolean,
+      default: false, // Indicating if the property is furnished
+    },
     discount: Number, // The discount amount when isOffer is true
     propertyType: {
         type: String,

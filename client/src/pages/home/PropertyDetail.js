@@ -206,13 +206,13 @@ const PropertyDetailPage = () => {
               <span>Parking</span>
               <div className="property-detail-page-feature-item">
                 <img src={parkingIcon} className="property-detail-page-parking" alt="Parking" />
-                <span>{property.parking ? property.parking : "No"}</span>
+                <span>{property.parkingSpace ? "Yes" : "No"}</span>
               </div>
             </div>
           </div>
           <div className="property-detail-page-overview-item">
             <span>Furnished</span>
-            <strong>{property.furnished ? "Yes" : "No"}</strong>
+            <span>{property.furnished ? "Yes" : "No"}</span>
           </div>
         </div>
       </section>
