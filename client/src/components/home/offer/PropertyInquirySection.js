@@ -1,6 +1,4 @@
 import React from 'react';
-// import InformationPanel from './InformationPanel';
-// import InquiryForm from './InquiryForm';
 import '../../../styles/components/home/offer/PropertyInquirySection.css'
 import InformationPanel from './InformationPanel';
 import InquiryForm from './InquiryForm';

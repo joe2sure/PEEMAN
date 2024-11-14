@@ -1,4 +1,61 @@
 .toaster {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  color: white !important; /* Ensures text color is white */
+  font-weight: bold;
+  z-index: 1000;
+  animation: slideIn 0.5s, fadeOut 0.5s 2.5s;
+  overflow: hidden; /* Ensures progress bar stays within container */
+}
+
+.toaster p {
+  color: white !important; /* Ensures the message text is white */
+  margin: 0;
+}
+
+.toaster.success {
+  background-color: #4CAF50;
+}
+
+.toaster.error {
+  background-color: #f44336;
+}
+
+/* Progress bar styles */
+.toaster-progress {
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.7); /* Light white overlay */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: width linear; /* Smoothly reduces width */
+}
+
+@keyframes slideIn {
+  from {
+      transform: translateX(100%);
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+      opacity: 1;
+  }
+  to {
+      opacity: 0;
+  }
+}
+
+
+/* .toaster {
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -38,4 +95,4 @@
     to {
       opacity: 0;
     }
-  }
+  } */

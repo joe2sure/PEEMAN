@@ -27,9 +27,10 @@ const BuySellRent = () => {
             <img src={locationIcon} alt="Location icon" />
             <select value={location} onChange={(e) => setLocation(e.target.value)}>
               <option value="">Location</option>
-              <option value="new-york">New York</option>
-              <option value="los-angeles">Los Angeles</option>
-              <option value="chicago">Chicago</option>
+              <option value="wolverhampton">Wolverhampton</option>
+              <option value="bilston">Bilston</option>
+              <option value="walsall">Walsall </option>
+              <option value="west-bromwich">West Bromwich</option>
             </select>
           </div>
           <div className="filter-item">

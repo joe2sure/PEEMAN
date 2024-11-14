@@ -99,7 +99,7 @@ const PropertyListSection = () => {
                 <tr key={property.id}>
                   <td>{property?.name || 'N/A'}</td>
                   <td>{formatCategoryDisplay(property)}</td>
-                  <td>${(property?.price || 0).toLocaleString()}</td>
+                  <td>£{(property?.price || 0).toLocaleString()}</td>
                   <td>
                     <button 
                       onClick={() => handleEdit(property)} 
