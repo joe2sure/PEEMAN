@@ -1,27 +1,33 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import './App.css';
-import LandingPage from './pages/home/landingPage.js'
-import LoginPage from './pages/auth/login.js';
-import SignupPage from './pages/auth/signUp.js';
-import AdminScreen from './pages/admin/adminScreen.js';
-import OfferPage from './pages/home/OfferPage.js';
-import Footer from './components/home/Footer.js';
-import PropertyDetailPage from './pages/home/PropertyDetail.js';
-import Newsletter from './components/home/Newsletter.js';
-import Navbar from './components/home/Navbar.js';
-import ContactPage from './pages/home/ContactPage.js';
-import AboutPage from './pages/home/AboutPage.js';
-import BlogPage from './pages/home/BlogPage.js';
-import ConstructionLandingPage from './pages/home/ConstructionLandingPage.js';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
+import { useSelector } from "react-redux";
+import "./App.css";
+import LandingPage from "./pages/home/landingPage.js";
+import LoginPage from "./pages/auth/login.js";
+import SignupPage from "./pages/auth/signUp.js";
+import AdminScreen from "./pages/admin/adminScreen.js";
+import OfferPage from "./pages/home/OfferPage.js";
+import Footer from "./components/home/Footer.js";
+import PropertyDetailPage from "./pages/home/PropertyDetail.js";
+import Newsletter from "./components/home/Newsletter.js";
+import Navbar from "./components/home/Navbar.js";
+import ContactPage from "./pages/home/ContactPage.js";
+import AboutPage from "./pages/home/AboutPage.js";
+import BlogPage from "./pages/home/BlogPage.js";
+import ConstructionLandingPage from "./pages/home/ConstructionLandingPage.js";
+import JobVacanciesAd from "./components/home/JobVacanciesAd.js";
 // import MainDashboard from './pages/newAdmin/mainDashboard.js';
-
 
 // Layout component to handle conditional rendering
 const Layout = ({ children }) => {
   const location = useLocation();
-  const isAdminRoute = location.pathname === '/admin';
+  const isAdminRoute = location.pathname === "/admin";
 
   return (
     <>
@@ -49,9 +55,11 @@ function App() {
             <Route path="/offers" element={<OfferPage />} />
             <Route path="/property/:id" element={<PropertyDetailPage />} />
             <Route path="/contact" element={<ContactPage />} />
-            <Route path="/about" element={<AboutPage />} />    
+            <Route path="/about" element={<AboutPage />} />
             <Route path="/blog" element={<BlogPage />} />
-            <Route path="/construction" element={<ConstructionLandingPage />} />      
+            <Route path="/construction" element={<ConstructionLandingPage />}>
+              <Route path="job-vacancies" element={<JobVacanciesAd />} />
+            </Route>
             <Route
               path="/login"
               element={!isAuthenticated ? <LoginPage /> : <Navigate to="/" />}
@@ -63,7 +71,11 @@ function App() {
             <Route
               path="/admin"
               element={
-                isAuthenticated && isAdmin ? <AdminScreen /> : <Navigate to="/" />
+                isAuthenticated && isAdmin ? (
+                  <AdminScreen />
+                ) : (
+                  <Navigate to="/" />
+                )
               }
             />
             {/* <Route
@@ -82,11 +94,6 @@ function App() {
 
 export default App;
 
-
-
-
-
-
 // import React from 'react';
 // import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 // import { useSelector } from 'react-redux';
@@ -104,7 +111,6 @@ export default App;
 // import Navbar from './components/home/Navbar.js';
 // import MainDashboard from './pages/newAdmin/mainDashboard.js';
 
-
 // function App() {
 //   const { isAuthenticated, isAdmin } = useSelector((state) => state.auth);
 
@@ -114,18 +120,18 @@ export default App;
 //         <Navbar />
 //         <Routes>
 //           <Route path="/" element={<LandingPage />} />
-//           <Route path="/offers" element={<OfferPage />} /> 
+//           <Route path="/offers" element={<OfferPage />} />
 //           <Route path="/property/:id" element={<PropertyDetailPage />} />
-//           {/* <Route path="/blog" element={<BlogPage />} />     
-//           <Route path="/about" element={<AboutPage />} />   
+//           {/* <Route path="/blog" element={<BlogPage />} />
+//           <Route path="/about" element={<AboutPage />} />
 //           <Route path="/contact" element={<ContactPage />} /> */}
-//           <Route 
-//             path="/login" 
-//             element={!isAuthenticated ? <LoginPage /> : <Navigate to="/" />} 
+//           <Route
+//             path="/login"
+//             element={!isAuthenticated ? <LoginPage /> : <Navigate to="/" />}
 //           />
-//           <Route 
-//             path="/signup" 
-//             element={!isAuthenticated ? <SignupPage /> : <Navigate to="/" />} 
+//           <Route
+//             path="/signup"
+//             element={!isAuthenticated ? <SignupPage /> : <Navigate to="/" />}
 //           />
 //           <Route
 //             path="/admin"

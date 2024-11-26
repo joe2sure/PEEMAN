@@ -1,7 +1,42 @@
 .customize-search {
-  background-color: #FBF2E8;
-  padding: 4rem 2rem;
-  text-align: center;
+  background-color: #FBF2E8; 
+  padding: 4rem 2rem; 
+  text-align: center; 
+  position: relative; 
+}
+
+/* New Hiring Notification Styles */
+.hiring-notification {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  background-color: #1428DA;
+  color: #FFFFFF;
+  padding: 10px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.hiring-notification:hover {
+  background-color: #0A1FAA;
+  transform: scale(1.05);
+}
+
+.hiring-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.hiring-text {
+  font-weight: bold;
+  font-size: 14px;
+  white-space: nowrap;
 }
 
 .customize-search h2 {
@@ -73,6 +108,12 @@
   .card {
       width: calc(50% - 1rem); 
   }
+
+  .hiring-notification {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -87,10 +128,24 @@
   .customize-search {
     padding-right: 5rem;
   }
-}
 
-/* @media (max-width: 768px) {
-  .card {
-      width: 100%; 
+  .hiring-notification {
+    position: fixed;
+    top: 10px;
+    right: 80px;
+    padding: 8px 12px;
+    z-index: 1000;
+    max-width: calc(100vw - 20px);
+    overflow: hidden; 
   }
-} */
+
+  .hiring-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+
+  .hiring-text {
+    font-size: 12px;
+  }
+}

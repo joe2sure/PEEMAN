@@ -9,6 +9,7 @@ import ConstructionStatisticsSection from '../../components/home/constructionPag
 import ConstructionBookingSection from '../../components/home/constructionPage/ConstructionBookingSection';
 import ConstructionPaymentSection from '../../components/home/constructionPage/ConstructionPaymentSection';
 import ConstructionTestimonialSection from '../../components/home/constructionPage/ConstructionTestimonialSection';
+import JobVacanciesAd from '../../components/home/JobVacanciesAd';
 
 
 // ScrollToTop Button Component
@@ -58,6 +59,7 @@ function ConstructionLandingPage() {
       <ConstructionAboutSection />
       <ConstructionServicesSection />
       <ConstructionWorkSection />
+      <JobVacanciesAd/>
       <ConstructionProgramSection />
       <ConstructionBookingSection/>
       <ConstructionStatisticsSection/>
