@@ -6,49 +6,129 @@ const JobVacanciesAd = () => {
   const [selectedJob, setSelectedJob] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Job vacancy data
   const jobVacancies = [
     {
-      id: 1,
-      title: 'Plumbing Specialist',
-      description: 'Experienced plumber needed for residential and commercial projects',
-      image: require('../../assets/images/home/construction/images/plumber-img.jpeg'),
-      category: 'plumbing',
-      fullDescription: 'We are seeking a skilled Plumbing Specialist with extensive experience in both residential and commercial plumbing projects.',
-      roles: [
-        'Install and repair plumbing systems',
-        'Diagnose and fix plumbing issues',
-        'Maintain and service plumbing equipment'
-      ],
-      pay: '$25 - $35 per hour',
-      requirements: [
-        'Valid plumbing license',
-        '5+ years of experience',
-        'Strong problem-solving skills'
-      ]
-    },
-    {
-      id: 2,
-      title: 'Master Carpenter',
-      description: 'Skilled carpenter wanted for custom woodworking and construction',
-      image: require('../../assets/images/home/construction/images/carpenter-img.jpeg'),
-      category: 'carpentry',
-      fullDescription: 'Our company is looking for a highly skilled Master Carpenter with expertise in custom woodworking and construction.',
-      roles: [
-        'Create custom woodworking pieces',
-        'Read and interpret construction blueprints',
-        'Install and repair wooden structures'
-      ],
-      pay: '$30 - $45 per hour',
-      requirements: [
-        'Proven carpentry skills',
-        'Ability to read blueprints',
-        'Attention to detail'
-      ]
-    },
+        id: 1,
+        title: 'Plumber',
+        occupationCode: '531 (Plumbers, Heating and ventilation, installers and Repairs)',
+        description: 'Experienced plumber needed for commercial and private properties',
+        image: require('../../assets/images/home/construction/images/plumber-img.jpeg'),
+        category: 'plumbing',
+        fullDescription: 'We are seeking a skilled Plumber for 1st fix and second fix plumbing in bathrooms and kitchens, boiler and heating installations, repairs, and maintenance across commercial and private properties.',
+        jobDetails: {
+          type: 'Full-time',
+          hours: '40 hours per week minimum',
+          schedule: 'Monday to Friday, with Saturday during peak trading times',
+          hierarchyLevel: 'Level 1',
+        },
+        compensation: {
+          salary: {
+            annual: '£28,800',
+            hourly: '£14.77'
+          },
+          benefits: [
+            'Pension',
+            '28 days annual leave',
+            'Future development and career opportunities',
+            'Access to employee assistance program',
+            'Competitive overtime rate where applicable',
+            'Opportunities for career advancement and skill development',
+            'Training and mentoring programs'
+          ]
+        },
+        roles: [
+          '1st fix and second fix plumbing for bathrooms and kitchens',
+          'Boiler installations',
+          'Full heating installations',
+          'Repairs and maintenance',
+          'Working in commercial and private properties',
+          'Ordering correct equipment',
+          'Installing and maintaining all forms of plumbing',
+          'Drainage maintenance on customer commercial sites',
+          'Planned maintenance including jetting drains, interceptor servicing, pump station inspection',
+          'Cleaning gullies and ACO\'s',
+          'Maintaining and repairing urinals and toilets'
+        ],
+        requirements: [
+          'Plumbing expertise in commercial and residential settings'
+        ],
+        pay: '£28,800 per annum (£14.77 per hour)',
+        googleFormLink: 'https://forms.gle/oMNo4b8rA9BoTQAx9'
+      },
+      {
+        id: 2,
+        title: 'Carpenter',
+        occupationCode: '5316 (Carpenter and Joiners)',
+        description: 'Skilled carpenter for high-quality woodworking and construction',
+        image: require('../../assets/images/home/construction/images/carpenter-img.jpeg'),
+        category: 'carpentry',
+        fullDescription: 'We are seeking a skilled Carpenter to create high-quality entrance gates, outdoor furniture, and support various construction projects.',
+        jobDetails: {
+          type: 'Full-time',
+          hours: '40 hours per week minimum',
+          schedule: 'Monday to Friday, with Saturdays during peak trading times',
+          hierarchyLevel: 'Level 1',
+        },
+        compensation: {
+          salary: {
+            annual: '£25,200',
+            hourly: '£12.92'
+          },
+          benefits: [
+            'Pension',
+            '28 days annual leave',
+            'Future development and career opportunities',
+            'Access to employee assistance program',
+            'Competitive overtime rate where applicable',
+            'Opportunities for career advancement and skill development',
+            'Training and mentoring programs'
+          ]
+        },
+        qualifications: [
+          'CSCS blue card – carpentry and formwork',
+          'NVQ level 2 or higher BTEC/City & Guilds or equivalent in carpentry',
+          'Formal apprenticeship or craft trained equivalent',
+          'Minimum 2-3 years experience',
+          'Experience making gates and garden furniture preferred',
+          'Valid car driving license (UK) or international driving permit'
+        ],
+        personalQualities: [
+          'Excellent attention to details',
+          'High-quality workmanship',
+          'Punctual, hardworking, and trustworthy',
+          'Able to work independently and as part of a team',
+          'Good communication skills',
+          'Able to follow safety guidelines'
+        ],
+        roles: [
+          'Make high-quality entrance gates and outdoor furniture',
+          'Use various saws and machinery',
+          'Ensure high standard of work and meet deadlines',
+          'Provide excellent customer service',
+          'Integrate with the team',
+          'Undergo training and development',
+          'Make measurements and prepare sites for woodwork',
+          'Prepare drawings for cabinetry, framing, and construction projects',
+          'Select and evaluate materials',
+          'Source timber by size, strength, and budget',
+          'Assess and review carpentry or joinery refurbishments',
+          'Perform finish carpentry including siding, flooring, and built-ins'
+        ],
+        requirements: [
+          'Minimum 2-3 years of carpentry experience',
+          'Valid CSCS card',
+          'NVQ level 2 or equivalent in carpentry'
+        ],
+        additionalConsiderations: [
+          'Ability to meet skilled worker visa requirements if applying from outside the UK',
+          'IELTS certification may be required for international applicants'
+        ],
+        pay: '£25,200 per annum (£12.92 per hour)',
+        googleFormLink: 'https://forms.gle/oMNo4b8rA9BoTQAx9'
+      },
     {
       id: 3,
-      title: 'Construction Manager',
+      title: 'Construction Expert',
       description: 'Leadership role overseeing large-scale building projects',
       image: require('../../assets/images/home/construction/images/builder-img.jpeg'),
       category: 'building',
@@ -58,12 +138,13 @@ const JobVacanciesAd = () => {
         'Coordinate construction teams',
         'Ensure compliance with safety regulations'
       ],
-      pay: '$70,000 - $90,000 per year',
       requirements: [
         'Construction management degree',
         '7+ years of experience',
         'Strong leadership skills'
-      ]
+      ],
+      pay: '$70,000 - $90,000 per year',
+      googleFormLink: 'https://forms.gle/oMNo4b8rA9BoTQAx9'
     }
   ];
 
@@ -78,8 +159,13 @@ const JobVacanciesAd = () => {
   };
 
   const handleApplyNow = () => {
-    alert(`Applying for ${selectedJob.title}`);
-    closeModal();
+    if (selectedJob && selectedJob.googleFormLink) {
+      // Open Google Form in a new tab
+      window.open(selectedJob.googleFormLink, '_blank');
+      closeModal();
+    } else {
+      alert('Application form not available at the moment.');
+    }
   };
 
   return (
@@ -140,13 +226,13 @@ const JobVacanciesAd = () => {
             <div className="modal-body">
               <section>
                 <h3>Job Description</h3>
-                <p>{selectedJob.fullDescription}</p>
+                <p>{selectedJob.fullDescription || selectedJob.description}</p>
               </section>
 
               <section>
                 <h3>Key Responsibilities</h3>
                 <ul>
-                  {selectedJob.roles.map((role, index) => (
+                  {selectedJob.roles && selectedJob.roles.map((role, index) => (
                     <li key={index}>{role}</li>
                   ))}
                 </ul>
@@ -157,14 +243,16 @@ const JobVacanciesAd = () => {
                 <p>{selectedJob.pay}</p>
               </section>
 
-              <section>
-                <h3>Requirements</h3>
-                <ul>
-                  {selectedJob.requirements.map((req, index) => (
-                    <li key={index}>{req}</li>
-                  ))}
-                </ul>
-              </section>
+              {selectedJob.requirements && selectedJob.requirements.length > 0 && (
+                <section>
+                  <h3>Requirements</h3>
+                  <ul>
+                    {selectedJob.requirements.map((req, index) => (
+                      <li key={index}>{req}</li>
+                    ))}
+                  </ul>
+                </section>
+              )}
             </div>
 
             <div className="modal-footer">
@@ -189,7 +277,6 @@ const JobVacanciesAd = () => {
 };
 
 export default JobVacanciesAd;
-
 
 // import React from 'react';
 // import { useNavigate } from 'react-router-dom';
