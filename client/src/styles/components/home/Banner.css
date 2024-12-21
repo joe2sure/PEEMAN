@@ -8,6 +8,7 @@
   color: #F5F5F5;
   overflow: hidden;
   padding: 4rem 2rem;
+  margin-top: 80px;
 }
 
 .banner-image-overlay {
@@ -107,6 +108,39 @@
   background-color: white;
 }
 
+.hiring-notification {
+  position: fixed; /* Change to fixed position */
+  top: 100px; /* Position below navbar */
+  right: 40px;
+  display: flex;
+  align-items: center;
+  background-color: #1428DA;
+  color: #FFFFFF;
+  padding: 10px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 9999; /* Higher z-index to ensure it's above navbar */
+}
+
+.hiring-notification:hover {
+  background-color: #0A1FAA;
+  transform: scale(1.05);
+}
+
+.hiring-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.hiring-text {
+  font-weight: bold;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
 /* Responsive Adjustments */
 
 @media (max-width: 992px) {
@@ -143,6 +177,37 @@
 
   .banner-content p {
     font-size: 16px;
+  }
+
+  .hiring-notification {
+    position: absolute;
+    top: 25%; 
+    right: 20px;
+    display: flex;
+    align-items: center;
+    background-color: #1428DA;
+    color: #FFFFFF;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .hiring-notification:hover {
+    background-color: #0A1FAA;
+    transform: scale(1.05);
+  }
+
+  .hiring-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+
+  .hiring-text {
+    font-size: 12px;
   }
 }
 

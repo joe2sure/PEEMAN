@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import '../../styles/components/home/Banner.css';
 import arrowRight from '../../assets/icons/home/arrow-right.svg';
 import defaultBannerImage from '../../assets/images/home/banner-image.svg';
+import hiringIcon from '../../assets/icons/home/hiring-icon.svg';
 
 const Banner = () => {
+  const navigate = useNavigate();
   const { properties } = useSelector(state => state.property);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const handleHiringNotificationClick = () => {
+    navigate('/construction/job-vacancies');
+  };
 
   const bannerImages = React.useMemo(() => {
     const uniqueImages = [];
@@ -38,6 +45,12 @@ const Banner = () => {
 
   return (
     <section className="banner">
+      {/* Hiring Notification Card */}
+      <div className="hiring-notification" onClick={handleHiringNotificationClick}>
+        <img src={hiringIcon} alt="Hiring Notification" className="hiring-icon" />
+        <span className="hiring-text">We are Hiring!!!</span>
+      </div>
+
       {/* Banner image with overlay */}
       <div className="banner-image-overlay">
         <img 

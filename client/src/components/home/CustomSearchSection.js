@@ -1,26 +1,12 @@
 import React from 'react'; 
-import { useNavigate } from 'react-router-dom';
 import '../../styles/components/home/CustomSearchSection.css'; 
 import buyIcon from '../../assets/icons/home/buy-icon.svg'; 
 import rentIcon from '../../assets/icons/home/rent-icon.svg'; 
 import SellIcon from '../../assets/icons/home/sell-icon.svg';
-import hiringIcon from '../../assets/icons/home/hiring-icon.svg'; 
  
 const CustomSearchSection = () => { 
-  const navigate = useNavigate();
-
-  const handleHiringNotificationClick = () => {
-    navigate('/construction/job-vacancies');
-  };
-
   return ( 
     <section className="customize-search"> 
-      {/* Job Vacancy Notification Card */}
-      <div className="hiring-notification" onClick={handleHiringNotificationClick}>
-        <img src={hiringIcon} alt="Hiring Notification" className="hiring-icon" />
-        <span className="hiring-text">We are Hiring!!!</span>
-      </div>
-
       <h2>Customize Your Search</h2> 
       <p>We let you tell us what kind of property you want to buy, rent or sell</p> 
       <div className="card-container"> 
@@ -43,7 +29,7 @@ const CustomSearchSection = () => {
     </section> 
   ); 
 } 
- 
+
 export default CustomSearchSection;
 
 // import React from 'react';

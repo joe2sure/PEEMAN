@@ -1,22 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import '../../styles/pages/home/ConstructionLandingPage.css';
-import ConstructionHeroSection from '../../components/home/constructionPage/ConstructionHeroSection';
-import ConstructionAboutSection from '../../components/home/constructionPage/ConstructionAboutSection';
-import ConstructionServicesSection from '../../components/home/constructionPage/ConstructionServiceSection';
-import ConstructionWorkSection from '../../components/home/constructionPage/ConstructionWorkSection';
-import ConstructionProgramSection from '../../components/home/constructionPage/ConstructionProgramSection';
-import ConstructionStatisticsSection from '../../components/home/constructionPage/ConstructionStatisticsSection';
-import ConstructionBookingSection from '../../components/home/constructionPage/ConstructionBookingSection';
-import ConstructionPaymentSection from '../../components/home/constructionPage/ConstructionPaymentSection';
-import ConstructionTestimonialSection from '../../components/home/constructionPage/ConstructionTestimonialSection';
-import JobVacanciesAd from '../../components/home/JobVacanciesAd';
+import Spinner from '../../utility/Spinner';
 
+
+// Lazy load all components
+const ConstructionHeroSection = lazy(() => import('../../components/home/constructionPage/ConstructionHeroSection'));
+const ConstructionAboutSection = lazy(() => import('../../components/home/constructionPage/ConstructionAboutSection'));
+const ConstructionServicesSection = lazy(() => import('../../components/home/constructionPage/ConstructionServiceSection'));
+const ConstructionWorkSection = lazy(() => import('../../components/home/constructionPage/ConstructionWorkSection'));
+const ConstructionProgramSection = lazy(() => import('../../components/home/constructionPage/ConstructionProgramSection'));
+const ConstructionStatisticsSection = lazy(() => import('../../components/home/constructionPage/ConstructionStatisticsSection'));
+const ConstructionBookingSection = lazy(() => import('../../components/home/constructionPage/ConstructionBookingSection'));
+const ConstructionPaymentSection = lazy(() => import('../../components/home/constructionPage/ConstructionPaymentSection'));
+const ConstructionTestimonialSection = lazy(() => import('../../components/home/constructionPage/ConstructionTestimonialSection'));
+const JobVacanciesAd = lazy(() => import('../../components/home/JobVacanciesAd'));
 
 // ScrollToTop Button Component
 const ScrollToTop = () => {
   const [visible, setVisible] = useState(false);
 
-  // Show button when page is scrolled down
   const toggleVisibility = () => {
     if (window.pageYOffset > 300) {
       setVisible(true);
@@ -25,7 +27,6 @@ const ScrollToTop = () => {
     }
   };
 
-  // Scroll to the top of the page
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -51,22 +52,86 @@ const ScrollToTop = () => {
   );
 };
 
+// Component to wrap sections with Suspense and intersection observer
+const LazySection = ({ children }) => {
+  const [shouldLoad, setShouldLoad] = useState(false);
+  const sectionRef = React.useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoad(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '100px' }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={sectionRef}>
+      {shouldLoad && (
+        <Suspense fallback={<Spinner />}>
+          {children}
+        </Suspense>
+      )}
+    </div>
+  );
+};
 
 function ConstructionLandingPage() {
   return (
     <div className="construction-landing-page">
-      <ConstructionHeroSection />
-      <ConstructionAboutSection />
-      <ConstructionServicesSection />
-      <ConstructionWorkSection />
-      <JobVacanciesAd/>
-      <ConstructionProgramSection />
-      <ConstructionBookingSection/>
-      <ConstructionStatisticsSection/>
-      <ConstructionPaymentSection/>
-      <ConstructionTestimonialSection/>
+      {/* Hero section loads immediately */}
+      <Suspense fallback={<Spinner />}>
+        <ConstructionHeroSection />
+      </Suspense>
 
-      <ScrollToTop /> 
+      {/* Other sections load when scrolled into view */}
+      <LazySection>
+        <ConstructionAboutSection />
+      </LazySection>
+
+      <LazySection>
+        <ConstructionServicesSection />
+      </LazySection>
+
+      <LazySection>
+        <ConstructionWorkSection />
+      </LazySection>
+
+      <LazySection>
+        <JobVacanciesAd />
+      </LazySection>
+
+      <LazySection>
+        <ConstructionProgramSection />
+      </LazySection>
+
+      <LazySection>
+        <ConstructionBookingSection />
+      </LazySection>
+
+      <LazySection>
+        <ConstructionStatisticsSection />
+      </LazySection>
+
+      <LazySection>
+        <ConstructionPaymentSection />
+      </LazySection>
+
+      <LazySection>
+        <ConstructionTestimonialSection />
+      </LazySection>
+
+      <ScrollToTop />
     </div>
   );
 }

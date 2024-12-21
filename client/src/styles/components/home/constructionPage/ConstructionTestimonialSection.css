@@ -18,14 +18,10 @@
     padding-right: 50px;
   }
   
-  /* .construction-testimonial-worker {
-    width: 100%;
-    max-width: 400px;
-  } */
   .construction-testimonial-worker {
     width: 100%;
     max-width: 400px;
-    height: 500px; /* Fixed height for the container */
+    height: 500px; 
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -47,7 +43,7 @@
   
   .construction-testimonial-right {
     flex: 0 0 55%;
-    padding-right: 80px; /* Space for navigation dots */
+    padding-right: 80px; 
     position: relative;
   }
 
