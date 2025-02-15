@@ -20,6 +20,23 @@
   overflow: hidden;
 }
 
+.watch-live-circle {
+  position: absolute;
+  bottom: 20px;
+  right: 40px;
+  width: 200px;
+  height: 200px;
+  border: 2px solid var(--hover-color);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--hover-color);
+  font-size: 24px;
+  animation: heartbeat 1.5s infinite;
+  cursor: pointer;
+}
+
 .banner-carousel-image {
   width: 100%;
   height: 100%;
@@ -142,6 +159,18 @@
 }
 
 /* Responsive Adjustments */
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 
 @media (max-width: 992px) {
   .banner {
@@ -208,6 +237,12 @@
 
   .hiring-text {
     font-size: 12px;
+  }
+
+  .watch-live-circle {
+    width: 150px;
+    height: 150px;
+    font-size: 20px;
   }
 }
 

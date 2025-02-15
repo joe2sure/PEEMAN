@@ -19,6 +19,8 @@ import notificationRoutes from './routes/notificationRoutes.js';
 import couponRoutes from './routes/couponRoutes.js';
 import propertyUserInteractionRoutes from './routes/propertyUserInteractionRoutes.js';
 import blogRoutes from './routes/blogRoutes.js';
+import formRoutes from './routes/formRoutes.js';
+
 
 // Load environment variables
 dotenv.config();
@@ -98,6 +100,7 @@ app.use(`${api}/notification`, notificationRoutes);
 app.use(`${api}/coupon`, couponRoutes);
 app.use(`${api}/properties`, propertyUserInteractionRoutes);
 app.use(`${api}/blog`, blogRoutes);
+app.use(`${api}/forms`, formRoutes);
 
 // Global Error handling in the server
 app.use((err, req, res, next) => {
