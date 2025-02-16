@@ -1,5 +1,5 @@
 import express from "express";
-import uploadMiddleware from "../middlewares/uploadMiddleware.js";
+import {mediaUploadMiddleware} from "../middlewares/uploadMiddleware.js";
 import {
   createProperty,
   deleteProperty,
@@ -68,7 +68,7 @@ router.post(
   "/properties",
   isAuthorizeMiddleware,
   isAdmin,
-  uploadMiddleware.array("media", 6),
+  mediaUploadMiddleware.array("media", 6),
   createProperty
 );
 

@@ -1,7 +1,7 @@
 // notificationRoutes.js
 import express from 'express';
 import { sendNotification, trackNotification, getAllNotifications, deleteNotification } from '../controllers/notificationController.js';
-import uploadMiddleware from '../middlewares/uploadMiddleware.js';
+import {mediaUploadMiddleware} from '../middlewares/uploadMiddleware.js';
 import { isAuthorizeMiddleware } from '../middlewares/authMiddleware.js';
 import { isAdmin } from '../middlewares/adminMiddleware.js';
 
@@ -42,7 +42,7 @@ const router = express.Router();
  *       403:
  *         description: Forbidden, admin access only
  */
-router.post('/send', isAuthorizeMiddleware, isAdmin, uploadMiddleware.array('image', 1), sendNotification);
+router.post('/send', isAuthorizeMiddleware, isAdmin, mediaUploadMiddleware.array('image', 1), sendNotification);
 
 /**
  * @swagger

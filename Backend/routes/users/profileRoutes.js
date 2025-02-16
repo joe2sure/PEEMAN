@@ -1,7 +1,7 @@
 import express from 'express';
 import { uploadProfilePicture, updateUsername, deleteFavoriteProperties, getProfile } from '../../controllers/users/profileController.js';
 import { isAuthorizeMiddleware } from '../../middlewares/authMiddleware.js';
-import uploadMiddleware from '../../middlewares/uploadMiddleware.js';
+import {mediaUploadMiddleware} from '../../middlewares/uploadMiddleware.js';
 
 const router = express.Router();
 
@@ -80,7 +80,7 @@ router.put('/update-username', isAuthorizeMiddleware, updateUsername);
  *       500:
  *         description: Internal server error
  */
-router.put('/upload-avatar', isAuthorizeMiddleware, uploadMiddleware.single('avatar'), uploadProfilePicture);
+router.put('/upload-avatar', isAuthorizeMiddleware, mediaUploadMiddleware.single('avatar'), uploadProfilePicture);
 
 /**
  * @swagger
@@ -101,4 +101,3 @@ router.put('/upload-avatar', isAuthorizeMiddleware, uploadMiddleware.single('ava
 router.delete('/favorite-properties', isAuthorizeMiddleware, deleteFavoriteProperties);
 
 export default router;
-

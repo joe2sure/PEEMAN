@@ -1,6 +1,6 @@
 import express from 'express';
 import { getAllPosters, getPosterById, createPoster, updatePoster, deletePoster } from '../controllers/posterController.js';
-import uploadMiddleware from '../middlewares/uploadMiddleware.js';
+import {mediaUploadMiddleware} from '../middlewares/uploadMiddleware.js';
 import { isAuthorizeMiddleware } from "../middlewares/authMiddleware.js";
 import { isAdmin } from "../middlewares/adminMiddleware.js";
 
@@ -82,7 +82,7 @@ router.get('/:id', isAuthorizeMiddleware, isAdmin, getPosterById);
  *       400:
  *         description: Invalid input.
  */
-router.post('/', isAuthorizeMiddleware, isAdmin, uploadMiddleware.single('img'), createPoster);
+router.post('/', isAuthorizeMiddleware, isAdmin, mediaUploadMiddleware.single('img'), createPoster);
 
 /**
  * @swagger
@@ -124,7 +124,7 @@ router.post('/', isAuthorizeMiddleware, isAdmin, uploadMiddleware.single('img'),
  *       400:
  *         description: Invalid input.
  */
-router.put('/:id', isAuthorizeMiddleware, isAdmin, uploadMiddleware.single('img'), updatePoster);
+router.put('/:id', isAuthorizeMiddleware, isAdmin, mediaUploadMiddleware.single('img'), updatePoster);
 
 /**
  * @swagger

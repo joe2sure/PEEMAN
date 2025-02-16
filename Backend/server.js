@@ -22,6 +22,8 @@ import blogRoutes from './routes/blogRoutes.js';
 import formRoutes from './routes/formRoutes.js';
 
 
+
+
 // Load environment variables
 dotenv.config();
 const app = express();
@@ -101,6 +103,8 @@ app.use(`${api}/coupon`, couponRoutes);
 app.use(`${api}/properties`, propertyUserInteractionRoutes);
 app.use(`${api}/blog`, blogRoutes);
 app.use(`${api}/forms`, formRoutes);
+
+
 
 // Global Error handling in the server
 app.use((err, req, res, next) => {

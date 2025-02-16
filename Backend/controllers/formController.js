@@ -1,49 +1,108 @@
+import cloudinary from '../utility/cloudinary.js';
+import Form from '../models/Form.js';
+
+// Upload form function
 export const uploadForm = async (req, res) => {
-    try {
-      if (!req.file) {
-        return res.status(400).json({
-          success: false,
-          message: 'No file uploaded',
-        });
-      }
-  
-      // Add detailed logging
-      console.log('File upload details:', {
-        path: req.file.path,
-        filename: req.file.filename,
-        mimetype: req.file.mimetype,
-        size: req.file.size
-      });
-  
-      // Verify the file exists in Cloudinary
-      try {
-        const result = await cloudinary.api.resource(req.file.filename, { resource_type: 'raw' });
-        console.log('Cloudinary verification:', result);
-      } catch (error) {
-        console.error('Cloudinary verification failed:', error);
-      }
-  
-      res.status(200).json({
-        success: true,
-        message: 'Form uploaded successfully',
-        data: {
-          url: req.file.path,
-          public_id: req.file.filename,
-          format: 'pdf',
-          originalName: req.file.originalname,
-          size: req.file.size
-        }
-      });
-    } catch (error) {
-      console.error('Error uploading form:', error);
-      res.status(500).json({
+  try {
+    if (!req.file) {
+      return res.status(400).json({
         success: false,
-        message: 'Error uploading form',
-        error: error.message,
+        message: 'No file uploaded',
       });
     }
-  };
 
+    console.log('Processing upload:', {
+      path: req.file.path,
+      filename: req.file.filename,
+      mimetype: req.file.mimetype,
+      size: req.file.size,
+    });
+
+    // Upload to Cloudinary with modified settings
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      resource_type: 'raw',
+      public_id: `forms/${req.file.filename}`,
+      access_mode: 'authenticated',
+      type: 'private',
+      format: 'pdf',
+    });
+
+    // Generate a temporary URL that's valid for 1 hour
+    const signedUrl = cloudinary.utils.private_download_url(
+      result.public_id,
+      result.format,
+      {
+        resource_type: 'raw',
+        type: 'private',
+        expires_at: Math.floor(Date.now() / 1000) + 3600,
+      }
+    );
+
+    // Save form metadata to database
+    const newForm = new Form({
+      url: result.secure_url, // Store the permanent URL
+      public_id: result.public_id,
+      format: 'pdf',
+      originalName: req.file.originalname,
+      size: req.file.size,
+    });
+
+    await newForm.save();
+
+    // Return both permanent and temporary URLs
+    res.status(200).json({
+      success: true,
+      message: 'Form uploaded successfully',
+      data: {
+        ...newForm.toJSON(),
+        temporaryUrl: signedUrl
+      }
+    });
+  } catch (error) {
+    console.error('Error uploading form:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Error uploading form',
+      error: error.message,
+    });
+  }
+};
+
+// Get signed URL function
+export const getSignedUrl = async (req, res) => {
+  try {
+    const { public_id } = req.params;
+    
+    const form = await Form.findOne({ public_id });
+    if (!form) {
+      return res.status(404).json({
+        success: false,
+        message: 'Form not found'
+      });
+    }
+
+    const signedUrl = cloudinary.utils.private_download_url(
+      public_id,
+      'pdf',
+      {
+        resource_type: 'raw',
+        type: 'private',
+        expires_at: Math.floor(Date.now() / 1000) + 3600
+      }
+    );
+
+    res.json({
+      success: true,
+      url: signedUrl
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error generating signed URL',
+      error: error.message
+    });
+  }
+};
 
 // import cloudinary from '../utility/cloudinary.js';
 

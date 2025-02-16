@@ -10,7 +10,7 @@ import {
 } from '../controllers/blogController.js';
 import { isAuthorizeMiddleware } from '../middlewares/authMiddleware.js';
 import { isAdmin } from '../middlewares/adminMiddleware.js';
-import uploadMiddleware from '../middlewares/uploadMiddleware.js';
+import {mediaUploadMiddleware} from '../middlewares/uploadMiddleware.js';
 
 const router = express.Router();
 
@@ -130,7 +130,7 @@ router.post('/:id/like', isAuthorizeMiddleware, likePost);
  *       403:
  *         description: Admin access required
  */
-router.post('/post', isAuthorizeMiddleware, isAdmin, uploadMiddleware.single('image'), createPost);
+router.post('/post', isAuthorizeMiddleware, isAdmin, mediaUploadMiddleware.single('image'), createPost);
 
 /**
  * @swagger

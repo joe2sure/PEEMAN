@@ -1,18 +1,16 @@
+// uploadMiddleware.js
 import multer from 'multer';
 import { CloudinaryStorage } from 'multer-storage-cloudinary';
 import dotenv from 'dotenv';
 import cloudinary from '../utility/cloudinary.js';
 dotenv.config();
 
-// Test Cloudinary connection before setting up storage
-// await cloudinary.test().catch(console.error);
-
-const storage = new CloudinaryStorage({
+// Media (Images and Videos) Storage Configuration
+const mediaStorage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: (req, file) => {
     const baseParams = {
-      public_id: `${file.originalname.replace(/\.[^/.]+$/, '')}_${Date.now()}`,
-      resource_type: 'auto' // Let Cloudinary detect the resource type
+      public_id: `${file.originalname.replace(/\.[^/.]+$/, '')}_${Date.now()}`
     };
 
     if (file.mimetype.startsWith('image/')) {
@@ -27,37 +25,74 @@ const storage = new CloudinaryStorage({
         folder: 'properties/videos',
         allowed_formats: ['mp4', 'avi', 'mov']
       };
-    } else if (file.mimetype === 'application/pdf') {
-      return {
-        ...baseParams,
-        folder: 'forms',
-        allowed_formats: ['pdf']
-      };
     }
     
-    throw new Error('Invalid file type');
+    throw new Error('Invalid media type');
   }
 });
 
-const uploadMiddleware = multer({
-  storage: storage,
+// Form (PDF) Storage Configuration
+const formStorage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: (req, file) => {
+    return {
+      folder: 'forms',
+      upload_preset: process.env.CLOUDINARY_UPLOAD_PRESET,
+      public_id: `${file.originalname.replace(/\.[^/.]+$/, '')}_${Date.now()}`,
+      resource_type: 'raw',
+      format: 'pdf',
+      type: 'private',
+      access_mode: 'authenticated',
+      use_filename: true,
+      unique_filename: true
+    };
+  }
+});
+// const formStorage = new CloudinaryStorage({
+//   cloudinary: cloudinary,
+//   params: (req, file) => {
+//     return {
+//       public_id: `${file.originalname.replace(/\.[^/.]+$/, '')}_${Date.now()}`,
+//       resource_type: 'raw',
+//       format: 'pdf',
+//       folder: 'forms',
+//       access_mode: 'authenticated',
+//       type: 'private'
+//     };
+//   }
+// });
+
+// Media Upload Middleware
+export const mediaUploadMiddleware = multer({
+  storage: mediaStorage,
   limits: {
     fileSize: 10 * 1024 * 1024,
-    files: 6,
+    files: 6
   },
   fileFilter: (req, file, cb) => {
-    console.log('Processing file:', file.originalname, 'Type:', file.mimetype); // Add logging
-    if (file.mimetype.startsWith('image/') || 
-        file.mimetype.startsWith('video/') || 
-        file.mimetype === 'application/pdf') {
+    if (file.mimetype.startsWith('image/') || file.mimetype.startsWith('video/')) {
       cb(null, true);
     } else {
-      cb(new Error('Only images, videos, and PDFs are allowed!'), false);
+      cb(new Error('Only images and videos are allowed!'), false);
     }
-  },
+  }
 });
 
-export default uploadMiddleware;
+// Form Upload Middleware
+export const formUploadMiddleware = multer({
+  storage: formStorage,
+  limits: {
+    fileSize: 10 * 1024 * 1024,
+    files: 1
+  },
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype === 'application/pdf') {
+      cb(null, true);
+    } else {
+      cb(new Error('Only PDF files are allowed!'), false);
+    }
+  }
+});
 
 
 // import multer from 'multer';
