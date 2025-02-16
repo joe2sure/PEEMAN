@@ -19,6 +19,11 @@ const handleResponse = async (response) => {
       throw new Error(errorText || response.statusText || 'An unknown error occurred');
     }
   }
+
+  // For PDF downloads
+  if (contentType && contentType.includes('application/pdf')) {
+    return await response.arrayBuffer();
+  }
   
   // Handle empty responses
   if (!contentType || response.headers.get('content-length') === '0') {

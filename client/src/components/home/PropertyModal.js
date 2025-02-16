@@ -19,14 +19,14 @@ const PropertyModal = ({ onClose }) => {
   const handleDownloadGuarantorForm = () => {
     handleDownload(
       'forms/forms/Guarantor2_1739730317969.pdf',
-      'Guarantor2.pdf'
+      'Guarantor_Form.pdf'
     );
   };
 
   const handleDownloadPropertyQuestionnaire = () => {
     handleDownload(
-      'forms/Property_Questionnaire',
-      'Property_Questionnaire.pdf'
+      'forms/forms/Propertyquestionairre_1739733737805.pdf',
+      'Propertyquestionairre.pdf'
     );
   };
 

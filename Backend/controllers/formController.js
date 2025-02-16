@@ -104,6 +104,58 @@ export const getSignedUrl = async (req, res) => {
   }
 };
 
+
+// handling downloads
+export const downloadForm = async (req, res) => {
+  try {
+    const { public_id } = req.params;
+    
+    // Find the form in the database
+    const form = await Form.findOne({ public_id });
+    if (!form) {
+      return res.status(404).json({
+        success: false,
+        message: 'Form not found'
+      });
+    }
+
+    // Generate a signed URL
+    const signedUrl = cloudinary.utils.private_download_url(
+      form.public_id,
+      'pdf',
+      {
+        resource_type: 'raw',
+        type: 'private',
+        expires_at: Math.floor(Date.now() / 1000) + 3600
+      }
+    );
+
+    // Fetch the file from Cloudinary
+    const response = await fetch(signedUrl);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch file from Cloudinary (${response.status})`);
+    }
+
+    // Get the file buffer
+    const buffer = await response.arrayBuffer();
+
+    // Set response headers
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', `attachment; filename="${form.originalName}"`);
+    res.setHeader('Content-Length', buffer.byteLength);
+
+    // Send the file
+    res.send(Buffer.from(buffer));
+  } catch (error) {
+    console.error('Download error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Error downloading file',
+      error: error.message
+    });
+  }
+};
+
 // import cloudinary from '../utility/cloudinary.js';
 
 // export const uploadForm = async (req, res) => {
