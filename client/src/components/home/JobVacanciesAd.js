@@ -143,7 +143,7 @@ const JobVacanciesAd = () => {
         '7+ years of experience',
         'Strong leadership skills'
       ],
-      pay: '$70,000 - $90,000 per year',
+      pay: '$25,000 - $28,000 per year',
       googleFormLink: 'https://forms.gle/oMNo4b8rA9BoTQAx9'
     }
   ];
