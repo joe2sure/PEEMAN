@@ -8,124 +8,124 @@ const JobVacanciesAd = () => {
 
   const jobVacancies = [
     {
-        id: 1,
-        title: 'Plumber',
-        occupationCode: '531 (Plumbers, Heating and ventilation, installers and Repairs)',
-        description: 'Experienced plumber needed for commercial and private properties',
-        image: require('../../assets/images/home/construction/images/plumber-img.jpeg'),
-        category: 'plumbing',
-        fullDescription: 'We are seeking a skilled Plumber for 1st fix and second fix plumbing in bathrooms and kitchens, boiler and heating installations, repairs, and maintenance across commercial and private properties.',
-        jobDetails: {
-          type: 'Full-time',
-          hours: '40 hours per week minimum',
-          schedule: 'Monday to Friday, with Saturday during peak trading times',
-          hierarchyLevel: 'Level 1',
-        },
-        compensation: {
-          salary: {
-            annual: '£28,800',
-            hourly: '£14.77'
-          },
-          benefits: [
-            'Pension',
-            '28 days annual leave',
-            'Future development and career opportunities',
-            'Access to employee assistance program',
-            'Competitive overtime rate where applicable',
-            'Opportunities for career advancement and skill development',
-            'Training and mentoring programs'
-          ]
-        },
-        roles: [
-          '1st fix and second fix plumbing for bathrooms and kitchens',
-          'Boiler installations',
-          'Full heating installations',
-          'Repairs and maintenance',
-          'Working in commercial and private properties',
-          'Ordering correct equipment',
-          'Installing and maintaining all forms of plumbing',
-          'Drainage maintenance on customer commercial sites',
-          'Planned maintenance including jetting drains, interceptor servicing, pump station inspection',
-          'Cleaning gullies and ACO\'s',
-          'Maintaining and repairing urinals and toilets'
-        ],
-        requirements: [
-          'Plumbing expertise in commercial and residential settings'
-        ],
-        pay: '£28,800 per annum (£14.77 per hour)',
-        googleFormLink: 'https://forms.gle/oMNo4b8rA9BoTQAx9'
+      id: 1,
+      title: 'Plumber',
+      occupationCode: '531 (Plumbers, Heating and ventilation, installers and Repairs)',
+      description: 'Experienced plumber needed for commercial and private properties',
+      image: require('../../assets/images/home/construction/images/plumber-img.jpeg'),
+      category: 'plumbing',
+      fullDescription: 'We are seeking a skilled Plumber for 1st fix and second fix plumbing in bathrooms and kitchens, boiler and heating installations, repairs, and maintenance across commercial and private properties.',
+      jobDetails: {
+        type: 'Full-time',
+        hours: '40 hours per week minimum',
+        schedule: 'Monday to Friday, with Saturday during peak trading times',
+        hierarchyLevel: 'Level 1',
       },
-      {
-        id: 2,
-        title: 'Carpenter',
-        occupationCode: '5316 (Carpenter and Joiners)',
-        description: 'Skilled carpenter for high-quality woodworking and construction',
-        image: require('../../assets/images/home/construction/images/carpenter-img.jpeg'),
-        category: 'carpentry',
-        fullDescription: 'We are seeking a skilled Carpenter to create high-quality entrance gates, outdoor furniture, and support various construction projects.',
-        jobDetails: {
-          type: 'Full-time',
-          hours: '40 hours per week minimum',
-          schedule: 'Monday to Friday, with Saturdays during peak trading times',
-          hierarchyLevel: 'Level 1',
+      compensation: {
+        salary: {
+          annual: '£30,960',
+          hourly: '£15.88'
         },
-        compensation: {
-          salary: {
-            annual: '£25,200',
-            hourly: '£12.92'
-          },
-          benefits: [
-            'Pension',
-            '28 days annual leave',
-            'Future development and career opportunities',
-            'Access to employee assistance program',
-            'Competitive overtime rate where applicable',
-            'Opportunities for career advancement and skill development',
-            'Training and mentoring programs'
-          ]
-        },
-        qualifications: [
-          'CSCS blue card – carpentry and formwork',
-          'NVQ level 2 or higher BTEC/City & Guilds or equivalent in carpentry',
-          'Formal apprenticeship or craft trained equivalent',
-          'Minimum 2-3 years experience',
-          'Experience making gates and garden furniture preferred',
-          'Valid car driving license (UK) or international driving permit'
-        ],
-        personalQualities: [
-          'Excellent attention to details',
-          'High-quality workmanship',
-          'Punctual, hardworking, and trustworthy',
-          'Able to work independently and as part of a team',
-          'Good communication skills',
-          'Able to follow safety guidelines'
-        ],
-        roles: [
-          'Make high-quality entrance gates and outdoor furniture',
-          'Use various saws and machinery',
-          'Ensure high standard of work and meet deadlines',
-          'Provide excellent customer service',
-          'Integrate with the team',
-          'Undergo training and development',
-          'Make measurements and prepare sites for woodwork',
-          'Prepare drawings for cabinetry, framing, and construction projects',
-          'Select and evaluate materials',
-          'Source timber by size, strength, and budget',
-          'Assess and review carpentry or joinery refurbishments',
-          'Perform finish carpentry including siding, flooring, and built-ins'
-        ],
-        requirements: [
-          'Minimum 2-3 years of carpentry experience',
-          'Valid CSCS card',
-          'NVQ level 2 or equivalent in carpentry'
-        ],
-        additionalConsiderations: [
-          'Ability to meet skilled worker visa requirements if applying from outside the UK',
-          'IELTS certification may be required for international applicants'
-        ],
-        pay: '£25,200 per annum (£12.92 per hour)',
-        googleFormLink: 'https://forms.gle/oMNo4b8rA9BoTQAx9'
+        benefits: [
+          'Pension',
+          '28 days annual leave',
+          'Future development and career opportunities',
+          'Access to employee assistance program',
+          'Competitive overtime rate where applicable',
+          'Opportunities for career advancement and skill development',
+          'Training and mentoring programs'
+        ]
       },
+      roles: [
+        '1st fix and second fix plumbing for bathrooms and kitchens',
+        'Boiler installations',
+        'Full heating installations',
+        'Repairs and maintenance',
+        'Working in commercial and private properties',
+        'Ordering correct equipment',
+        'Installing and maintaining all forms of plumbing',
+        'Drainage maintenance on customer commercial sites',
+        'Planned maintenance including jetting drains, interceptor servicing, pump station inspection',
+        'Cleaning gullies and ACO\'s',
+        'Maintaining and repairing urinals and toilets'
+      ],
+      requirements: [
+        'Plumbing expertise in commercial and residential settings'
+      ],
+      pay: '£30,960 per annum (£15.88 per hour)',
+      googleFormLink: 'https://forms.gle/oMNo4b8rA9BoTQAx9'
+    },
+    {
+      id: 2,
+      title: 'Carpenter',
+      occupationCode: '5316 (Carpenter and Joiners)',
+      description: 'Skilled carpenter for high-quality woodworking and construction',
+      image: require('../../assets/images/home/construction/images/carpenter-img.jpeg'),
+      category: 'carpentry',
+      fullDescription: 'We are seeking a skilled Carpenter to create high-quality entrance gates, outdoor furniture, and support various construction projects.',
+      jobDetails: {
+        type: 'Full-time',
+        hours: '40 hours per week minimum',
+        schedule: 'Monday to Friday, with Saturdays during peak trading times',
+        hierarchyLevel: 'Level 1',
+      },
+      compensation: {
+        salary: {
+          annual: '£30,960',
+          hourly: '£15.88'
+        },
+        benefits: [
+          'Pension',
+          '28 days annual leave',
+          'Future development and career opportunities',
+          'Access to employee assistance program',
+          'Competitive overtime rate where applicable',
+          'Opportunities for career advancement and skill development',
+          'Training and mentoring programs'
+        ]
+      },
+      qualifications: [
+        'CSCS blue card – carpentry and formwork',
+        'NVQ level 2 or higher BTEC/City & Guilds or equivalent in carpentry',
+        'Formal apprenticeship or craft trained equivalent',
+        'Minimum 2-3 years experience',
+        'Experience making gates and garden furniture preferred',
+        'Valid car driving license (UK) or international driving permit'
+      ],
+      personalQualities: [
+        'Excellent attention to details',
+        'High-quality workmanship',
+        'Punctual, hardworking, and trustworthy',
+        'Able to work independently and as part of a team',
+        'Good communication skills',
+        'Able to follow safety guidelines'
+      ],
+      roles: [
+        'Make high-quality entrance gates and outdoor furniture',
+        'Use various saws and machinery',
+        'Ensure high standard of work and meet deadlines',
+        'Provide excellent customer service',
+        'Integrate with the team',
+        'Undergo training and development',
+        'Make measurements and prepare sites for woodwork',
+        'Prepare drawings for cabinetry, framing, and construction projects',
+        'Select and evaluate materials',
+        'Source timber by size, strength, and budget',
+        'Assess and review carpentry or joinery refurbishments',
+        'Perform finish carpentry including siding, flooring, and built-ins'
+      ],
+      requirements: [
+        'Minimum 2-3 years of carpentry experience',
+        'Valid CSCS card',
+        'NVQ level 2 or equivalent in carpentry'
+      ],
+      additionalConsiderations: [
+        'Ability to meet skilled worker visa requirements if applying from outside the UK',
+        'IELTS certification may be required for international applicants'
+      ],
+      pay: '£30,960 per annum (£15.88 per hour)',
+      googleFormLink: 'https://forms.gle/oMNo4b8rA9BoTQAx9'
+    },
     {
       id: 3,
       title: 'Construction Expert',
@@ -143,7 +143,78 @@ const JobVacanciesAd = () => {
         '7+ years of experience',
         'Strong leadership skills'
       ],
-      pay: '$25,000 - $28,000 per year',
+      pay: '£32,000 per year',
+      googleFormLink: 'https://forms.gle/oMNo4b8rA9BoTQAx9'
+    },
+    {
+      id: 4,
+      title: 'Bricklayer',
+      occupationCode: '5312 (Bricklayers and Masons)',
+      description: 'Skilled bricklayer needed for residential and commercial construction projects',
+      image: require('../../assets/images/home/construction/images/bricklayer-img.jpg'),
+      category: 'masonry',
+      fullDescription: 'We are seeking a skilled Bricklayer to work on residential and commercial construction projects, handling brickwork, blockwork, and stonework with high-quality craftsmanship.',
+      jobDetails: {
+        type: 'Full-time',
+        hours: '40 hours per week minimum',
+        schedule: 'Monday to Friday, with Saturdays during peak trading times',
+        hierarchyLevel: 'Level 1',
+      },
+      compensation: {
+        salary: {
+          annual: '£30,960',
+          hourly: '£15.88'
+        },
+        benefits: [
+          'Pension',
+          '28 days annual leave',
+          'Future development and career opportunities',
+          'Access to employee assistance program',
+          'Competitive overtime rate where applicable',
+          'Opportunities for career advancement and skill development',
+          'Training and mentoring programs'
+        ]
+      },
+      qualifications: [
+        'CSCS blue card – bricklaying',
+        'NVQ level 2 or higher BTEC/City & Guilds or equivalent in bricklaying',
+        'Formal apprenticeship or craft trained equivalent',
+        'Minimum 2-3 years experience',
+        'Experience with various types of brickwork and stonework',
+        'Valid car driving license (UK) or international driving permit'
+      ],
+      personalQualities: [
+        'Excellent attention to detail',
+        'High-quality workmanship',
+        'Punctual, hardworking, and trustworthy',
+        'Able to work independently and as part of a team',
+        'Good communication skills',
+        'Able to follow safety guidelines'
+      ],
+      roles: [
+        'Lay bricks, blocks, and stonework to create walls, foundations, and structures',
+        'Interpret architectural drawings and plans',
+        'Mix and apply mortar',
+        'Cut and shape bricks to fit specific spaces',
+        'Create decorative brickwork features',
+        'Ensure vertical and horizontal alignment of structures',
+        'Apply weatherproofing and finishes',
+        'Repair and restore existing brickwork',
+        'Maintain a clean and safe work environment',
+        'Coordinate with other construction trades',
+        'Follow industry standards and building codes',
+        'Complete projects according to specifications and deadlines'
+      ],
+      requirements: [
+        'Minimum 2-3 years of bricklaying experience',
+        'Valid CSCS card',
+        'NVQ level 2 or equivalent in bricklaying'
+      ],
+      additionalConsiderations: [
+        'Ability to meet skilled worker visa requirements if applying from outside the UK',
+        'IELTS certification may be required for international applicants'
+      ],
+      pay: '£30,960 per annum (£15.88 per hour)',
       googleFormLink: 'https://forms.gle/oMNo4b8rA9BoTQAx9'
     }
   ];
