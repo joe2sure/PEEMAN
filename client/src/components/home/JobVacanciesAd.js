@@ -214,7 +214,7 @@ const JobVacanciesAd = () => {
         'Ability to meet skilled worker visa requirements if applying from outside the UK',
         'IELTS certification may be required for international applicants'
       ],
-      pay: '£30,960 per annum (£15.88 per hour)',
+      pay: '£33,400 per annum (£17.13 per hour)',
       googleFormLink: 'https://forms.gle/oMNo4b8rA9BoTQAx9'
     },
     {
