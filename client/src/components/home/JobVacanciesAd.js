@@ -162,8 +162,8 @@ const JobVacanciesAd = () => {
       },
       compensation: {
         salary: {
-          annual: '£30,960',
-          hourly: '£15.88'
+          annual: '£33,400',
+          hourly: '£17.13'
         },
         benefits: [
           'Pension',
