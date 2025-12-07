@@ -1,0 +1,105 @@
+.core-values {
+    padding: 5rem 0;
+    background-color: #ffffff;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .value-card {
+    padding: 2rem;
+    background: #f9fafb;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e5e7eb;
+  }
+
+  .value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  .value-icon {
+    color: #3b82f6;
+    margin-bottom: 1.5rem;
+  }
+
+  .value-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+  }
+
+  .value-description {
+    color: #6b7280;
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+
+  /* Values Responsive - Tablet */
+  @media (max-width: 1024px) {
+    .core-values {
+      padding: 4rem 0;
+    }
+
+    .values-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .value-card {
+      padding: 1.75rem;
+    }
+  }
+
+  /* Values Responsive - Mobile Large */
+  @media (max-width: 768px) {
+    .core-values {
+      padding: 3rem 0;
+    }
+
+    .values-grid {
+      gap: 1.25rem;
+    }
+
+    .value-card {
+      padding: 1.5rem;
+    }
+
+    .value-title {
+      font-size: 1.125rem;
+    }
+
+    .value-description {
+      font-size: 0.9rem;
+    }
+  }
+
+  /* Values Responsive - Mobile Small */
+  @media (max-width: 480px) {
+    .core-values {
+      padding: 2.5rem 0;
+    }
+
+    .values-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .value-card {
+      padding: 1.25rem;
+    }
+
+    .value-icon svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    .value-title {
+      font-size: 1.05rem;
+    }
+  }

@@ -5,14 +5,23 @@ import AgentSection from '../../components/home/aboutPage/AgentSection';
 import StatsSection from '../../components/home/aboutPage/StatSection';
 import '../../styles/pages/home/AboutPage.css';
 import HeroSection from '../../components/home/aboutPage/HeroSection';
+import CompanyOverview from '../../components/home/aboutPage/CompanyOverview';
+import CoreValues from '../../components/home/aboutPage/CoreValues';
+import ExecutiveSection from '../../components/home/aboutPage/ExecutiveSection';
+import WhyChooseUs from '../../components/home/aboutPage/WhyChooseUs';
 
+
+
+// Main About Page Component
 const AboutPage = () => {
   return (
     <div className="about-page">
       <HeroSection />
+      <CompanyOverview />
       <StatsSection />
-      <FeatureSection />
-      <AgentSection />
+      <CoreValues />
+      <ExecutiveSection />
+      <WhyChooseUs />
       <CTASection />
     </div>
   );
@@ -23,20 +32,14 @@ export default AboutPage;
 
 
 
-// import React from 'react';
-// import HeroSection from '../../components/home/aboutPage/HeroSection.js';
-// import FeaturesSection from '../../components/home/aboutPage/FeaturesSection.js';
-// import PropertiesSection from '../../components/home/aboutPage/PropertiesSection.js';
-// import ReviewsSection from '../../components/home/aboutPage/ReviewsSection.js';
-// import '../../styles/pages/home/AboutPage.css';
-
 // const AboutPage = () => {
 //   return (
 //     <div className="about-page">
 //       <HeroSection />
-//       <FeaturesSection />
-//       <PropertiesSection />
-//       <ReviewsSection />
+//       <StatsSection />
+//       <FeatureSection />
+//       <AgentSection />
+//       <CTASection />
 //     </div>
 //   );
 // };

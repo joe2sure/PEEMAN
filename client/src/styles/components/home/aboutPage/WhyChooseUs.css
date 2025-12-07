@@ -1,0 +1,129 @@
+.why-choose {
+    padding: 5rem 0;
+    background-color: #f9fafb;
+  }
+
+  .why-choose-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .why-choose-text {
+    font-size: 1.125rem;
+    color: #4b5563;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+  }
+
+  .reasons-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .reason-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #1a1a1a;
+    font-size: 1.05rem;
+  }
+
+  .reason-item svg {
+    color: #10b981;
+    flex-shrink: 0;
+  }
+
+  .why-choose-image .image-placeholder {
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3b82f6;
+  }
+
+  /* Why Choose Responsive - Tablet */
+  @media (max-width: 1024px) {
+    .why-choose {
+      padding: 4rem 0;
+    }
+
+    .why-choose-grid {
+      gap: 3rem;
+    }
+
+    .why-choose-image .image-placeholder {
+      height: 350px;
+    }
+
+    .why-choose-text {
+      font-size: 1.05rem;
+    }
+
+    .reason-item {
+      font-size: 1rem;
+    }
+  }
+
+  /* Why Choose Responsive - Mobile Large */
+  @media (max-width: 768px) {
+    .why-choose {
+      padding: 3rem 0;
+    }
+
+    .why-choose-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .why-choose-image {
+      order: -1;
+    }
+
+    .why-choose-image .image-placeholder {
+      height: 300px;
+    }
+
+    .why-choose-text {
+      font-size: 1rem;
+    }
+
+    .reason-item {
+      font-size: 0.95rem;
+    }
+  }
+
+  /* Why Choose Responsive - Mobile Small */
+  @media (max-width: 480px) {
+    .why-choose {
+      padding: 2.5rem 0;
+    }
+
+    .why-choose-image .image-placeholder {
+      height: 250px;
+    }
+
+    .why-choose-image .image-placeholder svg {
+      width: 80px;
+      height: 80px;
+    }
+
+    .reasons-list {
+      gap: 0.875rem;
+    }
+
+    .reason-item {
+      font-size: 0.9rem;
+    }
+
+    .reason-item svg {
+      width: 18px;
+      height: 18px;
+    }
+  }

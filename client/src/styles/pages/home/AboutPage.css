@@ -24,17 +24,17 @@
 }
 
 /* Responsive layout adjustments for About Page */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .about-page section {
     padding: 3rem 0;
   }
-}
+} */
 
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
   .about-page section {
     padding: 2rem 0;
   }
-}
+} */
 
 
 
