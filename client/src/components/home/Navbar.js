@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import "../../styles/components/home/Navbar.css";
-import peemanLogo from "../../assets/peeman-logo.svg";
+import peemanLogo from "../../assets/peeman-logo-white.png";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../redux/actions/authActions";
 

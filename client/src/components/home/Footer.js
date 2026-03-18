@@ -1,9 +1,9 @@
 import React from 'react';
 import '../../styles/components/home/Footer.css';
-import peemanLogo from '../../assets/peeman-logo.svg';
-
+import peemanLogo from '../../assets/peeman-logo-white.png';
+  
 const Footer = () => {
-  return (
+  return (  
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-column">

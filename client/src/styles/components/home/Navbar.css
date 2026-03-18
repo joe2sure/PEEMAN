@@ -21,8 +21,17 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* .logo img {
+  height: 40px; 
+} */
 .logo img {
-  height: 40px;
+  height: 90px;
+  width: auto;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
 }
 
 .nav-content {
