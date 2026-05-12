@@ -1,53 +1,107 @@
 import React from 'react';
-import { FaHome, FaBuilding, FaInfoCircle, FaPlusCircle, FaProjectDiagram, FaEnvelope, FaFileAlt, FaBell, FaSignOutAlt } from 'react-icons/fa';
+import {
+  FaHome,
+  FaBuilding,
+  FaInfoCircle,
+  FaPlusCircle,
+  FaProjectDiagram,
+  FaEnvelope,
+  FaFileAlt,
+  FaBell,
+  FaSignOutAlt,
+  FaStar,        // ← new
+} from 'react-icons/fa';
 import '../../styles/components/newAdmin/DashboardSidebar.css';
 
-const DashboardSidebar = ({ isOpen }) => {
+const DashboardSidebar = ({ isOpen, activePage, onNavigate }) => {
+  const navItems = [
+    { key: 'dashboard',       icon: <FaHome />,          label: 'Dashboard' },
+    { key: 'properties',      icon: <FaBuilding />,       label: 'Properties' },
+    { key: 'property-detail', icon: <FaInfoCircle />,     label: 'Property Details' },
+    { key: 'add-property',    icon: <FaPlusCircle />,     label: 'Add Properties' },
+    { key: 'project',         icon: <FaProjectDiagram />, label: 'Project' },
+    { key: 'testimonials',    icon: <FaStar />,           label: 'Testimonials' },   // ← new
+    { key: 'contact',         icon: <FaEnvelope />,       label: 'Contact' },
+    { key: 'files',           icon: <FaFileAlt />,        label: 'File Manager' },
+    { key: 'notifications',   icon: <FaBell />,           label: 'Notifications' },
+    { key: 'logout',          icon: <FaSignOutAlt />,     label: 'Logout' },
+  ];
+
   return (
     <div className={`sidebar ${isOpen ? 'show' : ''}`}>
       <div className="sidebar-logo">
         <img src="https://placehold.co/150x50" alt="Logo" />
       </div>
       <nav className="sidebar-nav">
-        <a href="#" className="nav-item active">
-          <FaHome className="icon" />
-          <span>Dashboard</span>
-        </a>
-        <a href="#" className="nav-item">
-          <FaBuilding className="icon" />
-          <span>Properties</span>
-        </a>
-        <a href="#" className="nav-item">
-          <FaInfoCircle className="icon" />
-          <span>Property Details</span>
-        </a>
-        <a href="#" className="nav-item">
-          <FaPlusCircle className="icon" />
-          <span>Add Properties</span>
-        </a>
-        <a href="#" className="nav-item">
-          <FaProjectDiagram className="icon" />
-          <span>Project</span>
-        </a>
-        <a href="#" className="nav-item">
-          <FaEnvelope className="icon" />
-          <span>Contact</span>
-        </a>
-        <a href="#" className="nav-item">
-          <FaFileAlt className="icon" />
-          <span>File Manager</span>
-        </a>
-        <a href="#" className="nav-item">
-          <FaBell className="icon" />
-          <span>Notifications</span>
-        </a>
-        <a href="#" className="nav-item">
-          <FaSignOutAlt className="icon" />
-          <span>Logout</span>
-        </a>
+        {navItems.map(({ key, icon, label }) => (
+          <button
+            key={key}
+            className={`nav-item ${activePage === key ? 'active' : ''}`}
+            onClick={() => onNavigate && onNavigate(key)}
+          >
+            <span className="icon">{icon}</span>
+            <span>{label}</span>
+          </button>
+        ))}
       </nav>
     </div>
   );
 };
 
 export default DashboardSidebar;
+
+
+
+// import React from 'react';
+// import { FaHome, FaBuilding, FaInfoCircle, FaPlusCircle, FaProjectDiagram, FaEnvelope, FaFileAlt, FaBell, FaSignOutAlt } from 'react-icons/fa';
+// import '../../styles/components/newAdmin/DashboardSidebar.css';
+
+// const DashboardSidebar = ({ isOpen }) => {
+//   return (
+//     <div className={`sidebar ${isOpen ? 'show' : ''}`}>
+//       <div className="sidebar-logo">
+//         <img src="https://placehold.co/150x50" alt="Logo" />
+//       </div>
+//       <nav className="sidebar-nav">
+//         <a href="#" className="nav-item active">
+//           <FaHome className="icon" />
+//           <span>Dashboard</span>
+//         </a>
+//         <a href="#" className="nav-item">
+//           <FaBuilding className="icon" />
+//           <span>Properties</span>
+//         </a>
+//         <a href="#" className="nav-item">
+//           <FaInfoCircle className="icon" />
+//           <span>Property Details</span>
+//         </a>
+//         <a href="#" className="nav-item">
+//           <FaPlusCircle className="icon" />
+//           <span>Add Properties</span>
+//         </a>
+//         <a href="#" className="nav-item">
+//           <FaProjectDiagram className="icon" />
+//           <span>Project</span>
+//         </a>
+//         <a href="#" className="nav-item">
+//           <FaEnvelope className="icon" />
+//           <span>Contact</span>
+//         </a>
+//         <a href="#" className="nav-item">
+//           <FaFileAlt className="icon" />
+//           <span>File Manager</span>
+//         </a>
+//         <a href="#" className="nav-item">
+//           <FaBell className="icon" />
+//           <span>Notifications</span>
+//         </a>
+//         <a href="#" className="nav-item">
+//           <FaSignOutAlt className="icon" />
+//           <span>Logout</span>
+//         </a>
+//       </nav>
+//     </div>
+//   );
+// };
+
+// export default DashboardSidebar;

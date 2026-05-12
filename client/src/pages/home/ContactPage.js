@@ -86,8 +86,8 @@ const ContactPage = () => {
         <div className="contact-info">
           <h2>Contact Information</h2>
           <p>We'll create high-quality linkable content and build at least 40 high-authority links.</p>
-          <p>📞 07482187549</p>
-          <p>✉️ <a href="mailto:emmaonwe83@gmail.com">emmaonwe83@gmail.com</a></p>
+          <p>📞 01902961332</p>
+          <p>✉️ <a href="mailto:Info@peemandevelopers.co.uk">Info@peemandevelopers.co.uk</a></p>
           <p>📍 Wolvehampton, UK</p>
         </div>
         <form className="contact-form" onSubmit={handleSubmit}>
