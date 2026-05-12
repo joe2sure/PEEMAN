@@ -20,6 +20,7 @@ import couponRoutes from './routes/couponRoutes.js';
 import propertyUserInteractionRoutes from './routes/propertyUserInteractionRoutes.js';
 import blogRoutes from './routes/blogRoutes.js';
 import formRoutes from './routes/formRoutes.js';
+import testimonialRoutes from './routes/testimonialRoutes.js';
 
 
 
@@ -103,6 +104,7 @@ app.use(`${api}/coupon`, couponRoutes);
 app.use(`${api}/properties`, propertyUserInteractionRoutes);
 app.use(`${api}/blog`, blogRoutes);
 app.use(`${api}/forms`, formRoutes);
+app.use(`${api}/testimonials`, testimonialRoutes);
 
 
 
