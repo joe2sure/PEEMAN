@@ -385,7 +385,7 @@ const JobVacanciesAd = () => {
               </section>
 
               <section>
-                <h3>Sallary</h3>
+                <h3>Salary</h3>
                 <p>{selectedJob.pay}</p>
               </section>
 
