@@ -1,0 +1,13 @@
+# Peeman-Real-Estate-Frontend/public/_redirects
+# ─────────────────────────────────────────────────────────────────────────────
+# Place this file inside your /public folder.
+# Create Play copies everything in /public into the build output automatically,
+# so this file will be at the root of your deployed build.
+#
+# Render reads this file directly and uses it to handle routing.
+# The rule below tells Render: serve index.html for any URL that doesn't
+# match a real static file, and return HTTP 200 (not a redirect).
+# This lets React Router take over and render the correct page.
+# ─────────────────────────────────────────────────────────────────────────────
+
+/*    /index.html    200
