@@ -101,7 +101,7 @@ const ConstructionAboutSection = () => {
           <div className="construction-phone-number">
             <span className="construction-phone-icon">📞</span>
             <div>
-              <h3>074 821 87549</h3>
+              <h3>01902961332</h3>
               <p>Call For Booking</p>
             </div>
           </div>

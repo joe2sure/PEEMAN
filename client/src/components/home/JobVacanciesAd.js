@@ -143,7 +143,7 @@ const JobVacanciesAd = () => {
         '7+ years of experience',
         'Strong leadership skills'
       ],
-      pay: '£32,000 per year',
+      pay: '£33,000 per year',
       googleFormLink: 'https://forms.gle/oMNo4b8rA9BoTQAx9'
     },
     {
