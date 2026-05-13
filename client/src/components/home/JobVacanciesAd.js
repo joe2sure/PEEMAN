@@ -143,7 +143,7 @@ const JobVacanciesAd = () => {
         '7+ years of experience',
         'Strong leadership skills'
       ],
-      pay: '£33,000 per year',
+      pay: '£33,400 per year',
       googleFormLink: 'https://forms.gle/oMNo4b8rA9BoTQAx9'
     },
     {
@@ -385,7 +385,7 @@ const JobVacanciesAd = () => {
               </section>
 
               <section>
-                <h3>Compensation</h3>
+                <h3>Sallary</h3>
                 <p>{selectedJob.pay}</p>
               </section>
 
