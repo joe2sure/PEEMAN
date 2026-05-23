@@ -15,15 +15,15 @@ const ExecutiveSection = () => {
       },
       {
         name: 'Mr Emmanuel Onwe',
-        title: 'Co-Director',
+        title: 'Managing Director',
         location: 'UK',
-        bio: 'Co-director at Peeman Developers Ltd, actively involved in operations management and company strategic direction.',
+        bio: 'Managing Director at Peeman Developers Ltd, actively involved in operations management and company strategic direction.',
         image: require('../../../assets/images/home/emmanuel.png'), // Replace with actual image path
         initials: 'EO'
       },
       {
         name: 'Jai Davida',
-        title: 'Human Resource Manager',
+        title: 'Project Manager',
         location: 'UK',
         bio: 'Senior project manager with years of experience in overseeing large-scale construction projects and ensuring quality delivery.',
         image: require('../../../assets/images/home/about/jai_davida.jpeg'), // Replace with actual image path
